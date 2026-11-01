@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import { projectNavigation, projectTags } from '../data/project-navigation';
+import type { Project } from '../data/projects';
+import type { Locale } from '../i18n/ui';
+import { getUI } from '../i18n/utils';
+interface Props { project: Project; locale: Locale; index: number; }
+const { project, locale, index } = Astro.props;
+const t = getUI(locale);
+const copy = project.copy[locale];
+const destination = projectNavigation(project, locale);
+const projectLabel = t.workProject;
+---
+
+<li class:list={['project-piece', { 'project-piece--portrait': project.format === 'portrait' }]} data-project data-name={project.name} data-format={project.format}>
+  <article aria-labelledby={`project-${project.id}`}>
+    <figure class:list={['project-visual', { 'project-visual--portrait': project.format === 'portrait' }]}>
+      {project.images.map((src, imageIndex) => (
+        <span class="project-frame">
+          <Image src={src} data-canvas-src={src.src} alt={`${t.workScreenshot}: ${project.name}${project.images.length > 1 ? ` (${imageIndex + 1}/2)` : ''}`} widths={project.format === 'portrait' ? [240, 480, 818] : [480, 800, 1200, src.width]} sizes={project.format === 'portrait' ? '(min-width: 768px) 240px, 44vw' : '(min-width: 768px) 760px, 92vw'} loading="lazy" decoding="async" format="webp" />
+        </span>
+      ))}
+    </figure>
+    <div class="project-caption">
+      <div class="project-heading">
+        <p class="metadata project-category"><span>{String(index + 1).padStart(2, '0')}</span> / {copy.category}</p>
+        <h3 id={`project-${project.id}`}>{project.name}</h3>
+      </div>
+      {project.year && <time class="project-year metadata" datetime={String(project.year)}>{project.year}</time>}
+      <p class:list={['project-kind', 'metadata', { 'project-kind--personal': project.kind === 'personal' }]}>{(project.kind === 'personal' ? t.workPersonal : t.workCollaboration).toLocaleUpperCase(locale)}</p>
+      <p class="project-tags metadata">{projectTags(project, locale).join(' · ')}</p>
+      <div class="project-links">
+        {destination.href ? <a class="project-open" href={destination.href} data-project-link target={destination.external ? '_blank' : undefined} rel={destination.external ? 'noopener noreferrer' : undefined} aria-label={`${projectLabel}: ${project.name}${destination.external ? ` (${t.workVisit})` : ''}`}>{projectLabel}<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></a> : <span class="project-unavailable metadata">{t.workComingSoon}</span>}
+      </div>
+    </div>
+  </article>
+</li>
+
+<style>
+  .project-piece { min-inline-size: 0; }
+  article { margin: 0; }
+  .project-visual { margin: 0; }
+  .project-frame { display: block; position: relative; isolation: isolate; padding: 1px; border: var(--border-subtle); border-radius: var(--radius-md); background: var(--color-surface); }
+  .project-frame::before {
+    content: ''; position: absolute; inset: -1px; padding: 1px; border-radius: inherit;
+    background: conic-gradient(from var(--work-rim-angle), transparent 65%, var(--color-accent) 78%, var(--color-lavender) 84%, var(--color-blue) 90%, transparent 97%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude; pointer-events: none; opacity: .5;
+  }
+  .project-frame :global(img) { display: block; inline-size: 100%; block-size: auto; border-radius: calc(var(--radius-md) - 2px); }
+  .project-visual--portrait { display: flex; align-items: center; justify-content: center; padding: var(--space-8) var(--space-4); }
+  .project-visual--portrait .project-frame { inline-size: 43%; max-inline-size: 15rem; background: var(--color-surface-elevated); }
+  .project-visual--portrait .project-frame:first-child { transform: translateY(10px) rotate(-4deg); }
+  .project-visual--portrait .project-frame:last-child { margin-inline-start: -1rem; transform: translateY(-8px) rotate(3deg); }
+  .project-caption { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--space-2) var(--space-4); padding: var(--space-5) 0; }
+  .project-category { margin: 0 0 var(--space-2); font-size: .6875rem; text-transform: uppercase; }
+  h3 { font-family: var(--font-body); font-size: clamp(1.25rem, 2vw, 1.75rem); font-weight: var(--weight-medium); letter-spacing: -.03em; margin: 0; }
+  .project-year { align-self: start; }
+  .project-kind { grid-column: 1 / -1; margin: 0; font-size: .625rem; text-transform: uppercase; }
+  .project-kind--personal { color: var(--color-link); }
+  .project-links { grid-column: 1 / -1; display: flex; gap: var(--space-2) var(--space-6); flex-wrap: wrap; }
+  .project-tags { grid-column: 1 / -1; margin: 0; font-size: .6875rem; color: var(--color-text-muted); overflow-wrap: anywhere; }
+  .project-unavailable { font-size: .6875rem; color: var(--color-text-muted); }
+  .project-description { grid-column: 1 / -1; font-size: var(--text-sm); color: var(--color-text-muted); margin: 0; max-inline-size: 55ch; }
+  .project-open { display: inline-flex; align-items: center; justify-self: start; gap: var(--space-3); min-block-size: var(--target-min); color: var(--color-text); font-size: var(--text-sm); text-decoration: none; }
+  .project-open:hover { color: var(--color-link); text-decoration: underline; }
+  .project-open span { transition: transform var(--duration-fast) var(--ease-out); }
+  .project-open:hover span { transform: translate(2px, -2px); }
+  :global([data-deck]) .project-piece { position: absolute; inset-inline-start: var(--space-4); inset-block-end: var(--space-4); inline-size: min(32rem, 65%); pointer-events: none; }
+  /* Canvas is visual only. Original images and each complete project entry
+     remain in the semantic DOM, including keyboard-reachable real links. */
+  :global([data-deck]) .project-visual,
+  :global([data-deck]) .project-piece:not([data-active]) .project-caption { position: absolute; inline-size: 1px; block-size: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); }
+  :global([data-deck]) .project-piece[data-active] .project-caption { padding: var(--space-4) 0 0; border-block-start: var(--border-subtle); background: none; pointer-events: auto; }
+  :global([data-deck]) .project-frame::before { display: none; }
+  :global([data-deck]) h3 { font-size: clamp(1.125rem, 1.8vw, 1.5rem); }
+  :global([data-deck]) .project-description { font-size: .8125rem; line-height: 1.5; }
+  :global([data-mobile]) .project-piece { flex: 0 0 88%; min-inline-size: 0; scroll-snap-align: start; }
+  @media (min-width: 48rem) and (max-width: 67.999rem) { :global([data-deck]) .project-piece { inline-size: calc(100% - var(--space-8)); } }
+  @media (prefers-reduced-motion: no-preference) {
+    :global([data-work-visible]) .project-piece[data-active] .project-frame::before { animation: work-rim-travel 12s linear infinite; }
+  }
+  @media (prefers-reduced-motion: reduce) { .project-frame::before { display: none; } }
+  @keyframes work-rim-travel { to { --work-rim-angle: 360deg; } }
+</style>

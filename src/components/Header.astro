@@ -1,0 +1,103 @@
+﻿---
+import { getLocale, getUI, localizedPath } from '../i18n/utils';
+import LogoDG from './LogoDG.astro';
+const locale = getLocale(Astro.currentLocale);
+const t = getUI(locale);
+const links = [{ label: t.work, href: '#work' }, { label: t.about }, { label: t.capabilities }];
+---
+
+<header class="site-header" data-header>
+  <div class="header-inner">
+    <a class="identity" href={localizedPath('/', locale)} aria-label={t.home}><LogoDG /><span class="identity-name">Dulce González</span></a>
+    <nav id="primary-navigation" aria-label={t.navigation}>
+      <p id="navigation-status" class="sr-only">{t.pending}</p>
+      <ul>{links.map(link => <li><a href={link.href} role={link.href ? undefined : 'link'} aria-disabled={link.href ? undefined : 'true'} aria-describedby={link.href ? undefined : 'navigation-status'}>{link.label}</a></li>)}</ul>
+      <a class="header-contact" href="#contact">{t.headerContact}<svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12" /></svg></a>
+    </nav>
+    <div class="header-controls">
+      <div class="language-control" role="group" aria-label={t.language}>
+        <a href={localizedPath(Astro.url.pathname, 'es')} data-language-path={localizedPath(Astro.url.pathname, 'es')} lang="es" hreflang="es" aria-label={t.spanish} aria-current={locale === 'es' ? 'page' : undefined}>ES</a>
+        <span aria-hidden="true">/</span>
+        <a href={localizedPath(Astro.url.pathname, 'en')} data-language-path={localizedPath(Astro.url.pathname, 'en')} lang="en" hreflang="en" aria-label={t.english} aria-current={locale === 'en' ? 'page' : undefined}>EN</a>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle hidden aria-label={t.darkTheme} aria-pressed="false" aria-describedby="theme-help theme-status" data-light-state={t.lightState} data-dark-state={t.darkState} data-auto-state={t.autoState} data-manual-state={t.manualState}>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><path d="M12 4.5a7.5 7.5 0 0 1 0 15Z" fill="currentColor" stroke="none"/></svg>
+      </button>
+      <span id="theme-help" class="sr-only">{t.themeHelp}</span>
+      <span id="theme-status" class="sr-only" role="status"></span>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>{t.menu}</button>
+    </div>
+  </div>
+</header>
+<div class="header-reserve" aria-hidden="true"></div>
+
+<script>
+  import '../scripts/header';
+</script>
+
+<style>
+  :global(html) { --header-clearance: 7rem; scroll-padding-block-start: var(--header-clearance); }
+  /* Site-level clearance for a fixed header, without editing section components. */
+  :global(html[data-floating-header] [data-featured-work][data-deck] [data-work-pin]) { padding-block-start: var(--header-clearance); }
+  .site-header {
+    position: fixed; inline-size: 100%; inset-block-start: 0; inset-inline-start: 50%; transform: translateX(-50%); margin: 0;
+    z-index: var(--z-header); border: 1px solid transparent; border-block-end-color: color-mix(in srgb, var(--color-border) 65%, transparent);
+    border-radius: 0; background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    box-shadow: 0 0 0 transparent;
+    transition: inline-size 480ms cubic-bezier(.22, 1, .36, 1), inset-block-start 480ms cubic-bezier(.22, 1, .36, 1), border-radius 480ms cubic-bezier(.22, 1, .36, 1), border-color 480ms cubic-bezier(.22, 1, .36, 1), background-color 480ms cubic-bezier(.22, 1, .36, 1), box-shadow 480ms cubic-bezier(.22, 1, .36, 1), backdrop-filter 480ms cubic-bezier(.22, 1, .36, 1);
+  }
+  @supports (backdrop-filter: blur(8px)) {
+    .site-header { backdrop-filter: blur(5px); }
+    .site-header[data-scrolled] { backdrop-filter: blur(11px); }
+  }
+  .site-header[data-scrolled] { inline-size: min(calc(100% - 48px), 77.5rem); inset-block-start: 1rem; border-radius: 1.25rem; border-color: color-mix(in srgb, var(--color-accent) 20%, var(--color-border)); background: color-mix(in srgb, var(--color-bg) 96%, transparent); box-shadow: 0 8px 28px color-mix(in srgb, var(--color-text) 5%, transparent), 0 0 24px color-mix(in srgb, var(--color-accent) 5%, transparent); }
+  .header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: var(--space-4); padding: .5rem var(--space-5); max-inline-size: 77.5rem; margin-inline: auto; transition: padding 480ms cubic-bezier(.22, 1, .36, 1); }
+  .site-header[data-scrolled] .header-inner { padding-block: .3rem; }
+  .header-reserve { display: block; flex: none; block-size: var(--header-clearance); }
+  .site-header[data-enhanced] + .header-reserve { display: block; flex: none; block-size: var(--header-clearance); }
+  .identity { display: inline-flex; align-items: center; gap: var(--space-2); width: fit-content; color: var(--color-text); font-size: .8125rem; letter-spacing: -.02em; text-decoration: none; border-radius: var(--radius-sm); }
+  .identity-name { white-space: nowrap; }
+  nav { grid-column: 1 / -1; grid-row: 2; padding-block: var(--space-3); max-block-size: calc(100svh - 7rem); overflow-y: auto; }
+  ul { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-6); list-style: none; margin: 0; padding: 0 0 var(--space-3); }
+  nav ul a { display: inline-flex; align-items: center; min-block-size: var(--target-min); color: var(--color-text-muted); font-size: var(--text-sm); text-decoration: none; }
+  nav ul a[href]:hover, nav ul a[href]:focus-visible { color: var(--color-text); text-decoration: underline; }
+  nav ul a[aria-disabled='true'] { cursor: default; }
+  .header-contact { display: inline-flex; align-items: center; justify-content: center; min-block-size: var(--target-min); gap: var(--space-3); padding: var(--space-2) var(--space-5); border: 1px solid color-mix(in srgb, var(--color-lavender) 50%, var(--color-bg)); border-radius: 1.1rem; font-size: var(--text-sm); font-weight: var(--weight-medium); text-decoration: none; background: color-mix(in srgb, var(--color-text) 88%, var(--color-accent)); color: var(--color-bg); box-shadow: 0 3px 12px color-mix(in srgb, var(--color-accent) 10%, transparent), 0 0 16px color-mix(in srgb, var(--color-accent) 5%, transparent); transition: background-color var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) var(--ease-standard); }
+  .header-contact:hover, .header-contact:focus-visible { background: color-mix(in srgb, var(--color-text) 78%, var(--color-accent)); border-color: var(--color-accent); box-shadow: 0 3px 14px color-mix(in srgb, var(--color-accent) 14%, transparent), 0 0 18px color-mix(in srgb, var(--color-accent) 11%, transparent); }
+  .contact-arrow { inline-size: 1rem; block-size: 1rem; flex: none; transition: transform var(--duration-fast) var(--ease-out); }
+  .header-contact:hover .contact-arrow, .header-contact:focus-visible .contact-arrow { transform: translate(2px, -2px); }
+  .site-header :global(.contact-burst) { position: absolute; inline-size: 0; block-size: 0; pointer-events: none; z-index: 2; }
+  .site-header :global(.contact-spark) { position: absolute; inline-size: 9px; block-size: 9px; color: var(--color-accent); filter: drop-shadow(0 0 3px currentColor); }
+  .site-header :global(.contact-spark:nth-child(2n)) { color: var(--color-lavender); }
+  .site-header :global(.contact-spark:nth-child(3n)) { color: var(--color-blue); }
+  .site-header :global(.contact-spark:last-child) { color: var(--color-pink); }
+  .site-header :global(.contact-spark--dot) { inline-size: 3px; block-size: 3px; border-radius: 50%; background: currentColor; }
+  .header-controls { display: flex; align-items: center; justify-content: end; gap: var(--space-2); }
+  .language-control { display: flex; align-items: center; gap: var(--space-1); font-size: var(--text-xs); color: var(--color-text-muted); }
+  .language-control a { display: inline-flex; align-items: center; justify-content: center; min-block-size: var(--target-min); padding-inline: var(--space-2); color: var(--color-text-muted); text-decoration: none; }
+  .language-control a[aria-current='page'] { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: .45em; }
+  .language-control a:hover { color: var(--color-link); }
+  button { appearance: none; background: transparent; border: 0; border-radius: var(--radius-sm); color: var(--color-text-muted); cursor: pointer; min-block-size: var(--target-min); padding: var(--space-2); font-size: var(--text-xs); transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard); }
+  button:hover { color: var(--color-text); background: var(--color-surface); }
+  .theme-toggle { inline-size: var(--target-min); }
+  .theme-toggle svg { inline-size: 1.25rem; block-size: 1.25rem; margin: auto; stroke: currentColor; stroke-width: 1.2; }
+  .theme-toggle[aria-pressed='true'] { color: var(--color-accent); }
+  @media (max-width: 39.999rem) {
+    :global(html) { --header-clearance: 5.25rem; }
+    .site-header[data-scrolled] { inline-size: calc(100% - 24px); inset-block-start: .75rem; border-radius: 1rem; }
+    .header-inner { column-gap: var(--space-2); padding: .375rem var(--space-3); }
+    .site-header[data-scrolled] .header-inner { padding-block: .25rem; }
+    .header-controls { gap: var(--space-1); }
+    .identity-name { display: none; }
+    .language-control { gap: 0; }
+    .language-control a { padding-inline: var(--space-1); }
+    ul { flex-direction: column; }
+  }
+  @media (min-width: 68rem) {
+    .header-inner { grid-template-columns: minmax(0, 1fr) auto auto; column-gap: var(--space-6); }
+    nav { grid-column: 2; grid-row: 1; display: flex; align-items: center; gap: var(--space-6); padding: 0; overflow: visible; }
+    ul { padding: 0; gap: var(--space-5); }
+    .header-controls { grid-column: 3; }
+  }
+  @media (prefers-reduced-motion: reduce) { .site-header, .header-inner, .header-contact, .contact-arrow { transition: none !important; } .header-contact:hover .contact-arrow, .header-contact:focus-visible .contact-arrow { transform: none; } .site-header :global(.contact-burst) { display: none; } }
+</style>

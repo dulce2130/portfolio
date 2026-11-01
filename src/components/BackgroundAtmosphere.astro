@@ -1,0 +1,91 @@
+<div class="background-atmosphere" aria-hidden="true"><span class="ambient-cloud"></span></div>
+
+<style>
+  .background-atmosphere {
+    --cloud-travel-x: 14vw;
+    --cloud-travel-y: 12svh;
+    --cloud-blur: clamp(2rem, 5vw, 5rem);
+    --cloud-intensity: .92;
+    --cloud-saturation: .55;
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .background-atmosphere::before,
+  .background-atmosphere::after,
+  .ambient-cloud {
+    content: '';
+    position: absolute;
+    inset: -10%;
+    opacity: var(--atmosphere-opacity);
+  }
+  .background-atmosphere::before {
+    background: radial-gradient(ellipse at 14% 72%, var(--atmosphere-secondary), transparent 65%);
+  }
+  .background-atmosphere::after {
+    background:
+      radial-gradient(ellipse 48% 40% at 66% 43%, color-mix(in srgb, var(--color-lavender) 50%, var(--atmosphere-primary)), transparent 78%),
+      radial-gradient(ellipse 38% 46% at 78% 61%, color-mix(in srgb, var(--color-accent) 40%, var(--atmosphere-primary)), transparent 80%);
+    opacity: calc(var(--atmosphere-opacity) * var(--cloud-intensity));
+    filter: blur(var(--cloud-blur)) saturate(var(--cloud-saturation));
+    transform: translate(-3%, 2%) rotate(-4deg);
+    background-size: 106% 106%;
+    background-position: center;
+  }
+  .ambient-cloud {
+    background:
+      radial-gradient(ellipse 38% 30% at 58% 67%, color-mix(in srgb, var(--color-pink) 35%, var(--atmosphere-tertiary)), transparent 80%),
+      radial-gradient(ellipse 42% 32% at 70% 78%, var(--atmosphere-tertiary), transparent 78%);
+    opacity: calc(var(--atmosphere-opacity) * var(--cloud-intensity) * .7);
+    filter: blur(var(--cloud-blur)) saturate(var(--cloud-saturation));
+    transform: translate(3%, -2%) scale(1.05);
+  }
+  @media (max-width: 39.999rem) {
+    .background-atmosphere {
+      --cloud-travel-x: 5vw;
+      --cloud-travel-y: 5svh;
+      --cloud-blur: 2rem;
+    }
+    .background-atmosphere::after { inset: 0; opacity: calc(var(--atmosphere-opacity) * var(--cloud-intensity) * .75); }
+    .ambient-cloud { inset: 0; opacity: calc(var(--atmosphere-opacity) * var(--cloud-intensity) * .5); }
+  }
+  :global(html[data-theme='dark']) .background-atmosphere {
+    --cloud-intensity: 1.4;
+    --cloud-saturation: 1;
+  }
+  :global(html[data-theme='dark']) .background-atmosphere::after { background-size: 100% 100%; }
+  @media (prefers-color-scheme: dark) {
+    :global(html:not([data-theme='light']):not([data-theme='dark'])) .background-atmosphere {
+      --cloud-intensity: 1.4;
+      --cloud-saturation: 1;
+    }
+    :global(html:not([data-theme='light']):not([data-theme='dark'])) .background-atmosphere::after { background-size: 100% 100%; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .background-atmosphere::after {
+      animation: ambient-cloud-drift 29s linear -11s infinite,
+        ambient-cloud-sway 23s ease-in-out -7s infinite alternate;
+    }
+    .ambient-cloud {
+      animation: ambient-cloud-drift 35s linear -23s infinite reverse,
+        ambient-cloud-sway 31s ease-in-out -17s infinite alternate-reverse;
+    }
+  }
+  /* Spatially curved loops keep moving between waypoints. Independent sway
+     adds a second rhythm without increasing the established travel range. */
+  @keyframes ambient-cloud-drift {
+    0%, 100% { transform: translate(calc(var(--cloud-travel-x) * -.6), calc(var(--cloud-travel-y) * -.3)) scale(1) rotate(-7deg); }
+    14% { transform: translate(calc(var(--cloud-travel-x) * -.1), calc(var(--cloud-travel-y) * -.62)) scale(1.04) rotate(-5deg); }
+    29% { transform: translate(calc(var(--cloud-travel-x) * .5), calc(var(--cloud-travel-y) * -.55)) scale(1.1) rotate(-1deg); }
+    43% { transform: translate(calc(var(--cloud-travel-x) * .9), calc(var(--cloud-travel-y) * -.05)) scale(1.14) rotate(4deg); }
+    58% { transform: translate(calc(var(--cloud-travel-x) * .5), calc(var(--cloud-travel-y) * .55)) scale(1.1) rotate(5deg); }
+    72% { transform: translate(calc(var(--cloud-travel-x) * -.1), calc(var(--cloud-travel-y) * .8)) scale(1.04) rotate(2deg); }
+    86% { transform: translate(calc(var(--cloud-travel-x) * -.6), calc(var(--cloud-travel-y) * .3)) scale(.99) rotate(-3deg); }
+  }
+  @keyframes ambient-cloud-sway {
+    from { translate: 0 calc(var(--cloud-travel-y) * -.04); }
+    to { translate: 0 calc(var(--cloud-travel-y) * .04); }
+  }
+</style>
