@@ -6,5 +6,7 @@ export default defineConfig({
     defaultLocale: 'es',
     locales: ['es', 'en'],
     routing: { prefixDefaultLocale: false },
+    site: 'https://dulce2130.github.io',
+    base: '/portfolio',
   },
 });
