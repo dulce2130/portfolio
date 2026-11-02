@@ -1,31 +1,144 @@
 ---
-import { getLocale, getUI } from '../i18n/utils';
+import { getLocale, getUI } from "../i18n/utils";
 const locale = getLocale(Astro.currentLocale);
 const t = getUI(locale);
 
 // Editorial constellation: upper nodes stay clear of the headline; lower
 // branches open towards the centre only below the text's occupied area.
 const networkNodes = [
-  { x: 540, y: 25, className: 'node-desktop-only node-distant', halo: 10, core: 1.4, arrival: 300, duration: 6, delay: -4 },
-  { x: 395, y: 95, className: 'node-secondary node-mobile-hidden', halo: 14, core: 2.2, arrival: 480, duration: 10, delay: -9 },
-  { x: 460, y: 205, className: 'node-main', halo: 20, core: 3.4, arrival: 660, duration: 8, delay: -6 },
-  { x: 580, y: 155, className: 'node-blue node-distant node-mobile-hidden', halo: 10, core: 1.5, arrival: 840, duration: 4, delay: -3 },
-  { x: 270, y: 250, className: 'node-mobile-hidden', halo: 11, core: 1.6, arrival: 1020, duration: 9, delay: -7 },
-  { x: 340, y: 350, className: 'node-secondary node-mobile-centre', halo: 14, core: 2.2, arrival: 1200, duration: 11, delay: -11 },
-  { x: 40, y: 410, className: 'node-desktop-only node-distant', halo: 9, core: 1.3, arrival: 1380, duration: 7, delay: -8 },
-  { x: 540, y: 440, className: 'node-secondary node-mobile-lower', halo: 15, core: 2.4, arrival: 1460, duration: 9, delay: -13 },
-  { x: 300, y: 500, className: 'node-desktop-only node-mobile-end node-distant', halo: 10, core: 1.5, arrival: 1620, duration: 12, delay: -5 },
+  {
+    x: 540,
+    y: 25,
+    className: "node-desktop-only node-distant",
+    halo: 10,
+    core: 1.4,
+    arrival: 300,
+    duration: 6,
+    delay: -4,
+  },
+  {
+    x: 395,
+    y: 95,
+    className: "node-secondary node-mobile-hidden",
+    halo: 14,
+    core: 2.2,
+    arrival: 480,
+    duration: 10,
+    delay: -9,
+  },
+  {
+    x: 460,
+    y: 205,
+    className: "node-main",
+    halo: 20,
+    core: 3.4,
+    arrival: 660,
+    duration: 8,
+    delay: -6,
+  },
+  {
+    x: 580,
+    y: 155,
+    className: "node-blue node-distant node-mobile-hidden",
+    halo: 10,
+    core: 1.5,
+    arrival: 840,
+    duration: 4,
+    delay: -3,
+  },
+  {
+    x: 270,
+    y: 250,
+    className: "node-mobile-hidden",
+    halo: 11,
+    core: 1.6,
+    arrival: 1020,
+    duration: 9,
+    delay: -7,
+  },
+  {
+    x: 340,
+    y: 350,
+    className: "node-secondary node-mobile-centre",
+    halo: 14,
+    core: 2.2,
+    arrival: 1200,
+    duration: 11,
+    delay: -11,
+  },
+  {
+    x: 40,
+    y: 410,
+    className: "node-desktop-only node-distant",
+    halo: 9,
+    core: 1.3,
+    arrival: 1380,
+    duration: 7,
+    delay: -8,
+  },
+  {
+    x: 540,
+    y: 440,
+    className: "node-secondary node-mobile-lower",
+    halo: 15,
+    core: 2.4,
+    arrival: 1460,
+    duration: 9,
+    delay: -13,
+  },
+  {
+    x: 300,
+    y: 500,
+    className: "node-desktop-only node-mobile-end node-distant",
+    halo: 10,
+    core: 1.5,
+    arrival: 1620,
+    duration: 12,
+    delay: -5,
+  },
 ];
 const connections = [
-  { path: 'M540 25 395 95', start: 340, className: 'connection-desktop-only' },
-  { path: 'M395 95 460 205', start: 520, className: 'connection-mobile-hidden' },
-  { path: 'M460 205 580 155', start: 700, className: 'connection-mobile-hidden' },
-  { path: 'M460 205 270 250', start: 880, className: 'connection-mobile-hidden' },
-  { path: 'M270 250 340 350', start: 1060, className: 'connection-mobile-hidden' },
-  { path: 'M340 350 40 410', start: 1240, className: 'connection-desktop-only' },
-  { path: 'M340 350 540 440', start: 1320, className: 'connection-mobile connection-lower' },
-  { path: 'M340 350 300 500', start: 1480, className: 'connection-desktop-only connection-mobile connection-end' },
-  { path: 'M460 205 340 350', start: 560, className: 'connection-mobile-only connection-mobile connection-first' },
+  { path: "M540 25 395 95", start: 340, className: "connection-desktop-only" },
+  {
+    path: "M395 95 460 205",
+    start: 520,
+    className: "connection-mobile-hidden",
+  },
+  {
+    path: "M460 205 580 155",
+    start: 700,
+    className: "connection-mobile-hidden",
+  },
+  {
+    path: "M460 205 270 250",
+    start: 880,
+    className: "connection-mobile-hidden",
+  },
+  {
+    path: "M270 250 340 350",
+    start: 1060,
+    className: "connection-mobile-hidden",
+  },
+  {
+    path: "M340 350 40 410",
+    start: 1240,
+    className: "connection-desktop-only",
+  },
+  {
+    path: "M340 350 540 440",
+    start: 1320,
+    className: "connection-mobile connection-lower",
+  },
+  {
+    path: "M340 350 300 500",
+    start: 1480,
+    className: "connection-desktop-only connection-mobile connection-end",
+  },
+  {
+    path: "M460 205 340 350",
+    start: 560,
+    className: "connection-mobile-only connection-mobile connection-first",
+  },
 ];
 ---
 
@@ -34,9 +147,19 @@ const connections = [
   <span class="hero-index metadata" aria-hidden="true">01</span>
 
   <h1 id="hero-title" class="hero-headline">
-    <span class="headline-line"><span class="headline-reveal">{t.heroLine1}</span></span>{' '}
-    <span class="headline-line"><span class="headline-reveal">{t.heroLine2Before}<em>{t.heroLine2Emphasis}</em>{t.heroLine2After}</span></span>{' '}
-    <span class="headline-line"><span class="headline-reveal">{t.heroLine3}</span></span>
+    <span class="headline-line"
+      ><span class="headline-reveal">{t.heroLine1}</span></span
+    >{" "}
+    <span class="headline-line"
+      ><span class="headline-reveal"
+        >{t.heroLine2Before}<em>{t.heroLine2Emphasis}</em>{
+          t.heroLine2After
+        }</span
+      ></span
+    >{" "}
+    <span class="headline-line"
+      ><span class="headline-reveal">{t.heroLine3}</span></span
+    >
   </h1>
 
   <div class="hero-introduction">
@@ -45,9 +168,13 @@ const connections = [
     <div class="hero-actions">
       <a class="hero-cta hero-cta-primary" href="#work">
         {t.heroPrimary}
-        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5" /></svg>
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"
+          ><path d="M3 10h13m-5-5 5 5-5 5"></path></svg
+        >
       </a>
-      <a class="hero-cta hero-cta-secondary" href="#contact">{t.heroSecondary}<span aria-hidden="true">↗</span></a>
+      <a class="hero-cta hero-cta-secondary" href="#contact"
+        >{t.heroSecondary}<span aria-hidden="true">↗</span></a
+      >
     </div>
   </div>
 
@@ -56,20 +183,45 @@ const connections = [
     <p class="metadata">{t.heroAvailability}</p>
   </div>
 
-  <svg class="hero-constellation" viewBox="0 0 600 520" aria-hidden="true" focusable="false">
+  <svg
+    class="hero-constellation"
+    viewBox="0 0 600 520"
+    aria-hidden="true"
+    focusable="false"
+  >
     <g class="network-lines" fill="none">
-      {connections.map(connection => (
-        <path class={connection.className} pathLength="1" style={`--connection-start: ${connection.start}ms`} d={connection.path} />
-      ))}
+      {
+        connections.map((connection) => (
+          <path
+            class={connection.className}
+            pathLength="1"
+            style={`--connection-start: ${connection.start}ms`}
+            d={connection.path}
+          />
+        ))
+      }
     </g>
-    {networkNodes.map(node => (
-      <g class:list={['network-node', node.className]} style={`--node-arrival: ${node.arrival}ms; --node-duration: ${node.duration}s; --node-delay: ${node.delay}s`} transform={`translate(${node.x} ${node.y})`}>
-        <g class="node-activation">
-          {node.className.includes('node-main') && <circle class="node-flash" r="23" />}
-          <circle class="node-halo" r={node.halo} /><circle class="node-core" r={node.core} />
+    {
+      networkNodes.map((node) => (
+        <g
+          class:list={["network-node", node.className]}
+          data-x={node.x}
+          data-y={node.y}
+          style={`--node-arrival: ${node.arrival}ms; --node-duration: ${node.duration}s; --node-delay: ${node.delay}s`}
+          transform={`translate(${node.x} ${node.y})`}
+        >
+          <circle class="node-pointer-aura" r={node.halo * 1.35} />
+
+          <g class="node-activation">
+            {node.className.includes("node-main") && (
+              <circle class="node-flash" r="23" />
+            )}
+            <circle class="node-halo" r={node.halo} />
+            <circle class="node-core" r={node.core} />
+          </g>
         </g>
-      </g>
-    ))}
+      ))
+    }
   </svg>
 </section>
 
@@ -81,9 +233,18 @@ const connections = [
     min-block-size: calc(100svh - 12.5rem);
     padding-block: var(--space-4) var(--space-2);
   }
-  .hero-eyebrow, .hero-index { margin: 0; text-transform: uppercase; }
-  .hero-eyebrow { grid-column: 2 / 8; }
-  .hero-index { grid-column: 12 / -1; justify-self: end; }
+  .hero-eyebrow,
+  .hero-index {
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .hero-eyebrow {
+    grid-column: 2 / 8;
+  }
+  .hero-index {
+    grid-column: 12 / -1;
+    justify-self: end;
+  }
   .hero-headline {
     grid-column: 2 / 12;
     margin: var(--space-2) 0 var(--space-3);
@@ -91,27 +252,44 @@ const connections = [
     font-size: clamp(2.5rem, 6.25vw, 5.625rem);
     font-weight: var(--weight-medium);
     line-height: 1.09;
-    letter-spacing: -.055em;
+    letter-spacing: -0.055em;
     text-wrap: initial;
   }
-  .headline-line { display: block; }
-  .headline-reveal { display: block; }
+  .headline-line {
+    display: block;
+  }
+  .headline-reveal {
+    display: block;
+  }
   .hero-headline em {
     color: var(--color-link);
     font-family: var(--font-display);
     font-weight: var(--weight-normal);
     font-style: italic;
-    letter-spacing: -.045em;
+    letter-spacing: -0.045em;
   }
-  .hero-introduction { grid-column: 2 / 8; }
-  .hero-profile { margin: 0; font-size: var(--text-sm); font-weight: var(--weight-medium); letter-spacing: -.01em; }
+  .hero-introduction {
+    grid-column: 2 / 8;
+  }
+  .hero-profile {
+    margin: 0;
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    letter-spacing: -0.01em;
+  }
   .hero-description {
     max-inline-size: 49ch;
     margin: var(--space-3) 0 0;
     color: var(--color-text-muted);
     font-size: var(--text-base);
   }
-  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-6); margin-block-start: var(--space-6); }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3) var(--space-6);
+    margin-block-start: var(--space-6);
+  }
   .hero-cta {
     display: inline-flex;
     align-items: center;
@@ -124,18 +302,43 @@ const connections = [
     font-size: var(--text-sm);
     font-weight: var(--weight-medium);
     text-decoration: none;
-    transition: color var(--duration-fast) var(--ease-standard),
+    transition:
+      color var(--duration-fast) var(--ease-standard),
       background-color var(--duration-fast) var(--ease-standard),
       border-color var(--duration-fast) var(--ease-standard);
   }
-  .hero-cta-primary { background: var(--color-text); color: var(--color-bg); }
-  .hero-cta-primary:hover { background: var(--color-link); border-color: var(--color-link); }
-  .hero-cta-secondary { padding-inline: 0; color: var(--color-text); }
-  .hero-cta-secondary:hover { color: var(--color-link); text-decoration: underline; }
-  .hero-cta svg { inline-size: 1.125rem; block-size: 1.125rem; stroke: currentColor; stroke-width: 1.4; }
-  .hero-cta svg, .hero-cta-secondary span { transition: transform var(--duration-fast) var(--ease-out); }
-  .hero-cta-primary:hover svg { transform: translateX(3px); }
-  .hero-cta-secondary:hover span { transform: translate(2px, -2px); }
+  .hero-cta-primary {
+    background: var(--color-text);
+    color: var(--color-bg);
+  }
+  .hero-cta-primary:hover {
+    background: var(--color-link);
+    border-color: var(--color-link);
+  }
+  .hero-cta-secondary {
+    padding-inline: 0;
+    color: var(--color-text);
+  }
+  .hero-cta-secondary:hover {
+    color: var(--color-link);
+    text-decoration: underline;
+  }
+  .hero-cta svg {
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+  .hero-cta svg,
+  .hero-cta-secondary span {
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+  .hero-cta-primary:hover svg {
+    transform: translateX(3px);
+  }
+  .hero-cta-secondary:hover span {
+    transform: translate(2px, -2px);
+  }
   .hero-notes {
     grid-column: 2 / -1;
     display: flex;
@@ -146,11 +349,14 @@ const connections = [
     padding-block-start: var(--space-5);
     margin-block-start: var(--space-5);
   }
-  .hero-notes p { margin: 0; text-transform: uppercase; }
+  .hero-notes p {
+    margin: 0;
+    text-transform: uppercase;
+  }
 
   .hero-constellation {
-    --network-saturation: .65;
-    --network-opacity: .85;
+    --network-saturation: 0.65;
+    --network-opacity: 0.85;
     position: absolute;
     inset-inline-end: 0;
     inset-block-start: 18%;
@@ -162,135 +368,408 @@ const connections = [
     filter: saturate(var(--network-saturation));
     opacity: var(--network-opacity);
   }
-  :global(html[data-theme='dark']) .hero-constellation { --network-saturation: 1; --network-opacity: 1; }
-  @media (prefers-color-scheme: dark) {
-    :global(html:not([data-theme='light']):not([data-theme='dark'])) .hero-constellation { --network-saturation: 1; --network-opacity: 1; }
+  :global(html[data-theme="dark"]) .hero-constellation {
+    --network-saturation: 1;
+    --network-opacity: 1;
   }
-  .network-lines { stroke: currentColor; stroke-width: .6; opacity: .2; }
-  .network-lines path { vector-effect: non-scaling-stroke; }
-  .connection-mobile-only { display: none; }
-  .network-node { color: var(--color-accent); }
-  .node-blue { color: var(--color-blue); }
-  .node-halo { fill: currentColor; opacity: .22; filter: blur(4px); }
-  .node-core { fill: currentColor; opacity: .8; }
-  .node-secondary .node-halo, .node-main .node-halo { opacity: .3; }
-  .node-distant { opacity: .6; }
-  .node-distant .node-halo { filter: blur(5px); }
-  .node-flash { fill: currentColor; opacity: 0; filter: blur(6px); }
+  @media (prefers-color-scheme: dark) {
+    :global(html:not([data-theme="light"]):not([data-theme="dark"]))
+      .hero-constellation {
+      --network-saturation: 1;
+      --network-opacity: 1;
+    }
+  }
+  .network-lines {
+    stroke: currentColor;
+    stroke-width: 0.6;
+    opacity: 0.2;
+  }
+  .network-lines path {
+    vector-effect: non-scaling-stroke;
+  }
+  .connection-mobile-only {
+    display: none;
+  }
+  .network-node {
+    color: var(--color-accent);
+  }
+  .node-blue {
+    color: var(--color-blue);
+  }
+  .node-halo {
+    fill: currentColor;
+    opacity: 0.22;
+    filter: blur(4px);
+  }
+  .node-core {
+    fill: currentColor;
+    opacity: 0.8;
+  }
+  .node-secondary .node-halo,
+  .node-main .node-halo {
+    opacity: 0.3;
+  }
+  .node-distant {
+    opacity: 0.6;
+  }
+  .node-distant .node-halo {
+    filter: blur(5px);
+  }
+  .node-flash {
+    fill: currentColor;
+    opacity: 0;
+    filter: blur(6px);
+  }
   @media (min-width: 40rem) and (max-width: 67.999rem) {
-    .hero-constellation { inline-size: 40%; block-size: 42%; inset-block-start: 44%; }
-    .node-desktop-only, .connection-desktop-only { display: none; }
+    .hero-constellation {
+      inline-size: 40%;
+      block-size: 42%;
+      inset-block-start: 44%;
+    }
+    .node-desktop-only,
+    .connection-desktop-only {
+      display: none;
+    }
   }
   @media (max-width: 39.999rem) {
-    .hero-constellation { inline-size: 42%; block-size: 8rem; inset-block-start: auto; inset-block-end: 0; opacity: calc(var(--network-opacity) * .65); }
-    .network-lines path, .node-desktop-only, .node-mobile-hidden { display: none; }
-    .network-lines .connection-mobile, .node-mobile-end { display: initial; }
-    .node-halo { opacity: .16; }
+    .hero-constellation {
+      inline-size: 42%;
+      block-size: 8rem;
+      inset-block-start: auto;
+      inset-block-end: 0;
+      opacity: calc(var(--network-opacity) * 0.65);
+    }
+    .network-lines path,
+    .node-desktop-only,
+    .node-mobile-hidden {
+      display: none;
+    }
+    .network-lines .connection-mobile,
+    .node-mobile-end {
+      display: initial;
+    }
+    .node-halo {
+      opacity: 0.16;
+    }
   }
   @media (prefers-reduced-motion: no-preference) {
     .network-node {
       --node-drift: 3px;
-      animation: node-drift calc(var(--node-duration) * 2 + 5s) ease-in-out var(--node-delay) infinite;
+      animation: node-drift calc(var(--node-duration) * 2 + 5s) ease-in-out
+        var(--node-delay) infinite;
     }
     .node-halo {
       transform-box: fill-box;
       transform-origin: center;
-      animation: node-halo-breathe var(--node-duration) ease-in-out var(--node-delay) infinite;
+      animation: node-halo-breathe var(--node-duration) ease-in-out
+        var(--node-delay) infinite;
     }
     .node-core {
-      animation: node-core-breathe calc(var(--node-duration) * 1.25 + 1s) ease-in-out var(--node-delay) infinite;
+      animation: node-core-breathe calc(var(--node-duration) * 1.25 + 1s)
+        ease-in-out var(--node-delay) infinite;
     }
     .node-activation {
       transform-box: fill-box;
       transform-origin: center;
-      animation: node-activate 140ms var(--ease-out) var(--node-entry, var(--node-arrival)) both;
+      animation: node-activate 140ms var(--ease-out)
+        var(--node-entry, var(--node-arrival)) both;
     }
-    .node-flash { animation: node-soft-flash 360ms var(--ease-out) var(--node-entry, var(--node-arrival)) both; }
+    .node-flash {
+      animation: node-soft-flash 360ms var(--ease-out)
+        var(--node-entry, var(--node-arrival)) both;
+    }
     .network-lines path {
       stroke-dasharray: 1;
-      animation: connection-arrive 140ms linear var(--connection-entry, var(--connection-start)) both,
-        line-breathe 12s ease-in-out calc(var(--connection-entry, var(--connection-start)) + 140ms) infinite;
+      animation:
+        connection-arrive 140ms linear
+          var(--connection-entry, var(--connection-start)) both,
+        line-breathe 12s ease-in-out
+          calc(var(--connection-entry, var(--connection-start)) + 140ms)
+          infinite;
     }
     .network-lines path:nth-child(even) {
       animation-duration: 140ms, 17s;
     }
     @media (max-width: 39.999rem) {
-      .network-node { --node-drift: 2px; }
-      .node-main { --node-entry: 450ms; }
-      .node-mobile-centre { --node-entry: 700ms; }
-      .node-mobile-lower { --node-entry: 950ms; }
-      .node-mobile-end { --node-entry: 1200ms; }
-      .connection-first { --connection-entry: 560ms; }
-      .connection-lower { --connection-entry: 810ms; }
-      .connection-end { --connection-entry: 1060ms; }
+      .network-node {
+        --node-drift: 2px;
+      }
+      .node-main {
+        --node-entry: 450ms;
+      }
+      .node-mobile-centre {
+        --node-entry: 700ms;
+      }
+      .node-mobile-lower {
+        --node-entry: 950ms;
+      }
+      .node-mobile-end {
+        --node-entry: 1200ms;
+      }
+      .connection-first {
+        --connection-entry: 560ms;
+      }
+      .connection-lower {
+        --connection-entry: 810ms;
+      }
+      .connection-end {
+        --connection-entry: 1060ms;
+      }
     }
   }
-  @keyframes node-activate { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
-  @keyframes node-soft-flash {
-    0%, 100% { opacity: 0; transform: scale(.9); }
-    35% { opacity: .38; transform: scale(1.16); }
+  @keyframes node-activate {
+    from {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-  @keyframes connection-arrive { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes node-soft-flash {
+    0%,
+    100% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    35% {
+      opacity: 0.38;
+      transform: scale(1.16);
+    }
+  }
+  @keyframes connection-arrive {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
   @keyframes node-drift {
-    0%, 100% { translate: calc(var(--node-drift) * -.5) calc(var(--node-drift) * .25); }
-    33% { translate: calc(var(--node-drift) * .7) calc(var(--node-drift) * -1); }
-    66% { translate: calc(var(--node-drift) * -.3) calc(var(--node-drift) * -.6); }
+    0%,
+    100% {
+      translate: calc(var(--node-drift) * -0.5) calc(var(--node-drift) * 0.25);
+    }
+    33% {
+      translate: calc(var(--node-drift) * 0.7) calc(var(--node-drift) * -1);
+    }
+    66% {
+      translate: calc(var(--node-drift) * -0.3) calc(var(--node-drift) * -0.6);
+    }
   }
   @keyframes node-halo-breathe {
-    0%, 100% { transform: scale(.96); opacity: .3; }
-    45% { transform: scale(1.1); opacity: .58; }
-    75% { transform: scale(1.02); opacity: .38; }
+    0%,
+    100% {
+      transform: scale(0.96);
+      opacity: 0.3;
+    }
+    45% {
+      transform: scale(1.1);
+      opacity: 0.58;
+    }
+    75% {
+      transform: scale(1.02);
+      opacity: 0.38;
+    }
   }
-  @keyframes node-core-breathe { 0%, 100% { opacity: .62; } 50% { opacity: .86; } }
-  @keyframes line-breathe { 0%, 100% { opacity: .6; } 55% { opacity: 1; } }
+  @keyframes node-core-breathe {
+    0%,
+    100% {
+      opacity: 0.62;
+    }
+    50% {
+      opacity: 0.86;
+    }
+  }
+  @keyframes line-breathe {
+    0%,
+    100% {
+      opacity: 0.6;
+    }
+    55% {
+      opacity: 1;
+    }
+  }
 
   @media (min-width: 40rem) and (max-width: 67.999rem) {
-    .hero { min-block-size: calc(100svh - 11rem); row-gap: var(--space-8); }
-    .hero-eyebrow { grid-column: 1 / 8; }
-    .hero-headline { grid-column: 1 / -1; font-size: clamp(2.75rem, 6.5vw, 4.5rem); }
-    .hero-introduction { grid-column: 1 / 10; }
-    .hero-notes { grid-column: 1 / -1; }
+    .hero {
+      min-block-size: calc(100svh - 11rem);
+      row-gap: var(--space-8);
+    }
+    .hero-eyebrow {
+      grid-column: 1 / 8;
+    }
+    .hero-headline {
+      grid-column: 1 / -1;
+      font-size: clamp(2.75rem, 6.5vw, 4.5rem);
+    }
+    .hero-introduction {
+      grid-column: 1 / 10;
+    }
+    .hero-notes {
+      grid-column: 1 / -1;
+    }
   }
   @media (max-width: 39.999rem) {
-    .hero { min-block-size: 0; padding-block: var(--space-3) var(--space-2); row-gap: var(--space-6); }
-    .hero-eyebrow { grid-column: 1 / 11; }
+    .hero {
+      min-block-size: 0;
+      padding-block: var(--space-3) var(--space-2);
+      row-gap: var(--space-6);
+    }
+    .hero-eyebrow {
+      grid-column: 1 / 11;
+    }
     .hero-headline {
       grid-column: 1 / -1;
       margin-block: var(--space-2) var(--space-3);
       font-size: clamp(1.875rem, 9vw, 3.5rem);
       line-height: 1.16;
-      letter-spacing: -.05em;
+      letter-spacing: -0.05em;
     }
-    .hero-introduction { grid-column: 1 / -1; }
-    .hero-profile { max-inline-size: 32ch; line-height: 1.55; }
-    .hero-description { max-inline-size: 36ch; }
-    .hero-actions { gap: var(--space-3) var(--space-5); }
-    .hero-notes { grid-column: 1 / -1; flex-direction: column; gap: var(--space-2); margin-block-start: var(--space-4); padding-block-start: var(--space-4); }
-    .hero-notes .metadata { font-size: .6875rem; }
+    .hero-introduction {
+      grid-column: 1 / -1;
+    }
+    .hero-profile {
+      max-inline-size: 32ch;
+      line-height: 1.55;
+    }
+    .hero-description {
+      max-inline-size: 36ch;
+    }
+    .hero-actions {
+      gap: var(--space-3) var(--space-5);
+    }
+    .hero-notes {
+      grid-column: 1 / -1;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-block-start: var(--space-4);
+      padding-block-start: var(--space-4);
+    }
+    .hero-notes .metadata {
+      font-size: 0.6875rem;
+    }
   }
   @media (prefers-reduced-motion: no-preference) {
-    .hero-eyebrow { animation: hero-arrive 280ms var(--ease-out) both; }
-    .headline-line { clip-path: inset(-.14em -.1em); }
-    .headline-reveal { animation: headline-reveal 520ms var(--ease-out) both; }
-    .headline-line:nth-child(1) .headline-reveal { animation-delay: 120ms; }
-    .headline-line:nth-child(2) .headline-reveal { animation-delay: 280ms; }
-    .headline-line:nth-child(3) .headline-reveal { animation-delay: 440ms; }
-    .hero-headline em { display: inline-block; animation: serif-arrive 540ms var(--ease-out) 300ms both; }
-    .hero-profile { animation: hero-arrive 280ms var(--ease-out) 650ms both; }
-    .hero-description { animation: hero-arrive 320ms var(--ease-out) 730ms both; }
-    .hero-cta-primary { animation: hero-arrive 300ms var(--ease-out) 860ms both; }
-    .hero-cta-secondary { animation: hero-arrive 300ms var(--ease-out) 940ms both; }
-    .hero-cta:focus-visible { animation: none; }
-    .hero-index, .hero-notes p { animation: hero-arrive 220ms var(--ease-out) 1020ms both; }
-    .hero-notes p:last-child { animation-delay: 1080ms; }
+    .hero-eyebrow {
+      animation: hero-arrive 280ms var(--ease-out) both;
+    }
+    .headline-line {
+      clip-path: inset(-0.14em -0.1em);
+    }
+    .headline-reveal {
+      animation: headline-reveal 520ms var(--ease-out) both;
+    }
+    .headline-line:nth-child(1) .headline-reveal {
+      animation-delay: 120ms;
+    }
+    .headline-line:nth-child(2) .headline-reveal {
+      animation-delay: 280ms;
+    }
+    .headline-line:nth-child(3) .headline-reveal {
+      animation-delay: 440ms;
+    }
+    .hero-headline em {
+      display: inline-block;
+      animation: serif-arrive 540ms var(--ease-out) 300ms both;
+    }
+    .hero-profile {
+      animation: hero-arrive 280ms var(--ease-out) 650ms both;
+    }
+    .hero-description {
+      animation: hero-arrive 320ms var(--ease-out) 730ms both;
+    }
+    .hero-cta-primary {
+      animation: hero-arrive 300ms var(--ease-out) 860ms both;
+    }
+    .hero-cta-secondary {
+      animation: hero-arrive 300ms var(--ease-out) 940ms both;
+    }
+    .hero-cta:focus-visible {
+      animation: none;
+    }
+    .hero-index,
+    .hero-notes p {
+      animation: hero-arrive 220ms var(--ease-out) 1020ms both;
+    }
+    .hero-notes p:last-child {
+      animation-delay: 1080ms;
+    }
   }
-  @keyframes headline-reveal { from { transform: translateY(115%); } to { transform: translateY(0); } }
+  @keyframes headline-reveal {
+    from {
+      transform: translateY(115%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
   @keyframes serif-arrive {
-    from { opacity: 0; transform: translateX(-.06em) skewX(-1.5deg); }
-    to { opacity: 1; transform: translateX(0) skewX(0); }
+    from {
+      opacity: 0;
+      transform: translateX(-0.06em) skewX(-1.5deg);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) skewX(0);
+    }
   }
   @keyframes hero-arrive {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .network-node {
+    --pointer-force: 0;
+  }
+
+  .node-pointer-aura {
+    fill: currentColor;
+    opacity: calc(var(--pointer-force) * 0.24);
+    filter: blur(6px);
+    transition: opacity 120ms linear;
+  }
+
+  .network-node.is-pointer-hot .node-core {
+    filter: drop-shadow(0 0 4px currentColor);
+  }
+
+  .hero-constellation {
+    --field-x: 0px;
+    --field-y: 0px;
+
+    transform: translate(var(--field-x), var(--field-y));
+    will-change: transform;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .hero-constellation {
+      transform: none;
+    }
+
+    .node-pointer-aura {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-constellation {
+      transform: none !important;
+    }
+
+    .node-pointer-aura {
+      display: none;
+    }
   }
 </style>
+
+<script>
+  import '../scripts/heroConstellation';
+</script>
