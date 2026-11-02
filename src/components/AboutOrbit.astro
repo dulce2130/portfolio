@@ -1,0 +1,2742 @@
+---
+import { getLocale } from '../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+
+const content = {
+  es: {
+    eyebrow: 'SOBRE MÍ / 04',
+    intro:
+      'Una trayectoria entre sistemas, diseño y desarrollo.',
+
+    systemLabel: 'DG / PROFILE SYSTEM',
+    systemIndex: '04',
+
+    heroLine1: 'Ingeniería detrás.',
+    heroAccent: 'Diseño',
+    heroLine2: 'al frente.',
+
+    coreRows: [
+      {
+        number: '01',
+        label: 'PERFIL',
+        title: 'Sistemas + diseño + web',
+        description:
+          'Soy ingeniera en sistemas y desarrolladora frontend con enfoque en diseño web y UX/UI.',
+      },
+      {
+        number: '02',
+        label: 'ENFOQUE',
+        title: 'De la estructura a la interfaz',
+        description:
+          'Me gusta entender qué necesita una idea, darle forma visual y convertirla en una experiencia web real.',
+      },
+      {
+        number: '03',
+        label: 'EXPERIENCIA',
+        title: 'Proyectos llevados a producción',
+        description:
+          'He trabajado en sitios corporativos, landing pages y proyectos con WordPress y Astro, participando también en QA, contenido y publicación.',
+      },
+    ],
+
+    status: 'Disponible para colaborar',
+
+    facts: [
+      {
+        label: 'BASE',
+        value: 'México · Remoto',
+      },
+      {
+        label: 'FORMACIÓN',
+        value: 'ISC · 2025',
+      },
+      {
+        label: 'ENFOQUE',
+        value: 'Frontend · Web · UX/UI',
+      },
+      {
+        label: 'COMUNIDAD',
+        value: 'Tecnolochicas',
+      },
+    ],
+
+    cards: [
+      {
+        key: 'systems',
+        index: '01',
+        kicker: '2025 / FORMACIÓN',
+        label: 'SYSTEMS',
+        title: 'Ingeniería en Sistemas',
+        body:
+          'Una base técnica para entender la lógica, estructura y funcionamiento detrás de un producto digital.',
+        footer: 'TECHNICAL FOUNDATION',
+      },
+      {
+        key: 'web',
+        index: '02',
+        kicker: 'PROYECTOS / EXPERIENCIA',
+        label: 'WEB',
+        title: 'De WordPress a Astro',
+        body:
+          'Sitios corporativos, rediseños y landing pages construidos para proyectos y necesidades reales.',
+        footer: 'REAL PROJECTS',
+      },
+      {
+        key: 'hybrid',
+        index: '03',
+        kicker: 'DISEÑO + CÓDIGO',
+        label: 'APPROACH',
+        title: 'Perfil híbrido',
+        body:
+          'Conecto diseño, frontend, contenido y QA para acompañar una idea desde su estructura hasta producción.',
+        footer: 'DESIGN × DEVELOPMENT',
+      },
+      {
+        key: 'community',
+        index: '04',
+        kicker: 'DOCENCIA / COMUNIDAD',
+        label: 'COMMUNITY',
+        title: 'Tecnolochicas',
+        body:
+          'He impartido talleres de diseño web y robótica, convirtiendo conceptos técnicos en proyectos prácticos.',
+        footer: 'SHARED KNOWLEDGE',
+      },
+    ],
+  },
+
+  en: {
+    eyebrow: 'ABOUT / 04',
+    intro:
+      'A path across systems, design and web development.',
+
+    systemLabel: 'DG / PROFILE SYSTEM',
+    systemIndex: '04',
+
+    heroLine1: 'Engineering underneath.',
+    heroAccent: 'Design',
+    heroLine2: 'up front.',
+
+    coreRows: [
+      {
+        number: '01',
+        label: 'PROFILE',
+        title: 'Systems + design + web',
+        description:
+          'I’m a systems engineer and front-end developer focused on web design and UX/UI.',
+      },
+      {
+        number: '02',
+        label: 'APPROACH',
+        title: 'From structure to interface',
+        description:
+          'I like understanding what an idea needs, shaping it visually and turning it into a real web experience.',
+      },
+      {
+        number: '03',
+        label: 'EXPERIENCE',
+        title: 'Projects brought to production',
+        description:
+          'I’ve worked on corporate websites, landing pages and projects built with WordPress and Astro, also contributing to QA, content and launch.',
+      },
+    ],
+
+    status: 'Available for collaboration',
+
+    facts: [
+      {
+        label: 'BASE',
+        value: 'Mexico · Remote',
+      },
+      {
+        label: 'EDUCATION',
+        value: 'Systems Engineering · 2025',
+      },
+      {
+        label: 'FOCUS',
+        value: 'Front-end · Web · UX/UI',
+      },
+      {
+        label: 'COMMUNITY',
+        value: 'Tecnolochicas',
+      },
+    ],
+
+    cards: [
+      {
+        key: 'systems',
+        index: '01',
+        kicker: '2025 / EDUCATION',
+        label: 'SYSTEMS',
+        title: 'Systems Engineering',
+        body:
+          'A technical foundation for understanding the logic, structure and behavior behind a digital product.',
+        footer: 'TECHNICAL FOUNDATION',
+      },
+      {
+        key: 'web',
+        index: '02',
+        kicker: 'PROJECTS / EXPERIENCE',
+        label: 'WEB',
+        title: 'From WordPress to Astro',
+        body:
+          'Corporate websites, redesigns and landing pages built around real projects and real requirements.',
+        footer: 'REAL PROJECTS',
+      },
+      {
+        key: 'hybrid',
+        index: '03',
+        kicker: 'DESIGN + CODE',
+        label: 'APPROACH',
+        title: 'A hybrid profile',
+        body:
+          'I connect design, front-end, content and QA to support an idea from its structure all the way to production.',
+        footer: 'DESIGN × DEVELOPMENT',
+      },
+      {
+        key: 'community',
+        index: '04',
+        kicker: 'TEACHING / COMMUNITY',
+        label: 'COMMUNITY',
+        title: 'Tecnolochicas',
+        body:
+          'I’ve taught web design and robotics workshops, turning technical concepts into practical projects.',
+        footer: 'SHARED KNOWLEDGE',
+      },
+    ],
+  },
+};
+
+const t = content[locale];
+
+const tones = {
+  systems: {
+    a: '246 178 216',
+    b: '199 169 255',
+    accent: '241 181 224',
+  },
+
+  web: {
+    a: '167 181 255',
+    b: '127 194 255',
+    accent: '157 178 255',
+  },
+
+  hybrid: {
+    a: '186 153 255',
+    b: '220 175 255',
+    accent: '194 162 255',
+  },
+
+  community: {
+    a: '248 178 214',
+    b: '174 145 255',
+    accent: '239 177 220',
+  },
+};
+---
+
+<section
+  id="about"
+  class="about-system grid-12"
+  aria-labelledby="about-title"
+>
+  <!-- =====================================
+       INTRO
+  ====================================== -->
+
+  <header class="about-intro">
+    <p class="metadata about-intro__eyebrow">
+      {t.eyebrow}
+    </p>
+
+    <h2 id="about-title">
+      {t.intro}
+    </h2>
+  </header>
+
+  <!-- =====================================
+       WORLD
+  ====================================== -->
+
+  <div class="about-world">
+    <!-- ===============================
+         GIANT TYPOGRAPHY
+    ================================ -->
+
+    <div
+      class="world-wordmark"
+      aria-hidden="true"
+    >
+      SYSTEMS
+    </div>
+
+    <div
+      class="world-side-label metadata"
+      aria-hidden="true"
+    >
+      DESIGN × DEVELOPMENT × EXPERIENCE
+    </div>
+
+    <!-- ===============================
+         ORBIT SYSTEM
+    ================================ -->
+
+    <svg
+      class="world-orbits"
+      viewBox="0 0 1600 900"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <ellipse
+        class="orbit orbit--01"
+        cx="800"
+        cy="460"
+        rx="710"
+        ry="272"
+        transform="rotate(-9 800 460)"
+      />
+
+      <ellipse
+        class="orbit orbit--02"
+        cx="800"
+        cy="460"
+        rx="590"
+        ry="360"
+        transform="rotate(10 800 460)"
+      />
+
+      <ellipse
+        class="orbit orbit--03"
+        cx="800"
+        cy="460"
+        rx="455"
+        ry="205"
+        transform="rotate(-16 800 460)"
+      />
+
+      <path
+        class="orbit orbit--thread"
+        d="
+          M20 620
+          C260 390 455 305 720 410
+          C960 506 1190 395 1570 155
+        "
+      />
+
+      <path
+        class="orbit orbit--thread-alt"
+        d="
+          M50 300
+          C360 480 560 650 840 555
+          C1110 462 1270 520 1560 735
+        "
+      />
+
+      <g class="world-stars">
+        <circle cx="150" cy="388" r="3" />
+        <circle cx="275" cy="690" r="2.5" />
+        <circle cx="408" cy="160" r="2" />
+        <circle cx="545" cy="745" r="3" />
+
+        <circle cx="713" cy="145" r="3.5" />
+        <circle cx="884" cy="748" r="2" />
+        <circle cx="1015" cy="132" r="2.5" />
+        <circle cx="1190" cy="690" r="3" />
+
+        <circle cx="1360" cy="240" r="2" />
+        <circle cx="1480" cy="510" r="3.5" />
+      </g>
+
+      <!-- travelling nodes -->
+
+      <g class="traveller traveller--01">
+        <circle class="traveller__halo" r="12" />
+        <circle class="traveller__core" r="4" />
+      </g>
+
+      <g class="traveller traveller--02">
+        <circle class="traveller__halo" r="9" />
+        <circle class="traveller__core" r="3" />
+      </g>
+
+      <g class="traveller traveller--03">
+        <circle class="traveller__halo" r="8" />
+        <circle class="traveller__core" r="3" />
+      </g>
+    </svg>
+
+    <!-- ===============================
+         LARGE GLOW
+    ================================ -->
+
+    <div
+      class="world-glow world-glow--01"
+      aria-hidden="true"
+    ></div>
+
+    <div
+      class="world-glow world-glow--02"
+      aria-hidden="true"
+    ></div>
+
+    <!-- ===============================
+         PROFILE CORE
+    ================================ -->
+
+    <article class="profile-console">
+      <header class="profile-console__header">
+        <strong>
+          DG / PROFILE
+        </strong>
+
+        <span>
+          {t.systemIndex}
+        </span>
+      </header>
+
+      <div class="profile-console__hero">
+        <div class="profile-console__symbol">
+          <span class="profile-symbol__orbit"></span>
+          <span class="profile-symbol__core"></span>
+        </div>
+
+        <div>
+          <span class="metadata profile-console__label">
+            {t.systemLabel}
+          </span>
+
+          <h3>
+            <span>
+              {t.heroLine1}
+            </span>
+
+            <span>
+              <em>
+                {t.heroAccent}
+              </em>
+
+              {' '}
+
+              {t.heroLine2}
+            </span>
+          </h3>
+        </div>
+      </div>
+
+      <div class="profile-console__rows">
+        {
+          t.coreRows.map((row) => (
+            <div class="profile-row">
+              <div class="profile-row__number">
+                <span>
+                  {row.number}
+                </span>
+
+                <span
+                  class="profile-row__node"
+                  aria-hidden="true"
+                ></span>
+              </div>
+
+              <div class="profile-row__content">
+                <span class="metadata">
+                  {row.label}
+                </span>
+
+                <strong>
+                  {row.title}
+                </strong>
+
+                <p>
+                  {row.description}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="profile-console__status">
+        <div class="profile-status">
+          <span
+            class="profile-status__signal"
+            aria-hidden="true"
+          ></span>
+
+          <span>
+            {t.status}
+          </span>
+        </div>
+
+        <span class="metadata">
+          DG / 2026
+        </span>
+      </div>
+
+      <dl class="profile-console__facts">
+        {
+          t.facts.map((fact) => (
+            <div>
+              <dt>
+                {fact.label}
+              </dt>
+
+              <dd>
+                {fact.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </article>
+
+    <!-- ===============================
+         ORBITAL FRAGMENTS
+    ================================ -->
+
+    <div class="world-fragments">
+      {
+        t.cards.map((card, index) => {
+          const tone =
+            tones[
+              card.key as keyof typeof tones
+            ];
+
+          return (
+            <div
+              class:list={[
+                'fragment-slot',
+                `fragment-slot--${card.key}`,
+              ]}
+            >
+              <article
+                class="orbit-card"
+                tabindex="0"
+                aria-label={`${card.label}. ${card.title}. ${card.body}`}
+                style={`
+                  --tone-a: ${tone.a};
+                  --tone-b: ${tone.b};
+                  --tone-accent: ${tone.accent};
+                  --fragment-index: ${index};
+                `}
+              >
+                <div class="orbit-card__header">
+                  <div
+                    class="orbit-card__glyph"
+                    aria-hidden="true"
+                  >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+
+                  <span class="metadata">
+                    {card.index}
+                  </span>
+                </div>
+
+                <span class="metadata orbit-card__label">
+                  {card.label}
+                </span>
+
+                <span class="metadata orbit-card__kicker">
+                  {card.kicker}
+                </span>
+
+                <h3>
+                  {card.title}
+                </h3>
+
+                <p>
+                  {card.body}
+                </p>
+
+                <footer class="orbit-card__footer">
+                  <span class="metadata">
+                    {card.footer}
+                  </span>
+
+                  <span
+                    class="orbit-card__status"
+                    aria-hidden="true"
+                  ></span>
+                </footer>
+              </article>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* =====================================================
+     SECTION
+  ===================================================== */
+
+  .about-system {
+    position: relative;
+
+    padding-block:
+      clamp(
+        6rem,
+        10vw,
+        10rem
+      );
+
+    scroll-margin-block-start:
+      var(--header-clearance, 7rem);
+  }
+
+  /* =====================================================
+     INTRO
+  ===================================================== */
+
+  .about-intro {
+    grid-column:
+      2 / 12;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(8rem, .32fr)
+      minmax(0, 1fr);
+
+    gap:
+      clamp(
+        2rem,
+        5vw,
+        5rem
+      );
+
+    align-items: start;
+
+    margin-block-end:
+      clamp(
+        2.5rem,
+        5vw,
+        4.5rem
+      );
+  }
+
+  .about-intro__eyebrow {
+    margin: 0;
+
+    color:
+      var(--color-text-muted);
+  }
+
+  .about-intro h2 {
+    max-inline-size:
+      18ch;
+
+    margin: 0;
+
+    color:
+      var(--color-text);
+
+    font-family:
+      var(--font-display);
+
+    font-size:
+      clamp(
+        2.3rem,
+        4.25vw,
+        4.5rem
+      );
+
+    font-weight:
+      var(--weight-normal);
+
+    line-height:
+      1.01;
+
+    letter-spacing:
+      -.05em;
+  }
+
+  /* =====================================================
+     WORLD
+  ===================================================== */
+
+  .about-world {
+    grid-column:
+      1 / -1;
+
+    position: relative;
+
+    min-block-size:
+      clamp(
+        48rem,
+        63vw,
+        62rem
+      );
+
+    overflow: clip;
+
+    isolation: isolate;
+
+    border-block:
+      var(--border-subtle);
+
+    background:
+      radial-gradient(
+        circle at 51% 50%,
+        color-mix(
+          in srgb,
+          var(--color-link) 13%,
+          transparent
+        ),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 83% 53%,
+        color-mix(
+          in srgb,
+          var(--color-lavender) 9%,
+          transparent
+        ),
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at 16% 61%,
+        color-mix(
+          in srgb,
+          #e69ecb 5%,
+          transparent
+        ),
+        transparent 28%
+      ),
+      var(--color-bg);
+  }
+
+  .about-world::after {
+    content: '';
+
+    position: absolute;
+
+    z-index: -10;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        color-mix(
+          in srgb,
+          var(--color-link) 2.5%,
+          transparent
+        ),
+        transparent
+      );
+  }
+
+  /* =====================================================
+     GIANT WORDMARK
+  ===================================================== */
+
+  .world-wordmark {
+    position: absolute;
+
+    z-index: -5;
+
+    inset-block-start:
+      -3.5%;
+
+    inset-inline-start:
+      50%;
+
+    transform:
+      translateX(-50%);
+
+    color:
+      color-mix(
+        in srgb,
+        var(--color-text) 5%,
+        transparent
+      );
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      clamp(
+        8rem,
+        19vw,
+        20rem
+      );
+
+    font-weight:
+      700;
+
+    line-height:
+      .78;
+
+    letter-spacing:
+      -.085em;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    user-select: none;
+  }
+
+  .world-side-label {
+    position: absolute;
+
+    z-index: 2;
+
+    inset-block-start:
+      50%;
+
+    inset-inline-start:
+      1.2rem;
+
+    transform:
+      translateY(-50%)
+      rotate(-90deg);
+
+    transform-origin:
+      left center;
+
+    color:
+      color-mix(
+        in srgb,
+        var(--color-text-muted) 60%,
+        transparent
+      );
+
+    white-space: nowrap;
+
+    pointer-events: none;
+  }
+
+  /* =====================================================
+     ORBITS
+  ===================================================== */
+
+  .world-orbits {
+    position: absolute;
+
+    z-index: -2;
+
+    inset:
+      1% -1%;
+
+    inline-size:
+      102%;
+
+    block-size:
+      98%;
+
+    overflow: visible;
+
+    color:
+      var(--color-link);
+
+    pointer-events: none;
+  }
+
+  .orbit {
+    fill: none;
+
+    stroke:
+      currentColor;
+
+    stroke-width:
+      1.25;
+
+    vector-effect:
+      non-scaling-stroke;
+  }
+
+  .orbit--01 {
+    opacity: .29;
+
+    stroke-dasharray:
+      17 18;
+  }
+
+  .orbit--02 {
+    opacity: .18;
+
+    stroke-dasharray:
+      4 14;
+  }
+
+  .orbit--03 {
+    opacity: .13;
+  }
+
+  .orbit--thread {
+    opacity: .34;
+
+    stroke-width: 1.7;
+
+    stroke-dasharray:
+      1 13;
+  }
+
+  .orbit--thread-alt {
+    opacity: .13;
+
+    stroke-dasharray:
+      7 19;
+  }
+
+  .world-stars {
+    fill:
+      currentColor;
+
+    opacity: .65;
+  }
+
+  /* =====================================================
+     TRAVELLERS
+  ===================================================== */
+
+  .traveller {
+    color:
+      var(--color-link);
+  }
+
+  .traveller__core {
+    fill:
+      currentColor;
+  }
+
+  .traveller__halo {
+    fill:
+      currentColor;
+
+    opacity: .14;
+
+    filter:
+      blur(3px);
+  }
+
+  .traveller--01 {
+    offset-path:
+      path(
+        "M20 620 C260 390 455 305 720 410 C960 506 1190 395 1570 155"
+      );
+
+    offset-distance:
+      0%;
+
+    offset-rotate: 0deg;
+  }
+
+  .traveller--02 {
+    offset-path:
+      path(
+        "M50 300 C360 480 560 650 840 555 C1110 462 1270 520 1560 735"
+      );
+
+    offset-distance:
+      62%;
+
+    offset-rotate: 0deg;
+  }
+
+  .traveller--03 {
+    offset-path:
+      path(
+        "M108 448 C310 720 820 820 1280 580"
+      );
+
+    offset-distance:
+      35%;
+
+    offset-rotate: 0deg;
+  }
+
+  /* =====================================================
+     WORLD GLOWS
+  ===================================================== */
+
+  .world-glow {
+    position: absolute;
+
+    z-index: -4;
+
+    border-radius:
+      50%;
+
+    filter:
+      blur(64px);
+
+    pointer-events: none;
+  }
+
+  .world-glow--01 {
+    inline-size:
+      34rem;
+
+    block-size:
+      34rem;
+
+    inset-block-start:
+      22%;
+
+    inset-inline-start:
+      36%;
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-link) 17%,
+        transparent
+      );
+  }
+
+  .world-glow--02 {
+    inline-size:
+      25rem;
+
+    block-size:
+      25rem;
+
+    inset-block-start:
+      37%;
+
+    inset-inline-end:
+      4%;
+
+    background:
+      rgb(
+        200 161 255
+        / .08
+      );
+  }
+
+  /* =====================================================
+     CENTRAL CONSOLE
+  ===================================================== */
+
+  .profile-console {
+    position: absolute;
+
+    z-index: 20;
+
+    inset-block-start:
+      50%;
+
+    inset-inline-start:
+      50%;
+
+    inline-size:
+      min(
+        42rem,
+        49%
+      );
+
+    transform:
+      translate(
+        -50%,
+        -47%
+      );
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-link) 30%,
+        transparent
+      );
+
+    border-radius:
+      clamp(
+        .9rem,
+        1.4vw,
+        1.2rem
+      );
+
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 7%,
+          transparent
+        ),
+        transparent 48%
+      ),
+      color-mix(
+        in srgb,
+        var(--color-surface) 98%,
+        var(--color-bg)
+      );
+
+    box-shadow:
+      0 2.5rem 7rem
+      color-mix(
+        in srgb,
+        var(--color-bg) 48%,
+        transparent
+      );
+
+    backdrop-filter:
+      blur(18px);
+  }
+
+  /* =====================================================
+     CONSOLE HEADER
+  ===================================================== */
+
+  .profile-console__header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+      space-between;
+
+    gap: 1rem;
+
+    padding:
+      .9rem
+      1.2rem;
+
+    border-block-end:
+      var(--border-subtle);
+
+    color:
+      var(--color-text-muted);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      .72rem;
+
+    letter-spacing:
+      .08em;
+  }
+
+  /* =====================================================
+     CONSOLE HERO
+  ===================================================== */
+
+  .profile-console__hero {
+    display: grid;
+
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap:
+      clamp(
+        1.25rem,
+        2vw,
+        1.8rem
+      );
+
+    align-items: start;
+
+    padding:
+      clamp(
+        1.6rem,
+        2.5vw,
+        2.3rem
+      );
+  }
+
+  .profile-console__symbol {
+    position: relative;
+
+    inline-size:
+      3.5rem;
+
+    block-size:
+      3.5rem;
+
+    display: grid;
+
+    place-items: center;
+
+    margin-block-start:
+      .15rem;
+  }
+
+  .profile-symbol__orbit {
+    position: absolute;
+
+    inset: 0;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-link) 48%,
+        transparent
+      );
+
+    border-radius:
+      50%;
+
+    transform:
+      scaleY(.65)
+      rotate(-20deg);
+  }
+
+  .profile-symbol__core {
+    inline-size:
+      .7rem;
+
+    block-size:
+      .7rem;
+
+    border-radius:
+      50%;
+
+    background:
+      var(--color-link);
+
+    box-shadow:
+      0 0 1.4rem
+      color-mix(
+        in srgb,
+        var(--color-link) 68%,
+        transparent
+      );
+  }
+
+  .profile-console__label {
+    display: block;
+
+    margin-block-end:
+      .8rem;
+
+    color:
+      var(--color-link);
+  }
+
+  .profile-console h3 {
+    display: flex;
+
+    flex-direction: column;
+
+    max-inline-size:
+      11ch;
+
+    margin: 0;
+
+    color:
+      var(--color-text);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      clamp(
+        2.2rem,
+        3.5vw,
+        4rem
+      );
+
+    font-weight:
+      var(--weight-medium);
+
+    line-height:
+      .96;
+
+    letter-spacing:
+      -.055em;
+  }
+
+  .profile-console h3 em {
+    color:
+      var(--color-link);
+
+    font-family:
+      var(--font-display);
+
+    font-weight:
+      var(--weight-normal);
+
+    font-style:
+      italic;
+  }
+
+  /* =====================================================
+     CONSOLE ROWS
+  ===================================================== */
+
+  .profile-console__rows {
+    border-block-start:
+      var(--border-subtle);
+  }
+
+  .profile-row {
+    display: grid;
+
+    grid-template-columns:
+      clamp(
+        3.2rem,
+        5vw,
+        4rem
+      )
+      minmax(0, 1fr);
+
+    gap:
+      1rem;
+
+    padding:
+      1rem
+      1.2rem;
+
+    border-block-end:
+      var(--border-subtle);
+  }
+
+  .profile-row__number {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap:
+      .6rem;
+
+    color:
+      var(--color-text-muted);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      .7rem;
+  }
+
+  .profile-row__node {
+    inline-size:
+      .42rem;
+
+    block-size:
+      .42rem;
+
+    border-radius:
+      50%;
+
+    background:
+      var(--color-link);
+
+    box-shadow:
+      0 0 .8rem
+      color-mix(
+        in srgb,
+        var(--color-link) 55%,
+        transparent
+      );
+  }
+
+  .profile-row__content {
+    display: grid;
+
+    grid-template-columns:
+      minmax(
+        7rem,
+        .3fr
+      )
+      minmax(
+        0,
+        .7fr
+      );
+
+    gap:
+      .3rem
+      1rem;
+
+    align-items: baseline;
+  }
+
+  .profile-row__content > .metadata {
+    grid-column:
+      1;
+
+    grid-row:
+      1 / span 2;
+
+    color:
+      var(--color-text-muted);
+  }
+
+  .profile-row__content strong {
+    grid-column:
+      2;
+
+    color:
+      var(--color-text);
+
+    font-size:
+      .92rem;
+
+    font-weight:
+      var(--weight-medium);
+  }
+
+  .profile-row__content p {
+    grid-column:
+      2;
+
+    margin:
+      .3rem 0 0;
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      .74rem;
+
+    line-height:
+      1.5;
+  }
+
+  /* =====================================================
+     STATUS
+  ===================================================== */
+
+  .profile-console__status {
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+      space-between;
+
+    gap: 1rem;
+
+    padding:
+      .85rem
+      1.2rem;
+  }
+
+  .profile-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: .6rem;
+
+    color:
+      var(--color-text);
+
+    font-size:
+      .76rem;
+  }
+
+  .profile-status__signal {
+    inline-size:
+      .5rem;
+
+    block-size:
+      .5rem;
+
+    border-radius:
+      50%;
+
+    background:
+      var(--color-link);
+
+    box-shadow:
+      0 0 1rem
+      color-mix(
+        in srgb,
+        var(--color-link) 62%,
+        transparent
+      );
+  }
+
+  /* =====================================================
+     FACTS
+  ===================================================== */
+
+  .profile-console__facts {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(0, 1fr)
+      );
+
+    margin: 0;
+
+    border-block-start:
+      var(--border-subtle);
+  }
+
+  .profile-console__facts > div {
+    min-inline-size: 0;
+
+    padding:
+      .8rem
+      .9rem;
+
+    border-inline-end:
+      var(--border-subtle);
+  }
+
+  .profile-console__facts > div:last-child {
+    border-inline-end: 0;
+  }
+
+  .profile-console__facts dt {
+    color:
+      var(--color-text-muted);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      .62rem;
+
+    letter-spacing:
+      .08em;
+  }
+
+  .profile-console__facts dd {
+    margin:
+      .3rem 0 0;
+
+    color:
+      var(--color-text);
+
+    font-size:
+      .69rem;
+
+    line-height:
+      1.35;
+  }
+
+  /* =====================================================
+     FRAGMENT SLOTS
+  ===================================================== */
+
+  .fragment-slot {
+    position: absolute;
+
+    z-index: 8;
+
+    pointer-events: none;
+  }
+
+  .fragment-slot--systems {
+    inset-block-start:
+      8%;
+
+    inset-inline-start:
+      4%;
+
+    inline-size:
+      clamp(
+        13.5rem,
+        17vw,
+        16rem
+      );
+  }
+
+  .fragment-slot--web {
+    inset-block-start:
+      13%;
+
+    inset-inline-end:
+      3.5%;
+
+    inline-size:
+      clamp(
+        14rem,
+        18vw,
+        17rem
+      );
+  }
+
+  .fragment-slot--hybrid {
+    inset-block-end:
+      7%;
+
+    inset-inline-start:
+      7%;
+
+    inline-size:
+      clamp(
+        12.5rem,
+        16vw,
+        15rem
+      );
+  }
+
+  .fragment-slot--community {
+    inset-block-end:
+      4%;
+
+    inset-inline-end:
+      5%;
+
+    inline-size:
+      clamp(
+        13rem,
+        17vw,
+        16rem
+      );
+  }
+
+  /* =====================================================
+     CARDS
+  ===================================================== */
+
+  .orbit-card {
+    inline-size:
+      100%;
+
+    pointer-events:
+      auto;
+
+    outline:
+      none;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      rgb(
+        var(--tone-accent)
+        / .28
+      );
+
+    border-radius:
+      .85rem;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgb(
+          var(--tone-a)
+          / .11
+        ),
+        transparent 52%
+      ),
+      linear-gradient(
+        315deg,
+        rgb(
+          var(--tone-b)
+          / .07
+        ),
+        transparent 58%
+      ),
+      color-mix(
+        in srgb,
+        var(--color-surface) 96%,
+        var(--color-bg)
+      );
+
+    color:
+      var(--color-text);
+
+    box-shadow:
+      0 1rem 3rem
+      color-mix(
+        in srgb,
+        var(--color-bg) 29%,
+        transparent
+      );
+
+    backdrop-filter:
+      blur(12px);
+
+    transition:
+      transform
+        380ms
+        cubic-bezier(.16, 1, .3, 1),
+      border-color
+        320ms ease,
+      box-shadow
+        380ms ease,
+      background
+        380ms ease;
+  }
+
+  .fragment-slot--systems
+  .orbit-card {
+    transform:
+      rotate(-2deg);
+  }
+
+  .fragment-slot--web
+  .orbit-card {
+    transform:
+      rotate(1.4deg);
+  }
+
+  .fragment-slot--hybrid
+  .orbit-card {
+    transform:
+      rotate(1.8deg);
+  }
+
+  .fragment-slot--community
+  .orbit-card {
+    transform:
+      rotate(-1.4deg);
+  }
+
+  .orbit-card:hover,
+  .orbit-card:focus-visible {
+    border-color:
+      rgb(
+        var(--tone-accent)
+        / .82
+      );
+
+    background:
+      linear-gradient(
+        145deg,
+        rgb(
+          var(--tone-a)
+          / .21
+        ),
+        transparent 52%
+      ),
+      linear-gradient(
+        315deg,
+        rgb(
+          var(--tone-b)
+          / .14
+        ),
+        transparent 58%
+      ),
+      color-mix(
+        in srgb,
+        var(--color-surface) 99%,
+        var(--color-bg)
+      );
+
+    box-shadow:
+      0 1.6rem 4rem
+        color-mix(
+          in srgb,
+          var(--color-bg) 35%,
+          transparent
+        ),
+      0 0 1.8rem
+        rgb(
+          var(--tone-accent)
+          / .13
+        );
+  }
+
+  .fragment-slot--systems
+  .orbit-card:hover,
+  .fragment-slot--systems
+  .orbit-card:focus-visible {
+    transform:
+      translateY(-5px)
+      rotate(-1deg)
+      scale(1.025);
+  }
+
+  .fragment-slot--web
+  .orbit-card:hover,
+  .fragment-slot--web
+  .orbit-card:focus-visible {
+    transform:
+      translateY(-5px)
+      rotate(.5deg)
+      scale(1.025);
+  }
+
+  .fragment-slot--hybrid
+  .orbit-card:hover,
+  .fragment-slot--hybrid
+  .orbit-card:focus-visible {
+    transform:
+      translateY(-5px)
+      rotate(.8deg)
+      scale(1.025);
+  }
+
+  .fragment-slot--community
+  .orbit-card:hover,
+  .fragment-slot--community
+  .orbit-card:focus-visible {
+    transform:
+      translateY(-5px)
+      rotate(-.5deg)
+      scale(1.025);
+  }
+
+  /* =====================================================
+     CARD CONTENT
+  ===================================================== */
+
+  .orbit-card__header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+      space-between;
+
+    padding:
+      .9rem
+      1rem;
+
+    border-block-end:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-link) 12%,
+        transparent
+      );
+  }
+
+  .orbit-card__glyph {
+    position: relative;
+
+    inline-size:
+      2rem;
+
+    block-size:
+      2rem;
+
+    border:
+      1px solid
+      rgb(
+        var(--tone-accent)
+        / .42
+      );
+
+    border-radius:
+      50%;
+  }
+
+  .orbit-card__glyph span {
+    position: absolute;
+
+    inline-size:
+      .25rem;
+
+    block-size:
+      .25rem;
+
+    border-radius:
+      50%;
+
+    background:
+      rgb(
+        var(--tone-accent)
+      );
+
+    box-shadow:
+      0 0 .7rem
+      rgb(
+        var(--tone-accent)
+        / .6
+      );
+  }
+
+  .orbit-card__glyph span:nth-child(1) {
+    inset:
+      .4rem
+      auto
+      auto
+      .5rem;
+  }
+
+  .orbit-card__glyph span:nth-child(2) {
+    inset:
+      .8rem
+      .36rem
+      auto
+      auto;
+  }
+
+  .orbit-card__glyph span:nth-child(3) {
+    inset:
+      auto
+      auto
+      .34rem
+      .75rem;
+  }
+
+  .orbit-card__label {
+    display: block;
+
+    margin:
+      .8rem
+      1rem 0;
+
+    color:
+      rgb(
+        var(--tone-accent)
+        / .92
+      );
+  }
+
+  .orbit-card__kicker {
+    display: block;
+
+    margin:
+      .75rem
+      1rem 0;
+
+    color:
+      var(--color-text-muted);
+  }
+
+  .orbit-card h3 {
+    margin:
+      .6rem
+      1rem 0;
+
+    color:
+      var(--color-text);
+
+    font-size:
+      clamp(
+        1rem,
+        1.25vw,
+        1.22rem
+      );
+
+    font-weight:
+      var(--weight-medium);
+
+    line-height:
+      1.12;
+
+    letter-spacing:
+      -.025em;
+  }
+
+  .orbit-card > p {
+    margin:
+      .6rem
+      1rem 0;
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      .73rem;
+
+    line-height:
+      1.52;
+  }
+
+  .orbit-card__footer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+      space-between;
+
+    gap: .75rem;
+
+    margin-block-start:
+      .95rem;
+
+    padding:
+      .75rem
+      1rem;
+
+    border-block-start:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-link) 12%,
+        transparent
+      );
+
+    color:
+      var(--color-text-muted);
+  }
+
+  .orbit-card__status {
+    inline-size:
+      .4rem;
+
+    block-size:
+      .4rem;
+
+    border-radius:
+      50%;
+
+    background:
+      rgb(
+        var(--tone-accent)
+      );
+
+    box-shadow:
+      0 0 .75rem
+      rgb(
+        var(--tone-accent)
+        / .6
+      );
+  }
+
+  /* =====================================================
+     HOVER SYSTEM
+  ===================================================== */
+
+  @supports selector(:has(*)) {
+    .about-world:has(
+      .orbit-card:hover
+    )
+    .orbit-card:not(:hover) {
+      opacity: .45;
+    }
+
+    .about-world:has(
+      .orbit-card:focus-visible
+    )
+    .orbit-card:not(:focus-visible) {
+      opacity: .45;
+    }
+
+    .about-world:has(
+      .orbit-card:hover
+    )
+    .profile-console {
+      border-color:
+        color-mix(
+          in srgb,
+          var(--color-link) 44%,
+          transparent
+        );
+    }
+  }
+
+  /* =====================================================
+     CONTINUOUS MOTION
+  ===================================================== */
+
+  @media
+    (prefers-reduced-motion:
+    no-preference) {
+
+    /*
+     * Orbit dash movement.
+     */
+
+    .orbit--01 {
+      animation:
+        orbit-dash-forward
+        24s linear infinite;
+    }
+
+    .orbit--02 {
+      animation:
+        orbit-dash-reverse
+        31s linear infinite;
+    }
+
+    .orbit--thread {
+      animation:
+        orbit-thread
+        17s linear infinite;
+    }
+
+    .orbit--thread-alt {
+      animation:
+        orbit-dash-reverse
+        36s linear infinite;
+    }
+
+    /*
+     * Travelling lights.
+     */
+
+    .traveller--01 {
+      animation:
+        traveller-motion
+        13s linear infinite;
+    }
+
+    .traveller--02 {
+      animation:
+        traveller-motion
+        17s linear infinite;
+    }
+
+    .traveller--03 {
+      animation:
+        traveller-motion
+        21s linear infinite;
+    }
+
+    /*
+     * Background stars.
+     */
+
+    .world-stars circle:nth-child(odd) {
+      animation:
+        star-pulse
+        4.6s ease-in-out
+        infinite alternate;
+    }
+
+    .world-stars circle:nth-child(even) {
+      animation:
+        star-pulse
+        6.3s ease-in-out
+        infinite alternate-reverse;
+    }
+
+    /*
+     * Central system.
+     */
+
+    .profile-symbol__orbit {
+      animation:
+        symbol-orbit
+        12s linear infinite;
+    }
+
+    .profile-symbol__core {
+      animation:
+        symbol-core
+        3.6s ease-in-out
+        infinite;
+    }
+
+    .profile-status__signal {
+      animation:
+        status-pulse
+        2.8s ease-in-out
+        infinite;
+    }
+
+    /*
+     * Cards float independently.
+     *
+     * Animation is on wrapper,
+     * so hover transform on card
+     * does not fight with it.
+     */
+
+    .fragment-slot--systems {
+      animation:
+        fragment-float-a
+        7.6s
+        ease-in-out
+        infinite;
+    }
+
+    .fragment-slot--web {
+      animation:
+        fragment-float-b
+        9.2s
+        ease-in-out
+        infinite;
+    }
+
+    .fragment-slot--hybrid {
+      animation:
+        fragment-float-c
+        8.4s
+        ease-in-out
+        infinite;
+    }
+
+    .fragment-slot--community {
+      animation:
+        fragment-float-d
+        10.1s
+        ease-in-out
+        infinite;
+    }
+
+    /*
+     * Ambient lights breathe.
+     */
+
+    .world-glow--01 {
+      animation:
+        glow-breathe-a
+        8s ease-in-out
+        infinite;
+    }
+
+    .world-glow--02 {
+      animation:
+        glow-breathe-b
+        11s ease-in-out
+        infinite;
+    }
+  }
+
+  @keyframes orbit-dash-forward {
+    to {
+      stroke-dashoffset:
+        -260;
+    }
+  }
+
+  @keyframes orbit-dash-reverse {
+    to {
+      stroke-dashoffset:
+        210;
+    }
+  }
+
+  @keyframes orbit-thread {
+    to {
+      stroke-dashoffset:
+        -190;
+    }
+  }
+
+  @keyframes traveller-motion {
+    from {
+      offset-distance:
+        0%;
+    }
+
+    to {
+      offset-distance:
+        100%;
+    }
+  }
+
+  @keyframes star-pulse {
+    from {
+      opacity: .18;
+    }
+
+    to {
+      opacity: .9;
+    }
+  }
+
+  @keyframes symbol-orbit {
+    from {
+      transform:
+        scaleY(.65)
+        rotate(-20deg);
+    }
+
+    to {
+      transform:
+        scaleY(.65)
+        rotate(340deg);
+    }
+  }
+
+  @keyframes symbol-core {
+    0%,
+    100% {
+      transform:
+        scale(.85);
+    }
+
+    50% {
+      transform:
+        scale(1.25);
+    }
+  }
+
+  @keyframes status-pulse {
+    0%,
+    100% {
+      opacity: .55;
+
+      transform:
+        scale(.82);
+    }
+
+    50% {
+      opacity: 1;
+
+      transform:
+        scale(1.22);
+    }
+  }
+
+  @keyframes fragment-float-a {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+
+    50% {
+      transform:
+        translate3d(
+          5px,
+          -8px,
+          0
+        );
+    }
+  }
+
+  @keyframes fragment-float-b {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+
+    50% {
+      transform:
+        translate3d(
+          -7px,
+          6px,
+          0
+        );
+    }
+  }
+
+  @keyframes fragment-float-c {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+
+    50% {
+      transform:
+        translate3d(
+          4px,
+          9px,
+          0
+        );
+    }
+  }
+
+  @keyframes fragment-float-d {
+    0%,
+    100% {
+      transform:
+        translate3d(
+          0,
+          0,
+          0
+        );
+    }
+
+    50% {
+      transform:
+        translate3d(
+          -5px,
+          -7px,
+          0
+        );
+    }
+  }
+
+  @keyframes glow-breathe-a {
+    0%,
+    100% {
+      opacity: .65;
+
+      transform:
+        scale(.92);
+    }
+
+    50% {
+      opacity: 1;
+
+      transform:
+        scale(1.08);
+    }
+  }
+
+  @keyframes glow-breathe-b {
+    0%,
+    100% {
+      opacity: .45;
+
+      transform:
+        translate(
+          0,
+          0
+        )
+        scale(.95);
+    }
+
+    50% {
+      opacity: .85;
+
+      transform:
+        translate(
+          -18px,
+          11px
+        )
+        scale(1.08);
+    }
+  }
+
+  /* =====================================================
+     LIGHT MODE
+  ===================================================== */
+
+  :global(
+    html[data-theme='light']
+  )
+  .about-world {
+    background:
+      radial-gradient(
+        circle at 51% 50%,
+        color-mix(
+          in srgb,
+          var(--color-link) 20%,
+          transparent
+        ),
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at 83% 53%,
+        color-mix(
+          in srgb,
+          var(--color-lavender) 17%,
+          transparent
+        ),
+        transparent 31%
+      ),
+      var(--color-bg);
+  }
+
+  :global(
+    html[data-theme='light']
+  )
+  .world-wordmark {
+    color:
+      color-mix(
+        in srgb,
+        var(--color-text) 6%,
+        transparent
+      );
+  }
+
+  :global(
+    html[data-theme='light']
+  )
+  .profile-console {
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 8%,
+          transparent
+        ),
+        transparent 48%
+      ),
+      color-mix(
+        in srgb,
+        var(--color-surface) 99%,
+        white
+      );
+
+    box-shadow:
+      0 2rem 6rem
+      color-mix(
+        in srgb,
+        var(--color-text) 7%,
+        transparent
+      );
+  }
+
+  :global(
+    html[data-theme='light']
+  )
+  .orbit-card {
+    background:
+      linear-gradient(
+        145deg,
+        rgb(
+          var(--tone-a)
+          / .16
+        ),
+        transparent 52%
+      ),
+      linear-gradient(
+        315deg,
+        rgb(
+          var(--tone-b)
+          / .1
+        ),
+        transparent 58%
+      ),
+      white;
+
+    box-shadow:
+      0 1rem 2.7rem
+      color-mix(
+        in srgb,
+        var(--color-text) 7%,
+        transparent
+      );
+  }
+
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media
+    (max-width: 70rem) {
+
+    .about-intro {
+      grid-column:
+        1 / -1;
+    }
+
+    .about-world {
+      min-block-size:
+        auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0, 1fr)
+        );
+
+      gap:
+        1rem;
+
+      padding:
+        1rem;
+    }
+
+    .world-wordmark,
+    .world-side-label {
+      display: none;
+    }
+
+    .world-orbits {
+      opacity: .45;
+    }
+
+    .profile-console {
+      position: relative;
+
+      inset: auto;
+
+      grid-column:
+        1 / -1;
+
+      inline-size:
+        100%;
+
+      transform:
+        none;
+
+      order:
+        -1;
+    }
+
+    .world-fragments {
+      display: contents;
+    }
+
+    .fragment-slot,
+    .fragment-slot--systems,
+    .fragment-slot--web,
+    .fragment-slot--hybrid,
+    .fragment-slot--community {
+      position: relative;
+
+      inset: auto;
+
+      inline-size:
+        100%;
+
+      animation:
+        none !important;
+    }
+
+    .fragment-slot--systems
+    .orbit-card,
+    .fragment-slot--web
+    .orbit-card,
+    .fragment-slot--hybrid
+    .orbit-card,
+    .fragment-slot--community
+    .orbit-card {
+      transform: none;
+    }
+
+    @supports selector(:has(*)) {
+      .about-world:has(
+        .orbit-card:hover
+      )
+      .orbit-card:not(:hover),
+
+      .about-world:has(
+        .orbit-card:focus-visible
+      )
+      .orbit-card:not(:focus-visible) {
+        opacity: 1;
+      }
+    }
+  }
+
+  /* =====================================================
+     MOBILE
+  ===================================================== */
+
+  @media
+    (max-width: 48rem) {
+
+    .about-system {
+      padding-block:
+        var(--space-9);
+    }
+
+    .about-intro {
+      grid-template-columns:
+        1fr;
+
+      gap:
+        1rem;
+    }
+
+    .about-intro h2 {
+      max-inline-size:
+        14ch;
+    }
+
+    .about-world {
+      grid-template-columns:
+        1fr;
+    }
+
+    .world-orbits,
+    .world-glow {
+      display: none;
+    }
+
+    .profile-console__hero {
+      grid-template-columns:
+        1fr;
+    }
+
+    .profile-console__symbol {
+      inline-size:
+        2.7rem;
+
+      block-size:
+        2.7rem;
+    }
+
+    .profile-console h3 {
+      max-inline-size:
+        9ch;
+
+      font-size:
+        clamp(
+          2.5rem,
+          13vw,
+          4rem
+        );
+    }
+
+    .profile-row {
+      grid-template-columns:
+        2.5rem
+        minmax(
+          0,
+          1fr
+        );
+    }
+
+    .profile-row__content {
+      grid-template-columns:
+        1fr;
+    }
+
+    .profile-row__content
+    > .metadata {
+      grid-column:
+        1;
+
+      grid-row:
+        auto;
+    }
+
+    .profile-row__content strong,
+    .profile-row__content p {
+      grid-column:
+        1;
+    }
+
+    .profile-console__facts {
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(
+            0,
+            1fr
+          )
+        );
+    }
+
+    .profile-console__facts
+    > div:nth-child(2) {
+      border-inline-end:
+        0;
+    }
+
+    .profile-console__facts
+    > div:nth-child(-n + 2) {
+      border-block-end:
+        var(--border-subtle);
+    }
+  }
+
+  /* =====================================================
+     REDUCED MOTION
+  ===================================================== */
+
+  @media
+    (prefers-reduced-motion:
+    reduce) {
+
+    .orbit,
+    .traveller,
+    .world-stars circle,
+    .profile-symbol__orbit,
+    .profile-symbol__core,
+    .profile-status__signal,
+    .fragment-slot,
+    .world-glow {
+      animation:
+        none !important;
+    }
+
+    .orbit-card {
+      transition:
+        border-color
+          140ms ease,
+        background
+          140ms ease;
+    }
+  }
+</style>

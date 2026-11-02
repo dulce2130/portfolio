@@ -1,0 +1,1635 @@
+---
+import { getLocale } from '../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+
+const content = {
+  es: {
+    eyebrow: 'QUÉ HAGO / 03',
+
+    titleBefore: 'Diseño y desarrollo,',
+    titleEmphasis: 'trabajando',
+    titleAfter: 'juntos.',
+
+    intro:
+      'Conecto estructura, interfaz y tecnología para convertir ideas en experiencias web funcionales y llevarlas hasta producción.',
+
+    mapCenter: 'WEB',
+    mapDesign: 'UX / WEB DESIGN',
+    mapFrontend: 'FRONTEND',
+    mapWordpress: 'WORDPRESS',
+    mapDelivery: 'QA / DELIVERY',
+
+    capabilities: [
+      {
+        index: '01',
+        title: 'UX & Web Design',
+        description:
+          'Arquitectura de contenido, jerarquía visual, interfaces responsivas y experiencias pensadas para ser fáciles de entender y usar.',
+        tags: ['UI/UX', 'Responsive', 'Arquitectura'],
+        kind: 'design',
+      },
+      {
+        index: '02',
+        title: 'Frontend Development',
+        description:
+          'Implementación de interfaces con Astro, HTML, CSS y JavaScript, cuidando rendimiento, responsive y accesibilidad.',
+        tags: ['Astro', 'HTML/CSS', 'JavaScript'],
+        kind: 'frontend',
+      },
+      {
+        index: '03',
+        title: 'WordPress & Web',
+        description:
+          'Sitios corporativos, landing pages y proyectos administrables, desde la estructura visual hasta la publicación.',
+        tags: ['WordPress', 'Landing pages', 'CMS'],
+        kind: 'wordpress',
+      },
+      {
+        index: '04',
+        title: 'QA & Web Delivery',
+        description:
+          'Pruebas, revisión responsive, accesibilidad, dominios, hosting y despliegue para llevar un sitio hasta producción.',
+        tags: ['QA', 'Accesibilidad', 'Deploy'],
+        kind: 'delivery',
+      },
+    ],
+  },
+
+  en: {
+    eyebrow: 'WHAT I DO / 03',
+
+    titleBefore: 'Design and development,',
+    titleEmphasis: 'working',
+    titleAfter: 'together.',
+
+    intro:
+      'I connect structure, interface and technology to turn ideas into functional web experiences and take them all the way to production.',
+
+    mapCenter: 'WEB',
+    mapDesign: 'UX / WEB DESIGN',
+    mapFrontend: 'FRONTEND',
+    mapWordpress: 'WORDPRESS',
+    mapDelivery: 'QA / DELIVERY',
+
+    capabilities: [
+      {
+        index: '01',
+        title: 'UX & Web Design',
+        description:
+          'Content architecture, visual hierarchy, responsive interfaces and experiences designed to be easy to understand and use.',
+        tags: ['UI/UX', 'Responsive', 'Architecture'],
+        kind: 'design',
+      },
+      {
+        index: '02',
+        title: 'Frontend Development',
+        description:
+          'Interface development with Astro, HTML, CSS and JavaScript, with attention to performance, responsive behavior and accessibility.',
+        tags: ['Astro', 'HTML/CSS', 'JavaScript'],
+        kind: 'frontend',
+      },
+      {
+        index: '03',
+        title: 'WordPress & Web',
+        description:
+          'Corporate websites, landing pages and manageable web projects, from visual structure through publication.',
+        tags: ['WordPress', 'Landing pages', 'CMS'],
+        kind: 'wordpress',
+      },
+      {
+        index: '04',
+        title: 'QA & Web Delivery',
+        description:
+          'Testing, responsive review, accessibility, domains, hosting and deployment to take websites all the way to production.',
+        tags: ['QA', 'Accessibility', 'Deploy'],
+        kind: 'delivery',
+      },
+    ],
+  },
+};
+
+const t = content[locale];
+---
+
+<section
+  id="services"
+  class="capabilities grid-12"
+  aria-labelledby="capabilities-title"
+>
+  <!-- INTRO / MAP -->
+  <div class="capabilities-intro-layout">
+    <div class="capabilities-main-copy">
+      <p class="capabilities-eyebrow metadata">
+        {t.eyebrow}
+      </p>
+
+      <h2 id="capabilities-title">
+        <span>{t.titleBefore}</span>
+
+        <span class="title-accent">
+          <em>{t.titleEmphasis}</em>
+          {' '}
+          {t.titleAfter}
+        </span>
+      </h2>
+
+      <p class="capabilities-description">
+        {t.intro}
+      </p>
+    </div>
+
+    <div class="capabilities-map" aria-hidden="true">
+      <div class="map-atmosphere"></div>
+
+      <svg
+        class="capabilities-orbit-map"
+        viewBox="0 0 600 430"
+        focusable="false"
+      >
+        <!-- conexiones -->
+        <g class="map-lines">
+          <path d="M300 212 L300 75" />
+          <path d="M300 212 L485 190" />
+          <path d="M300 212 L125 190" />
+          <path d="M300 212 L300 360" />
+        </g>
+
+        <!-- órbitas -->
+        <g class="map-orbits">
+          <ellipse
+            class="map-orbit-main"
+            cx="300"
+            cy="212"
+            rx="185"
+            ry="122"
+          />
+
+          <ellipse
+            class="map-orbit-secondary"
+            cx="300"
+            cy="212"
+            rx="133"
+            ry="83"
+          />
+        </g>
+
+        <!-- centro -->
+        <g class="map-center">
+          <circle
+            class="map-center-halo"
+            cx="300"
+            cy="212"
+            r="38"
+          />
+
+          <circle
+            class="map-center-ring"
+            cx="300"
+            cy="212"
+            r="17"
+          />
+
+          <circle
+            class="map-center-core"
+            cx="300"
+            cy="212"
+            r="5"
+          />
+
+          <text
+            class="map-center-label"
+            x="300"
+            y="252"
+            text-anchor="middle"
+          >
+            {t.mapCenter}
+          </text>
+        </g>
+
+        <!-- UX -->
+        <g class="map-node map-node-design">
+          <circle class="map-node-halo" cx="300" cy="75" r="16" />
+          <circle class="map-node-core" cx="300" cy="75" r="4" />
+
+          <text
+            x="300"
+            y="45"
+            text-anchor="middle"
+          >
+            {t.mapDesign}
+          </text>
+        </g>
+
+        <!-- FRONTEND -->
+        <g class="map-node map-node-frontend">
+          <circle class="map-node-halo" cx="485" cy="190" r="16" />
+          <circle class="map-node-core" cx="485" cy="190" r="4" />
+
+          <text
+            x="485"
+            y="158"
+            text-anchor="middle"
+          >
+            {t.mapFrontend}
+          </text>
+        </g>
+
+        <!-- WORDPRESS -->
+        <g class="map-node map-node-wordpress">
+          <circle class="map-node-halo" cx="125" cy="190" r="16" />
+          <circle class="map-node-core" cx="125" cy="190" r="4" />
+
+          <text
+            x="125"
+            y="158"
+            text-anchor="middle"
+          >
+            {t.mapWordpress}
+          </text>
+        </g>
+
+        <!-- QA -->
+        <g class="map-node map-node-delivery">
+          <circle class="map-node-halo" cx="300" cy="360" r="16" />
+          <circle class="map-node-core" cx="300" cy="360" r="4" />
+
+          <text
+            x="300"
+            y="400"
+            text-anchor="middle"
+          >
+            {t.mapDelivery}
+          </text>
+        </g>
+
+        <!-- nodo viajero -->
+        <g class="map-traveller">
+          <circle class="map-traveller-halo" cx="300" cy="90" r="10" />
+          <circle class="map-traveller-core" cx="300" cy="90" r="3" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="capabilities-grid">
+    {
+      t.capabilities.map((item) => (
+        <article
+          class="capability-card"
+          data-capability={item.kind}
+        >
+          <canvas
+            class="capability-field"
+            aria-hidden="true"
+          />
+
+          <div
+            class="capability-light"
+            aria-hidden="true"
+          />
+
+          <div class="capability-content">
+            <div class="capability-top">
+              <span class="capability-index metadata">
+                {item.index}
+              </span>
+
+              <span
+                class="capability-orbit"
+                aria-hidden="true"
+              >
+                <span class="orbit-node orbit-node-a"></span>
+                <span class="orbit-node orbit-node-b"></span>
+                <span class="orbit-node orbit-node-c"></span>
+              </span>
+            </div>
+
+            <div class="capability-copy">
+              <h3>{item.title}</h3>
+
+              <p>{item.description}</p>
+
+              <div class="capability-tags">
+                {
+                  item.tags.map((tag) => (
+                    <span>{tag}</span>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import '../scripts/capabilities-field';
+</script>
+
+<style>
+  /* ==========================================
+     SECTION
+  ========================================== */
+
+  .capabilities {
+    position: relative;
+
+    padding-block:
+      clamp(5.5rem, 10vw, 10rem);
+
+    scroll-margin-block-start:
+      var(--header-clearance, 7rem);
+  }
+
+  /* ==========================================
+     INTRO LAYOUT
+  ========================================== */
+
+  .capabilities-intro-layout {
+    grid-column: 2 / 12;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, .82fr)
+      minmax(26rem, 1.18fr);
+
+    align-items: center;
+
+    gap:
+      clamp(3rem, 7vw, 8rem);
+
+    margin-block-end:
+      clamp(4rem, 8vw, 7rem);
+  }
+
+  .capabilities-main-copy {
+    max-inline-size: 35rem;
+  }
+
+  .capabilities-eyebrow {
+    margin:
+      0 0 var(--space-5);
+
+    color:
+      var(--color-text-muted);
+
+    text-transform:
+      uppercase;
+  }
+
+  .capabilities-main-copy h2 {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+
+    color:
+      var(--color-text);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      clamp(2.8rem, 4.8vw, 5rem);
+
+    font-weight:
+      var(--weight-medium);
+
+    line-height: .98;
+
+    letter-spacing:
+      -.058em;
+  }
+
+  .title-accent {
+    display: block;
+  }
+
+  .title-accent em {
+    color:
+      var(--color-link);
+
+    font-family:
+      var(--font-display);
+
+    font-weight:
+      var(--weight-normal);
+
+    font-style:
+      italic;
+
+    letter-spacing:
+      -.04em;
+  }
+
+  .capabilities-description {
+    max-inline-size: 46ch;
+
+    margin:
+      var(--space-6) 0 0;
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      var(--text-base);
+
+    line-height: 1.75;
+  }
+
+  /* ==========================================
+     ORBIT MAP
+  ========================================== */
+
+  .capabilities-map {
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    min-block-size:
+      clamp(23rem, 38vw, 34rem);
+
+    isolation: isolate;
+  }
+
+  .map-atmosphere {
+    position: absolute;
+
+    z-index: -2;
+
+    inline-size:
+      min(80%, 30rem);
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background:
+      radial-gradient(
+        circle,
+        color-mix(
+          in srgb,
+          var(--color-link) 18%,
+          transparent
+        ),
+        color-mix(
+          in srgb,
+          var(--color-lavender) 7%,
+          transparent
+        ) 40%,
+        transparent 72%
+      );
+
+    filter:
+      blur(35px);
+
+    opacity: .75;
+  }
+
+  .capabilities-orbit-map {
+    inline-size:
+      min(100%, 43rem);
+
+    overflow: visible;
+  }
+
+  /* líneas */
+
+  .map-lines {
+    fill: none;
+
+    stroke:
+      color-mix(
+        in srgb,
+        var(--color-link) 24%,
+        transparent
+      );
+
+    stroke-width: .75;
+
+    stroke-linecap: round;
+
+    stroke-dasharray:
+      2 4;
+  }
+
+  /* órbitas */
+
+  .map-orbits {
+    fill: none;
+
+    stroke:
+      color-mix(
+        in srgb,
+        var(--color-link) 23%,
+        transparent
+      );
+
+    stroke-width: .8;
+  }
+
+  .map-orbit-secondary {
+    opacity: .5;
+
+    stroke-dasharray:
+      4 6;
+  }
+
+  /* centro */
+
+  .map-center-halo {
+    fill:
+      color-mix(
+        in srgb,
+        var(--color-link) 20%,
+        transparent
+      );
+
+    filter:
+      blur(7px);
+  }
+
+  .map-center-ring {
+    fill:
+      color-mix(
+        in srgb,
+        var(--color-bg) 78%,
+        transparent
+      );
+
+    stroke:
+      color-mix(
+        in srgb,
+        var(--color-link) 48%,
+        transparent
+      );
+
+    stroke-width: 1;
+  }
+
+  .map-center-core {
+    fill:
+      var(--color-link);
+
+    filter:
+      drop-shadow(
+        0 0 9px
+        var(--color-link)
+      );
+  }
+
+  .map-center-label {
+    fill:
+      var(--color-text-muted);
+
+    font-family:
+      var(--font-mono);
+
+    font-size:
+      10px;
+
+    letter-spacing:
+      .2em;
+  }
+
+  /* nodos */
+
+  .map-node-halo {
+    fill:
+      color-mix(
+        in srgb,
+        var(--color-link) 15%,
+        transparent
+      );
+
+    filter:
+      blur(4px);
+  }
+
+  .map-node-core {
+    fill:
+      var(--color-link);
+
+    filter:
+      drop-shadow(
+        0 0 7px
+        var(--color-link)
+      );
+  }
+
+  .map-node text {
+    fill:
+      var(--color-text-muted);
+
+    font-family:
+      var(--font-mono);
+
+    font-size:
+      10px;
+
+    letter-spacing:
+      .13em;
+  }
+
+  /* pequeños matices de color */
+
+  .map-node-frontend
+  .map-node-core {
+    fill:
+      var(--color-blue);
+  }
+
+  .map-node-wordpress
+  .map-node-core {
+    fill:
+      var(--color-lavender);
+  }
+
+  .map-node-delivery
+  .map-node-core {
+    fill:
+      var(--color-pink);
+  }
+
+  /* traveller */
+
+  .map-traveller {
+    transform-origin:
+      300px 212px;
+  }
+
+  .map-traveller-halo {
+    fill:
+      color-mix(
+        in srgb,
+        var(--color-lavender) 25%,
+        transparent
+      );
+
+    filter:
+      blur(3px);
+  }
+
+  .map-traveller-core {
+    fill:
+      var(--color-lavender);
+
+    filter:
+      drop-shadow(
+        0 0 7px
+        var(--color-lavender)
+      );
+  }
+
+  /* ==========================================
+     CARDS GRID
+  ========================================== */
+
+  .capabilities-grid {
+    grid-column: 2 / 12;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    border-block-start:
+      var(--border-subtle);
+
+    border-inline-start:
+      var(--border-subtle);
+  }
+
+  /* ==========================================
+     CARD
+  ========================================== */
+
+  .capability-card {
+    position: relative;
+
+    isolation: isolate;
+
+    min-block-size:
+      clamp(20rem, 28vw, 25rem);
+
+    overflow: hidden;
+
+    border-inline-end:
+      var(--border-subtle);
+
+    border-block-end:
+      var(--border-subtle);
+
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 3%,
+          transparent
+        ),
+        transparent 52%
+      );
+
+    cursor: default;
+
+    transition:
+      background
+      500ms
+      var(--ease-out);
+  }
+
+  .capability-card::before {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 4;
+
+    border:
+      1px solid transparent;
+
+    pointer-events: none;
+
+    transition:
+      border-color
+        450ms
+        var(--ease-out),
+      box-shadow
+        500ms
+        var(--ease-out);
+  }
+
+  .capability-card::after {
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+      radial-gradient(
+        circle at 75% 30%,
+        color-mix(
+          in srgb,
+          var(--color-link) 11%,
+          transparent
+        ),
+        transparent 46%
+      );
+
+    opacity: 0;
+
+    transition:
+      opacity
+      600ms
+      var(--ease-out);
+  }
+
+  .capability-card:hover {
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 9%,
+          transparent
+        ),
+        color-mix(
+          in srgb,
+          var(--color-lavender) 4%,
+          transparent
+        ) 55%,
+        transparent
+      );
+  }
+
+  .capability-card:hover::before {
+    border-color:
+      color-mix(
+        in srgb,
+        var(--color-link) 44%,
+        transparent
+      );
+
+    box-shadow:
+      inset 0 0 2rem
+        color-mix(
+          in srgb,
+          var(--color-link) 4%,
+          transparent
+        ),
+      0 0 2.8rem
+        color-mix(
+          in srgb,
+          var(--color-link) 7%,
+          transparent
+        );
+  }
+
+  .capability-card:hover::after {
+    opacity: 1;
+  }
+
+  /* ==========================================
+     CANVAS
+  ========================================== */
+
+  .capability-field {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    display: block;
+
+    inline-size: 100%;
+    block-size: 100%;
+
+    pointer-events: none;
+
+    opacity: .1;
+
+    filter:
+      saturate(.85);
+
+    transition:
+      opacity
+        550ms
+        var(--ease-out),
+      filter
+        550ms
+        var(--ease-out);
+  }
+
+  .capability-card:hover
+  .capability-field {
+    opacity: .68;
+
+    filter:
+      saturate(1.1);
+  }
+
+  /* ==========================================
+     CARD LIGHT
+  ========================================== */
+
+  .capability-light {
+    position: absolute;
+
+    z-index: -1;
+
+    inset-inline-end:
+      -5rem;
+
+    inset-block-start:
+      12%;
+
+    inline-size:
+      16rem;
+
+    block-size:
+      16rem;
+
+    border-radius:
+      50%;
+
+    background:
+      radial-gradient(
+        circle,
+        color-mix(
+          in srgb,
+          var(--color-link) 20%,
+          transparent
+        ),
+        transparent 70%
+      );
+
+    filter:
+      blur(25px);
+
+    opacity: 0;
+
+    transform:
+      scale(.75);
+
+    transition:
+      opacity
+        550ms
+        var(--ease-out),
+      transform
+        800ms
+        var(--ease-out);
+  }
+
+  .capability-card:hover
+  .capability-light {
+    opacity: .75;
+
+    transform:
+      scale(1.15);
+  }
+
+  /* ==========================================
+     CARD CONTENT
+  ========================================== */
+
+  .capability-content {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content:
+      space-between;
+
+    min-block-size:
+      inherit;
+
+    padding:
+      clamp(
+        1.75rem,
+        3vw,
+        3rem
+      );
+  }
+
+  .capability-top {
+    display: flex;
+
+    justify-content:
+      space-between;
+
+    align-items:
+      flex-start;
+
+    gap:
+      var(--space-4);
+  }
+
+  .capability-index {
+    color:
+      var(--color-text-muted);
+
+    transition:
+      color
+      350ms
+      var(--ease-out);
+  }
+
+  .capability-card:hover
+  .capability-index {
+    color:
+      var(--color-link);
+  }
+
+  /* ==========================================
+     CARD ORBIT
+  ========================================== */
+
+  .capability-orbit {
+    position: relative;
+
+    inline-size:
+      4rem;
+
+    block-size:
+      4rem;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-link) 20%,
+        transparent
+      );
+
+    border-radius:
+      46% 54% 51% 49% /
+      52% 45% 55% 48%;
+
+    opacity: .5;
+
+    transform:
+      rotate(-8deg);
+
+    transition:
+      opacity
+        400ms
+        var(--ease-out),
+      transform
+        650ms
+        var(--ease-out),
+      border-color
+        400ms
+        var(--ease-out),
+      box-shadow
+        500ms
+        var(--ease-out);
+  }
+
+  .capability-card:hover
+  .capability-orbit {
+    opacity: 1;
+
+    transform:
+      rotate(6deg)
+      scale(1.06);
+
+    border-color:
+      color-mix(
+        in srgb,
+        var(--color-link) 55%,
+        transparent
+      );
+
+    box-shadow:
+      0 0 2rem
+      color-mix(
+        in srgb,
+        var(--color-link) 17%,
+        transparent
+      );
+  }
+
+  .orbit-node {
+    position: absolute;
+
+    inline-size:
+      .32rem;
+
+    block-size:
+      .32rem;
+
+    border-radius:
+      50%;
+
+    background:
+      var(--color-link);
+
+    box-shadow:
+      0 0 .8rem
+      color-mix(
+        in srgb,
+        var(--color-link) 60%,
+        transparent
+      );
+
+    transition:
+      transform
+        500ms
+        var(--ease-out),
+      box-shadow
+        500ms
+        var(--ease-out);
+  }
+
+  .orbit-node-a {
+    inset-inline-start:
+      26%;
+
+    inset-block-start:
+      20%;
+  }
+
+  .orbit-node-b {
+    inset-inline-end:
+      21%;
+
+    inset-block-start:
+      46%;
+  }
+
+  .orbit-node-c {
+    inset-inline-start:
+      39%;
+
+    inset-block-end:
+      18%;
+  }
+
+  .capability-card:hover
+  .orbit-node {
+    transform:
+      scale(1.35);
+
+    box-shadow:
+      0 0 1.1rem
+      color-mix(
+        in srgb,
+        var(--color-link) 85%,
+        transparent
+      );
+  }
+
+  /* ==========================================
+     CARD COPY
+  ========================================== */
+
+  .capability-copy {
+    max-inline-size:
+      34rem;
+  }
+
+  .capability-copy h3 {
+    max-inline-size:
+      14ch;
+
+    margin: 0;
+
+    color:
+      var(--color-text);
+
+    font-size:
+      clamp(
+        1.5rem,
+        2.25vw,
+        2.15rem
+      );
+
+    font-weight:
+      var(--weight-medium);
+
+    line-height:
+      1.05;
+
+    letter-spacing:
+      -.035em;
+  }
+
+  .capability-copy > p {
+    max-inline-size:
+      46ch;
+
+    margin:
+      var(--space-4)
+      0
+      0;
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      var(--text-sm);
+
+    line-height:
+      1.7;
+
+    transition:
+      color
+      350ms
+      var(--ease-out);
+  }
+
+  .capability-card:hover
+  .capability-copy > p {
+    color:
+      color-mix(
+        in srgb,
+        var(--color-text) 72%,
+        var(--color-text-muted)
+      );
+  }
+
+  /* ==========================================
+     PILLS
+  ========================================== */
+
+  .capability-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .5rem;
+
+    margin-block-start:
+      var(--space-6);
+  }
+
+  .capability-tags span {
+    padding:
+      .4rem .7rem;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-text-muted) 24%,
+        transparent
+      );
+
+    border-radius:
+      999px;
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-surface) 18%,
+        transparent
+      );
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      .7rem;
+
+    line-height:
+      1;
+
+    transition:
+      color
+        300ms
+        var(--ease-out),
+      border-color
+        300ms
+        var(--ease-out),
+      background-color
+        300ms
+        var(--ease-out),
+      box-shadow
+        400ms
+        var(--ease-out),
+      transform
+        400ms
+        var(--ease-out);
+  }
+
+  .capability-card:hover
+  .capability-tags span {
+    color:
+      var(--color-text);
+
+    border-color:
+      color-mix(
+        in srgb,
+        var(--color-link) 48%,
+        transparent
+      );
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-link) 10%,
+        transparent
+      );
+
+    box-shadow:
+      0 0 1.25rem
+      color-mix(
+        in srgb,
+        var(--color-link) 13%,
+        transparent
+      );
+
+    transform:
+      translateY(-2px);
+  }
+
+  .capability-card:hover
+  .capability-tags span:nth-child(2) {
+    transition-delay:
+      45ms;
+  }
+
+  .capability-card:hover
+  .capability-tags span:nth-child(3) {
+    transition-delay:
+      90ms;
+  }
+
+  /* ==========================================
+     MOTION
+  ========================================== */
+
+  @media
+    (prefers-reduced-motion:
+    no-preference) {
+
+    .capabilities-orbit-map {
+      animation:
+        map-float
+        9s
+        ease-in-out
+        infinite;
+    }
+
+    .map-center-halo {
+      animation:
+        map-center-pulse
+        4s
+        ease-in-out
+        infinite;
+    }
+
+    .map-node-halo {
+      animation:
+        map-node-pulse
+        5s
+        ease-in-out
+        infinite;
+    }
+
+    .map-node-frontend
+    .map-node-halo {
+      animation-delay:
+        -1.2s;
+    }
+
+    .map-node-wordpress
+    .map-node-halo {
+      animation-delay:
+        -2.4s;
+    }
+
+    .map-node-delivery
+    .map-node-halo {
+      animation-delay:
+        -3.4s;
+    }
+
+    .map-traveller {
+      animation:
+        map-travel
+        12s
+        linear
+        infinite;
+    }
+  }
+
+  @keyframes map-float {
+    0%,
+    100% {
+      transform:
+        translateY(0);
+    }
+
+    50% {
+      transform:
+        translateY(-7px);
+    }
+  }
+
+  @keyframes map-center-pulse {
+    0%,
+    100% {
+      opacity: .4;
+    }
+
+    50% {
+      opacity: .9;
+    }
+  }
+
+  @keyframes map-node-pulse {
+    0%,
+    100% {
+      opacity: .3;
+    }
+
+    50% {
+      opacity: .8;
+    }
+  }
+
+  /*
+   * El nodo parte del punto superior
+   * de la órbita y la recorre de forma
+   * aproximada.
+   */
+  @keyframes map-travel {
+    0%,
+    100% {
+      transform:
+        translate(0, 0);
+    }
+
+    12.5% {
+      transform:
+        translate(130px, 38px);
+    }
+
+    25% {
+      transform:
+        translate(185px, 122px);
+    }
+
+    37.5% {
+      transform:
+        translate(130px, 205px);
+    }
+
+    50% {
+      transform:
+        translate(0, 244px);
+    }
+
+    62.5% {
+      transform:
+        translate(-130px, 205px);
+    }
+
+    75% {
+      transform:
+        translate(-185px, 122px);
+    }
+
+    87.5% {
+      transform:
+        translate(-130px, 38px);
+    }
+  }
+
+  /* ==========================================
+     LIGHT MODE
+  ========================================== */
+
+  :global(
+    html[data-theme='light']
+  )
+  .map-atmosphere {
+    opacity: .9;
+  }
+
+  :global(
+    html[data-theme='light']
+  )
+  .capability-card {
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 3%,
+          transparent
+        ),
+        color-mix(
+          in srgb,
+          var(--color-surface) 30%,
+          transparent
+        )
+      );
+  }
+
+  :global(
+    html[data-theme='light']
+  )
+  .capability-card:hover {
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 9%,
+          transparent
+        ),
+        color-mix(
+          in srgb,
+          var(--color-lavender) 8%,
+          transparent
+        )
+      );
+  }
+
+  /* ==========================================
+     TABLET
+  ========================================== */
+
+  @media
+    (max-width: 67.999rem) {
+
+    .capabilities-intro-layout {
+      grid-column:
+        1 / -1;
+
+      grid-template-columns:
+        minmax(0, .9fr)
+        minmax(22rem, 1.1fr);
+
+      gap:
+        var(--space-8);
+    }
+
+    .capabilities-grid {
+      grid-column:
+        1 / -1;
+    }
+
+    .capability-card {
+      min-block-size:
+        20rem;
+    }
+  }
+
+  /* ==========================================
+     MOBILE
+  ========================================== */
+
+  @media
+    (max-width: 47.999rem) {
+
+    .capabilities-intro-layout {
+      grid-template-columns:
+        1fr;
+
+      gap:
+        var(--space-7);
+    }
+
+    .capabilities-main-copy {
+      max-inline-size:
+        none;
+    }
+
+    .capabilities-main-copy h2 {
+      max-inline-size:
+        12ch;
+    }
+
+    .capabilities-map {
+      min-block-size:
+        19rem;
+    }
+
+    .capabilities-orbit-map {
+      inline-size:
+        min(100%, 32rem);
+    }
+
+    .capabilities-grid {
+      grid-template-columns:
+        1fr;
+    }
+
+    .capability-card {
+      min-block-size:
+        19rem;
+    }
+  }
+
+  /* ==========================================
+     TOUCH
+  ========================================== */
+
+  @media (hover: none) {
+    .capability-field {
+      opacity: .2;
+    }
+
+    .capability-light {
+      opacity: .2;
+    }
+  }
+
+  /* ==========================================
+     REDUCED MOTION
+  ========================================== */
+
+  @media
+    (prefers-reduced-motion:
+    reduce) {
+
+    .capabilities-orbit-map,
+    .map-center-halo,
+    .map-node-halo,
+    .map-traveller {
+      animation:
+        none !important;
+    }
+
+    .capability-card,
+    .capability-card::before,
+    .capability-card::after,
+    .capability-field,
+    .capability-light,
+    .capability-index,
+    .capability-orbit,
+    .orbit-node,
+    .capability-copy > p,
+    .capability-tags span {
+      transition: none;
+    }
+
+    .capability-field {
+      opacity: .18;
+    }
+
+    .capability-light {
+      display: none;
+    }
+  }
+</style>
