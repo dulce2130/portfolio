@@ -1,0 +1,2184 @@
+---
+import { getLocale } from '../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+
+const content = {
+  es: {
+    eyebrow: 'ARCHIVO / 06',
+
+    title: 'Más proyectos,',
+    accent: 'más contexto.',
+
+    description:
+      'Una selección de trabajos realizados en colaboración profesional: desarrollo web, migraciones, rediseños, plataformas, mantenimiento y presencia digital.',
+
+    frameLabel: 'DG / PROJECT ARCHIVE',
+    collaboration: 'COLABORACIÓN PROFESIONAL',
+    scrollLabel: 'SCROLL / ARCHIVE',
+    listLabel: 'Archivo de proyectos profesionales',
+
+    noteTitle: 'Sobre estos proyectos',
+
+    note:
+      'Estos trabajos fueron realizados como parte de mi experiencia dentro de una empresa. Mi participación varió según el proyecto e incluyó diseño, implementación, desarrollo, mantenimiento, contenido, soporte y acompañamiento digital.',
+
+    view: 'Ver sitio',
+
+    projects: [
+      {
+        name: 'Mago Eikim',
+        type: 'Migración web',
+        contribution: 'Implementación principal',
+        description:
+          'Reconstrucción completa de un sitio existente, migrándolo de WordPress a Astro.',
+        tags: ['Astro', 'Frontend', 'Migración'],
+        url: 'https://magoeikim.com/',
+        tone: 'violet',
+      },
+
+      {
+        name: 'Cursos',
+        type: 'Plataforma educativa',
+        contribution: 'Desarrollo y mantenimiento',
+        description:
+          'Plataforma de cursos con contenido gratuito, cursos de pago y acceso restringido mediante membresías.',
+        tags: ['WordPress', 'Membresías', 'Contenido'],
+        url: 'https://cursos.hospedatupagina.com/',
+        tone: 'pink',
+      },
+
+      {
+        name: 'Hotel Real Alma',
+        type: 'Hospitalidad',
+        contribution: 'Implementación web',
+        description:
+          'Sitio orientado a presentar habitaciones, servicios y facilitar el proceso de consulta y reserva.',
+        tags: ['WordPress', 'Web', 'Reservas'],
+        url: 'https://hospedatupagina.com/hotel-real-alma/',
+        tone: 'blue',
+      },
+
+      {
+        name: 'COAMAG',
+        type: 'Sitio institucional',
+        contribution: 'Implementación web',
+        description:
+          'Sitio institucional con contenido informativo, eventos, noticias y recursos para su comunidad.',
+        tags: ['WordPress', 'Institucional', 'Contenido'],
+        url: 'https://coamag.com/',
+        tone: 'lavender',
+      },
+
+      {
+        name: 'Yudiza Tours',
+        type: 'Turismo',
+        contribution: 'Rediseño e implementación',
+        description:
+          'Rediseño y reorganización de un sitio turístico bilingüe para mejorar la presentación de recorridos, cultura y experiencia local.',
+        tags: ['WordPress', 'Rediseño', 'Bilingüe'],
+        url: 'https://yudizatours.com/es/inicio/',
+        tone: 'blue',
+      },
+
+      {
+        name: 'Galerías Oaxaca Suites',
+        type: 'Hospitalidad',
+        contribution: 'Rediseño e implementación',
+        description:
+          'Sitio bilingüe para alojamiento con nueva estructura visual, contenido, suites, servicios y acceso a reservas.',
+        tags: ['WordPress', 'Bilingüe', 'Reservas'],
+        url: 'https://galeriasoaxaca.com/',
+        tone: 'pink',
+      },
+
+      {
+        name: 'AMDA Oaxaca',
+        type: 'Institucional',
+        contribution: 'Diseño e implementación',
+        description:
+          'Sitio institucional desarrollado respetando identidad visual, estructura de contenido y necesidades de comunicación.',
+        tags: ['WordPress', 'Institucional', 'Responsive'],
+        url: 'https://amdaoaxaca.com/',
+        tone: 'green',
+      },
+
+      {
+        name: 'Fletes y Mudanzas Jiménez',
+        type: 'Servicios + presencia local',
+        contribution: 'Rediseño web + presencia local',
+        description:
+          'Rediseño del sitio y configuración de su presencia en Google para reforzar la visibilidad del negocio en búsquedas locales.',
+        tags: ['WordPress', 'Rediseño', 'Google Business Profile'],
+        url: 'https://fletesymudanzasjimenez.com/',
+        tone: 'yellow',
+      },
+
+      {
+        name: 'Prueba EDI',
+        type: 'Producto digital',
+        contribution: 'Frontend',
+        description:
+          'Landing desarrollada en Astro para presentar una plataforma digital de evaluación del desarrollo infantil.',
+        tags: ['Astro', 'Frontend', 'Responsive'],
+        url: 'https://pruebaedi.com/',
+        tone: 'blue',
+      },
+
+      {
+        name: 'Catálogo Digital',
+        type: 'Producto digital',
+        contribution: 'Diseño + Frontend',
+        description:
+          'Landing para una plataforma de catálogos digitales orientada a gestionar productos y recibir solicitudes por WhatsApp.',
+        tags: ['Astro', 'UX/UI', 'Producto'],
+        url: 'https://catalogo-digital.extendevs.com/',
+        tone: 'yellow',
+      },
+
+      {
+        name: 'Invitación Lala & José',
+        type: 'Experiencia web',
+        contribution: 'Diseño + Frontend',
+        description:
+          'Invitación digital mobile-first con ubicaciones, cuenta regresiva, galería y espacio para mensajes de invitados.',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        url: 'https://dulce2130.github.io/invitacion-Lala-Jose.io/',
+        tone: 'lavender',
+      },
+    ],
+  },
+
+  en: {
+    eyebrow: 'ARCHIVE / 06',
+
+    title: 'More projects,',
+    accent: 'more context.',
+
+    description:
+      'A selection of work completed through professional collaboration: web development, migrations, redesigns, platforms, maintenance and digital presence.',
+
+    frameLabel: 'DG / PROJECT ARCHIVE',
+    collaboration: 'PROFESSIONAL COLLABORATION',
+    scrollLabel: 'SCROLL / ARCHIVE',
+    listLabel: 'Professional project archive',
+
+    noteTitle: 'About these projects',
+
+    note:
+      'These projects were completed as part of my professional work within a company. My contribution varied by project and included design, implementation, development, maintenance, content, support and ongoing digital assistance.',
+
+    view: 'View website',
+
+    projects: [
+      {
+        name: 'Mago Eikim',
+        type: 'Web migration',
+        contribution: 'Primary implementation',
+        description:
+          'Complete rebuild of an existing website, migrating it from WordPress to Astro.',
+        tags: ['Astro', 'Frontend', 'Migration'],
+        url: 'https://magoeikim.com/',
+        tone: 'violet',
+      },
+
+      {
+        name: 'Courses',
+        type: 'Learning platform',
+        contribution: 'Development & maintenance',
+        description:
+          'Course platform supporting free content, paid courses and membership-restricted access.',
+        tags: ['WordPress', 'Memberships', 'Content'],
+        url: 'https://cursos.hospedatupagina.com/',
+        tone: 'pink',
+      },
+
+      {
+        name: 'Hotel Real Alma',
+        type: 'Hospitality',
+        contribution: 'Web implementation',
+        description:
+          'Website designed to present rooms and services while supporting enquiries and the booking journey.',
+        tags: ['WordPress', 'Web', 'Booking'],
+        url: 'https://hospedatupagina.com/hotel-real-alma/',
+        tone: 'blue',
+      },
+
+      {
+        name: 'COAMAG',
+        type: 'Institutional website',
+        contribution: 'Web implementation',
+        description:
+          'Institutional website featuring information, events, news and resources for its community.',
+        tags: ['WordPress', 'Institutional', 'Content'],
+        url: 'https://coamag.com/',
+        tone: 'lavender',
+      },
+
+      {
+        name: 'Yudiza Tours',
+        type: 'Tourism',
+        contribution: 'Redesign & implementation',
+        description:
+          'Redesign and restructuring of a bilingual tourism website presenting local tours, culture and experiences.',
+        tags: ['WordPress', 'Redesign', 'Bilingual'],
+        url: 'https://yudizatours.com/es/inicio/',
+        tone: 'blue',
+      },
+
+      {
+        name: 'Galerías Oaxaca Suites',
+        type: 'Hospitality',
+        contribution: 'Redesign & implementation',
+        description:
+          'Bilingual accommodation website with redesigned structure, content, suites, services and booking access.',
+        tags: ['WordPress', 'Bilingual', 'Booking'],
+        url: 'https://galeriasoaxaca.com/',
+        tone: 'pink',
+      },
+
+      {
+        name: 'AMDA Oaxaca',
+        type: 'Institutional',
+        contribution: 'Design & implementation',
+        description:
+          'Institutional website developed around existing brand guidelines, content structure and communication needs.',
+        tags: ['WordPress', 'Institutional', 'Responsive'],
+        url: 'https://amdaoaxaca.com/',
+        tone: 'green',
+      },
+
+      {
+        name: 'Fletes y Mudanzas Jiménez',
+        type: 'Services + local presence',
+        contribution: 'Web redesign + local presence',
+        description:
+          'Website redesign and Google business presence setup to strengthen visibility in local search.',
+        tags: ['WordPress', 'Redesign', 'Google Business Profile'],
+        url: 'https://fletesymudanzasjimenez.com/',
+        tone: 'yellow',
+      },
+
+      {
+        name: 'Prueba EDI',
+        type: 'Digital product',
+        contribution: 'Frontend',
+        description:
+          'Astro landing page presenting a digital platform for child development assessment.',
+        tags: ['Astro', 'Frontend', 'Responsive'],
+        url: 'https://pruebaedi.com/',
+        tone: 'blue',
+      },
+
+      {
+        name: 'Digital Catalog',
+        type: 'Digital product',
+        contribution: 'Design + Frontend',
+        description:
+          'Landing page for a digital catalog platform built around product management and WhatsApp enquiries.',
+        tags: ['Astro', 'UX/UI', 'Product'],
+        url: 'https://catalogo-digital.extendevs.com/',
+        tone: 'yellow',
+      },
+
+      {
+        name: 'Lala & José Invitation',
+        type: 'Web experience',
+        contribution: 'Design + Frontend',
+        description:
+          'Mobile-first digital invitation featuring locations, countdown, gallery and guest messages.',
+        tags: ['HTML', 'CSS', 'JavaScript'],
+        url: 'https://dulce2130.github.io/invitacion-Lala-Jose.io/',
+        tone: 'lavender',
+      },
+    ],
+  },
+};
+
+const t = content[locale];
+
+const archiveCount =
+  String(t.projects.length).padStart(2, '0');
+---
+
+<section
+  id="archive"
+  class="archive-section grid-12"
+  aria-labelledby="archive-title"
+>
+  <!-- =====================================
+       INTRO
+  ====================================== -->
+
+  <header class="archive-intro">
+    <p class="metadata archive-intro__eyebrow">
+      {t.eyebrow}
+    </p>
+
+    <div class="archive-intro__content">
+      <h2 id="archive-title">
+        <span>
+          {t.title}
+        </span>
+
+        <em>
+          {t.accent}
+        </em>
+      </h2>
+
+      <p class="archive-intro__description">
+        {t.description}
+      </p>
+    </div>
+  </header>
+
+  <!-- =====================================
+       FRAME
+  ====================================== -->
+
+  <div class="archive-frame">
+
+    <!-- ==================================
+         OPTIMIZED ATMOSPHERE
+    =================================== -->
+
+    <div
+      class="archive-atmosphere"
+      aria-hidden="true"
+    >
+      <svg
+        class="archive-orbits"
+        viewBox="0 0 1200 760"
+        preserveAspectRatio="none"
+        focusable="false"
+      >
+        <ellipse
+          class="archive-orbit archive-orbit--01"
+          cx="600"
+          cy="370"
+          rx="555"
+          ry="230"
+          transform="rotate(-8 600 370)"
+        />
+
+        <ellipse
+          class="archive-orbit archive-orbit--02"
+          cx="760"
+          cy="355"
+          rx="385"
+          ry="305"
+          transform="rotate(12 760 355)"
+        />
+
+        <ellipse
+          class="archive-orbit archive-orbit--03"
+          cx="420"
+          cy="430"
+          rx="310"
+          ry="155"
+          transform="rotate(-15 420 430)"
+        />
+
+        <g class="archive-stars">
+          <circle cx="95" cy="315" r="2.5" />
+          <circle cx="180" cy="590" r="2" />
+          <circle cx="330" cy="135" r="2.5" />
+          <circle cx="510" cy="650" r="3" />
+          <circle cx="710" cy="110" r="2" />
+          <circle cx="890" cy="620" r="2.5" />
+          <circle cx="1050" cy="220" r="3" />
+          <circle cx="1120" cy="520" r="2" />
+        </g>
+
+        <g class="archive-network">
+          <path d="M95 315L330 135L710 110" />
+          <path d="M180 590L510 650L890 620L1120 520" />
+          <path d="M330 135L510 650" />
+          <path d="M710 110L1050 220L1120 520" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- ==================================
+         FRAME HEADER
+    =================================== -->
+
+    <header class="archive-frame__header">
+      <span class="metadata">
+        {t.frameLabel}
+      </span>
+
+      <div class="archive-frame__header-right">
+        <span class="archive-frame__status">
+          <span aria-hidden="true"></span>
+
+          {t.collaboration}
+        </span>
+
+        <span class="archive-frame__scroll metadata">
+          {t.scrollLabel}
+        </span>
+
+        <span class="metadata">
+          {archiveCount}
+        </span>
+      </div>
+    </header>
+
+    <!-- ==================================
+         NOTE
+    =================================== -->
+
+    <aside class="archive-note">
+      <span
+        class="archive-note__icon"
+        aria-hidden="true"
+      >
+        i
+      </span>
+
+      <div>
+        <strong>
+          {t.noteTitle}
+        </strong>
+
+        <p>
+          {t.note}
+        </p>
+      </div>
+    </aside>
+
+    <!-- ==================================
+         SCROLLABLE LIST
+    =================================== -->
+
+    <div
+      class="archive-list"
+      tabindex="0"
+      aria-label={t.listLabel}
+    >
+      {
+        t.projects.map((project, index) => (
+          <article
+            class:list={[
+              'archive-row',
+              `archive-row--${project.tone}`,
+            ]}
+          >
+            <!-- visual -->
+
+            <div
+              class="archive-row__visual"
+              aria-hidden="true"
+            >
+              <span class="archive-row__number">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <div class="archive-row__mini">
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <i></i>
+              </div>
+            </div>
+
+            <!-- project -->
+
+            <div class="archive-row__project">
+              <span class="metadata">
+                {project.type}
+              </span>
+
+              <h3>
+                {project.name}
+              </h3>
+
+              <p>
+                {project.description}
+              </p>
+            </div>
+
+            <!-- contribution -->
+
+            <div class="archive-row__contribution">
+              <span class="archive-row__badge">
+                {t.collaboration}
+              </span>
+
+              <strong>
+                {project.contribution}
+              </strong>
+            </div>
+
+            <!-- tags -->
+
+            <ul
+              class="archive-row__tags"
+              aria-label="Technologies"
+            >
+              {
+                project.tags.map((tag) => (
+                  <li>
+                    {tag}
+                  </li>
+                ))
+              }
+            </ul>
+
+            <!-- link -->
+
+            <div class="archive-row__action">
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t.view}: ${project.name}`}
+              >
+                <span>
+                  {t.view}
+                </span>
+
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- ==================================
+         FOOTER
+    =================================== -->
+
+    <footer class="archive-frame__footer">
+      <span class="metadata">
+        DG / 2025—2026
+      </span>
+
+      <span class="archive-frame__line"></span>
+
+      <span class="metadata">
+        {t.collaboration}
+      </span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  /* =====================================================
+     PERFORMANCE BOUNDARY
+  ===================================================== */
+
+  .archive-section {
+    position: relative;
+
+    padding-block:
+      clamp(6rem, 10vw, 10rem);
+
+    scroll-margin-block-start:
+      var(--header-clearance, 7rem);
+
+    /*
+     * El navegador puede saltarse pintura/layout
+     * cuando esta sección está lejos del viewport.
+     */
+    content-visibility:
+      auto;
+
+    contain-intrinsic-size:
+      auto 900px;
+  }
+
+  /* =====================================================
+     INTRO
+  ===================================================== */
+
+  .archive-intro {
+    grid-column:
+      2 / 12;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(8rem, .3fr)
+      minmax(0, 1fr);
+
+    gap:
+      clamp(2rem, 5vw, 5rem);
+
+    align-items: start;
+
+    margin-block-end:
+      clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .archive-intro__eyebrow {
+    margin: 0;
+
+    color:
+      var(--color-text-muted);
+  }
+
+  .archive-intro h2 {
+    display: flex;
+
+    flex-direction: column;
+
+    max-inline-size: 15ch;
+
+    margin: 0;
+
+    color:
+      var(--color-text);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      clamp(3rem, 5vw, 5.8rem);
+
+    font-weight:
+      var(--weight-medium);
+
+    line-height: .94;
+
+    letter-spacing:
+      -.055em;
+  }
+
+  .archive-intro h2 em {
+    color:
+      var(--color-link);
+
+    font-family:
+      var(--font-display);
+
+    font-weight:
+      var(--weight-normal);
+
+    font-style:
+      italic;
+  }
+
+  .archive-intro__description {
+    max-inline-size: 56ch;
+
+    margin:
+      1.7rem 0 0;
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      clamp(1.05rem, 1.25vw, 1.16rem);
+
+    line-height:
+      1.72;
+  }
+
+  /* =====================================================
+     FRAME
+  ===================================================== */
+
+  .archive-frame {
+    grid-column:
+      2 / 12;
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-rows:
+      auto
+      auto
+      minmax(0, 1fr)
+      auto;
+
+    block-size:
+      clamp(42rem, 78vh, 52rem);
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    contain:
+      layout paint style;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-link) 18%,
+        transparent
+      );
+
+    border-radius:
+      clamp(1rem, 2vw, 1.4rem);
+
+    /*
+     * Las "luces" ahora son gradientes.
+     *
+     * Visualmente tenemos los mismos orbes,
+     * pero NO existe ningún filter: blur().
+     */
+    background:
+      radial-gradient(
+        circle at 92% 2%,
+        rgb(170 153 255 / .18),
+        transparent 28%
+      ),
+
+      radial-gradient(
+        circle at 4% 58%,
+        rgb(239 167 215 / .11),
+        transparent 28%
+      ),
+
+      radial-gradient(
+        circle at 76% 98%,
+        rgb(139 183 255 / .12),
+        transparent 30%
+      ),
+
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 4%,
+          transparent
+        ),
+        transparent 42%
+      ),
+
+      color-mix(
+        in srgb,
+        var(--color-surface) 97%,
+        var(--color-bg)
+      );
+
+    box-shadow:
+      0 2rem 6rem
+      color-mix(
+        in srgb,
+        var(--color-bg) 26%,
+        transparent
+      );
+
+    /*
+     * Importante:
+     * NO backdrop-filter aquí.
+     */
+  }
+
+  /* =====================================================
+     ATMOSPHERE
+  ===================================================== */
+
+  .archive-atmosphere {
+    position: absolute;
+
+    z-index: 0;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+  }
+
+  .archive-orbits {
+    position: absolute;
+
+    inset: 0;
+
+    inline-size:
+      100%;
+
+    block-size:
+      100%;
+
+    color:
+      var(--color-link);
+
+    opacity: .21;
+  }
+
+  .archive-orbit {
+    fill: none;
+
+    stroke:
+      currentColor;
+
+    stroke-width:
+      1;
+
+    vector-effect:
+      non-scaling-stroke;
+  }
+
+  .archive-orbit--01 {
+    stroke-dasharray:
+      10 16;
+  }
+
+  .archive-orbit--02 {
+    stroke-dasharray:
+      3 14;
+
+    opacity: .7;
+  }
+
+  .archive-orbit--03 {
+    /*
+     * Esta órbita queda estática.
+     * Sigue enriqueciendo la escena sin
+     * sumar otra animación continua.
+     */
+    stroke-dasharray:
+      1 11;
+
+    opacity: .42;
+  }
+
+  .archive-network {
+    fill: none;
+
+    stroke:
+      currentColor;
+
+    stroke-width:
+      .65;
+
+    opacity:
+      .12;
+
+    vector-effect:
+      non-scaling-stroke;
+  }
+
+  .archive-stars {
+    fill:
+      currentColor;
+
+    opacity: .64;
+  }
+
+  /* =====================================================
+     FOREGROUND
+  ===================================================== */
+
+  .archive-frame__header,
+  .archive-note,
+  .archive-list,
+  .archive-frame__footer {
+    position: relative;
+
+    z-index: 2;
+  }
+
+  /* =====================================================
+     HEADER
+  ===================================================== */
+
+  .archive-frame__header {
+    display: flex;
+
+    justify-content:
+      space-between;
+
+    align-items:
+      center;
+
+    gap: 1rem;
+
+    padding:
+      1.05rem
+      1.4rem;
+
+    border-block-end:
+      var(--border-subtle);
+
+    /*
+     * Fondo suficiente para separar,
+     * pero sin backdrop-filter.
+     */
+    background:
+      color-mix(
+        in srgb,
+        var(--color-surface) 94%,
+        transparent
+      );
+
+    color:
+      var(--color-text-muted);
+  }
+
+  .archive-frame__header-right {
+    display: flex;
+
+    align-items:
+      center;
+
+    gap:
+      clamp(1rem, 2vw, 1.8rem);
+  }
+
+  .archive-frame__status {
+    display: flex;
+
+    align-items:
+      center;
+
+    gap: .55rem;
+
+    color:
+      var(--color-text-muted);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      clamp(.68rem, .75vw, .78rem);
+
+    letter-spacing:
+      .07em;
+  }
+
+  .archive-frame__status > span {
+    inline-size:
+      .45rem;
+
+    block-size:
+      .45rem;
+
+    flex: none;
+
+    border-radius: 50%;
+
+    background:
+      var(--color-link);
+
+    box-shadow:
+      0 0 .65rem
+      color-mix(
+        in srgb,
+        var(--color-link) 45%,
+        transparent
+      );
+  }
+
+  .archive-frame__scroll {
+    color:
+      var(--color-link);
+
+    font-size:
+      clamp(.68rem, .75vw, .78rem);
+  }
+
+  /* =====================================================
+     NOTE
+  ===================================================== */
+
+  .archive-note {
+    display: grid;
+
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap:
+      1rem;
+
+    align-items:
+      start;
+
+    padding:
+      1.2rem
+      1.4rem;
+
+    border-block-end:
+      var(--border-subtle);
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-link) 5%,
+        var(--color-surface)
+      );
+  }
+
+  .archive-note__icon {
+    inline-size:
+      1.9rem;
+
+    block-size:
+      1.9rem;
+
+    display: grid;
+
+    place-items: center;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-link) 40%,
+        transparent
+      );
+
+    border-radius:
+      50%;
+
+    color:
+      var(--color-link);
+
+    font-family:
+      var(--font-display);
+
+    font-size:
+      1.05rem;
+
+    font-style:
+      italic;
+  }
+
+  .archive-note strong {
+    color:
+      var(--color-text);
+
+    font-size:
+      clamp(.96rem, 1vw, 1.06rem);
+
+    font-weight:
+      var(--weight-medium);
+  }
+
+  .archive-note p {
+    max-inline-size:
+      80ch;
+
+    margin:
+      .45rem 0 0;
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      clamp(.86rem, .92vw, .96rem);
+
+    line-height:
+      1.62;
+  }
+
+  /* =====================================================
+     SCROLL
+  ===================================================== */
+
+  .archive-list {
+    min-block-size: 0;
+
+    overflow-y:
+      auto;
+
+    overflow-x:
+      hidden;
+
+    scrollbar-gutter:
+      stable;
+
+    /*
+     * Evita bloquear la página al llegar
+     * al final del listado.
+     */
+    overscroll-behavior-y:
+      auto;
+
+    outline: none;
+
+    /*
+     * Esta parte es importante:
+     * aislamos la pintura del contenido
+     * que se desplaza.
+     */
+    contain:
+      layout paint style;
+
+    scrollbar-width:
+      thin;
+
+    scrollbar-color:
+      color-mix(
+        in srgb,
+        var(--color-link) 42%,
+        transparent
+      )
+      transparent;
+  }
+
+  .archive-list:focus-visible {
+    box-shadow:
+      inset 0 0 0 2px
+      color-mix(
+        in srgb,
+        var(--color-link) 48%,
+        transparent
+      );
+  }
+
+  .archive-list::-webkit-scrollbar {
+    inline-size:
+      .5rem;
+  }
+
+  .archive-list::-webkit-scrollbar-track {
+    background:
+      transparent;
+  }
+
+  .archive-list::-webkit-scrollbar-thumb {
+    border-radius:
+      999px;
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-link) 38%,
+        transparent
+      );
+  }
+
+  .archive-list::-webkit-scrollbar-thumb:hover {
+    background:
+      color-mix(
+        in srgb,
+        var(--color-link) 65%,
+        transparent
+      );
+  }
+
+  /* =====================================================
+     ROW
+  ===================================================== */
+
+  .archive-row {
+    --archive-accent:
+      var(--color-link);
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(7.7rem, .15fr)
+      minmax(16rem, .34fr)
+      minmax(13rem, .23fr)
+      minmax(12rem, .19fr)
+      auto;
+
+    gap:
+      clamp(1rem, 1.7vw, 1.6rem);
+
+    align-items:
+      center;
+
+    min-block-size:
+      10.7rem;
+
+    padding:
+      1.4rem
+      1.45rem;
+
+    border-block-end:
+      var(--border-subtle);
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-surface) 80%,
+        transparent
+      );
+
+    /*
+     * Cada fila queda aislada.
+     */
+    contain:
+      layout paint style;
+
+    transition:
+      background
+        260ms ease,
+      opacity
+        240ms ease;
+  }
+
+  .archive-row:last-child {
+    border-block-end: 0;
+  }
+
+  .archive-row:hover,
+  .archive-row:focus-within {
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(
+          in srgb,
+          var(--archive-accent) 10%,
+          var(--color-surface)
+        ),
+        color-mix(
+          in srgb,
+          var(--color-surface) 84%,
+          transparent
+        )
+      );
+  }
+
+  /* =====================================================
+     COLORS
+  ===================================================== */
+
+  .archive-row--pink {
+    --archive-accent:
+      #efadd6;
+  }
+
+  .archive-row--violet {
+    --archive-accent:
+      #a99aff;
+  }
+
+  .archive-row--lavender {
+    --archive-accent:
+      #c3b6ff;
+  }
+
+  .archive-row--blue {
+    --archive-accent:
+      #96c2ff;
+  }
+
+  .archive-row--green {
+    --archive-accent:
+      #9dd5b4;
+  }
+
+  .archive-row--yellow {
+    --archive-accent:
+      #eacb82;
+  }
+
+  /* =====================================================
+     MINI UI
+  ===================================================== */
+
+  .archive-row__visual {
+    display: grid;
+
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap:
+      .8rem;
+
+    align-items:
+      center;
+  }
+
+  .archive-row__number {
+    color:
+      var(--color-text-muted);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      .76rem;
+
+    letter-spacing:
+      .08em;
+  }
+
+  .archive-row__mini {
+    position: relative;
+
+    inline-size:
+      5.8rem;
+
+    aspect-ratio:
+      16 / 10;
+
+    overflow: hidden;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--archive-accent) 38%,
+        transparent
+      );
+
+    border-radius:
+      .42rem;
+
+    background:
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--archive-accent) 17%,
+          transparent
+        ),
+        transparent
+      ),
+      var(--color-bg);
+  }
+
+  .archive-row__mini span {
+    position: absolute;
+
+    inset-inline:
+      .5rem;
+
+    block-size: 1px;
+
+    background:
+      color-mix(
+        in srgb,
+        var(--archive-accent) 56%,
+        transparent
+      );
+  }
+
+  .archive-row__mini span:nth-child(1) {
+    inset-block-start:
+      .55rem;
+  }
+
+  .archive-row__mini span:nth-child(2) {
+    inset-block-start:
+      1.05rem;
+
+    inset-inline-end:
+      1.55rem;
+  }
+
+  .archive-row__mini span:nth-child(3) {
+    inset-block-end:
+      .68rem;
+
+    inset-inline-end:
+      2rem;
+  }
+
+  .archive-row__mini i {
+    position: absolute;
+
+    inline-size:
+      .62rem;
+
+    block-size:
+      .62rem;
+
+    inset-inline-end:
+      .7rem;
+
+    inset-block-end:
+      .65rem;
+
+    border-radius:
+      50%;
+
+    background:
+      var(--archive-accent);
+
+    box-shadow:
+      0 0 .7rem
+      color-mix(
+        in srgb,
+        var(--archive-accent) 55%,
+        transparent
+      );
+  }
+
+  /* =====================================================
+     PROJECT COPY
+  ===================================================== */
+
+  .archive-row__project {
+    min-inline-size: 0;
+  }
+
+  .archive-row__project > .metadata {
+    color:
+      var(--archive-accent);
+
+    font-size:
+      clamp(.8rem, .87vw, .9rem);
+  }
+
+  .archive-row__project h3 {
+    margin:
+      .5rem 0 0;
+
+    color:
+      var(--color-text);
+
+    font-size:
+      clamp(1.22rem, 1.45vw, 1.44rem);
+
+    font-weight:
+      var(--weight-medium);
+
+    line-height:
+      1.15;
+  }
+
+  .archive-row__project p {
+    max-inline-size:
+      44ch;
+
+    margin:
+      .6rem 0 0;
+
+    color:
+      var(--color-text-muted);
+
+    font-size:
+      clamp(.88rem, .95vw, 1rem);
+
+    line-height:
+      1.6;
+  }
+
+  /* =====================================================
+     CONTRIBUTION
+  ===================================================== */
+
+  .archive-row__contribution {
+    display: flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    gap:
+      .65rem;
+  }
+
+  .archive-row__badge {
+    inline-size:
+      fit-content;
+
+    padding:
+      .42rem
+      .68rem;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--archive-accent) 38%,
+        transparent
+      );
+
+    border-radius:
+      999px;
+
+    color:
+      var(--archive-accent);
+
+    font-family:
+      var(--font-body);
+
+    font-size:
+      clamp(.61rem, .66vw, .7rem);
+
+    letter-spacing:
+      .05em;
+
+    line-height: 1;
+  }
+
+  .archive-row__contribution strong {
+    color:
+      var(--color-text);
+
+    font-size:
+      clamp(.87rem, .94vw, 1rem);
+
+    font-weight:
+      var(--weight-medium);
+
+    line-height:
+      1.42;
+  }
+
+  /* =====================================================
+     TAGS
+  ===================================================== */
+
+  .archive-row__tags {
+    display: flex;
+
+    flex-wrap:
+      wrap;
+
+    gap:
+      .45rem;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .archive-row__tags li {
+    padding:
+      .44rem
+      .7rem;
+
+    border:
+      1px solid
+      color-mix(
+        in srgb,
+        var(--color-text-muted) 23%,
+        transparent
+      );
+
+    border-radius:
+      999px;
+
+    color:
+      var(--color-text-muted);
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-surface) 42%,
+        transparent
+      );
+
+    font-size:
+      clamp(.72rem, .78vw, .81rem);
+
+    line-height:
+      1;
+
+    transition:
+      border-color 200ms ease,
+      color 200ms ease,
+      background 200ms ease;
+  }
+
+  .archive-row:hover
+  .archive-row__tags li,
+  .archive-row:focus-within
+  .archive-row__tags li {
+    border-color:
+      color-mix(
+        in srgb,
+        var(--archive-accent) 34%,
+        transparent
+      );
+  }
+
+  /* =====================================================
+     LINK
+  ===================================================== */
+
+  .archive-row__action {
+    justify-self:
+      end;
+  }
+
+  .archive-row__action a {
+    display: flex;
+
+    align-items:
+      center;
+
+    gap:
+      .55rem;
+
+    color:
+      var(--color-text);
+
+    text-decoration:
+      none;
+
+    white-space:
+      nowrap;
+
+    font-size:
+      clamp(.81rem, .87vw, .91rem);
+
+    font-weight:
+      var(--weight-medium);
+
+    transition:
+      color 200ms ease;
+  }
+
+  .archive-row__action svg {
+    inline-size:
+      1.1rem;
+
+    block-size:
+      1.1rem;
+
+    fill: none;
+
+    stroke:
+      currentColor;
+
+    stroke-width:
+      1.5;
+
+    transition:
+      transform
+        260ms
+        cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .archive-row__action a:hover,
+  .archive-row__action a:focus-visible {
+    color:
+      var(--archive-accent);
+  }
+
+  .archive-row__action a:hover svg,
+  .archive-row__action a:focus-visible svg {
+    transform:
+      translate(2px, -2px);
+  }
+
+  .archive-row__action a:focus-visible {
+    outline:
+      2px solid
+      var(--archive-accent);
+
+    outline-offset:
+      .35rem;
+
+    border-radius:
+      .15rem;
+  }
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+
+  .archive-frame__footer {
+    display: grid;
+
+    grid-template-columns:
+      auto
+      minmax(2rem, 1fr)
+      auto;
+
+    gap:
+      1rem;
+
+    align-items:
+      center;
+
+    padding:
+      .95rem
+      1.4rem;
+
+    border-block-start:
+      var(--border-subtle);
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-surface) 94%,
+        transparent
+      );
+
+    color:
+      var(--color-text-muted);
+  }
+
+  .archive-frame__line {
+    block-size:
+      1px;
+
+    background:
+      color-mix(
+        in srgb,
+        var(--color-text-muted) 18%,
+        transparent
+      );
+  }
+
+  /* =====================================================
+     HOVER DIMMING
+  ===================================================== */
+
+  @supports selector(:has(*)) {
+
+    .archive-list:has(
+      .archive-row:hover
+    )
+    .archive-row:not(:hover) {
+      opacity:
+        .5;
+    }
+
+    .archive-list:has(
+      .archive-row:focus-within
+    )
+    .archive-row:not(:focus-within) {
+      opacity:
+        .5;
+    }
+  }
+
+  /* =====================================================
+     CONTINUOUS MOTION
+     Lightweight only
+  ===================================================== */
+
+  @media
+    (prefers-reduced-motion: no-preference) {
+
+    /*
+     * Sólo dos trayectorias se mueven.
+     */
+
+    .archive-orbit--01 {
+      animation:
+        archive-orbit-forward
+        30s
+        linear
+        infinite;
+    }
+
+    .archive-orbit--02 {
+      animation:
+        archive-orbit-reverse
+        38s
+        linear
+        infinite;
+    }
+
+    /*
+     * Las estrellas pulsan,
+     * pero son elementos diminutos.
+     */
+
+    .archive-stars
+    circle:nth-child(odd) {
+      animation:
+        archive-star
+        5.2s
+        ease-in-out
+        infinite alternate;
+    }
+
+    .archive-stars
+    circle:nth-child(even) {
+      animation:
+        archive-star
+        7.4s
+        ease-in-out
+        infinite alternate-reverse;
+    }
+
+    /*
+     * Mini nodes.
+     *
+     * Sólo animamos opacity + transform,
+     * muy baratos para GPU.
+     */
+
+    .archive-row__mini i {
+      animation:
+        archive-mini-node
+        4.4s
+        ease-in-out
+        infinite;
+    }
+  }
+
+  @keyframes archive-orbit-forward {
+    to {
+      stroke-dashoffset:
+        -190;
+    }
+  }
+
+  @keyframes archive-orbit-reverse {
+    to {
+      stroke-dashoffset:
+        170;
+    }
+  }
+
+  @keyframes archive-star {
+    from {
+      opacity: .22;
+    }
+
+    to {
+      opacity: .82;
+    }
+  }
+
+  @keyframes archive-mini-node {
+    0%,
+    100% {
+      transform:
+        scale(.85);
+
+      opacity:
+        .64;
+    }
+
+    50% {
+      transform:
+        scale(1.18);
+
+      opacity:
+        1;
+    }
+  }
+
+  /* =====================================================
+     LIGHT
+  ===================================================== */
+
+  :global(
+    html[data-theme='light']
+  )
+  .archive-frame {
+    background:
+      radial-gradient(
+        circle at 92% 2%,
+        rgb(153 135 255 / .15),
+        transparent 28%
+      ),
+
+      radial-gradient(
+        circle at 4% 58%,
+        rgb(231 149 204 / .11),
+        transparent 28%
+      ),
+
+      radial-gradient(
+        circle at 76% 98%,
+        rgb(113 167 239 / .1),
+        transparent 30%
+      ),
+
+      linear-gradient(
+        145deg,
+        color-mix(
+          in srgb,
+          var(--color-link) 6%,
+          transparent
+        ),
+        transparent 42%
+      ),
+
+      color-mix(
+        in srgb,
+        var(--color-surface) 99%,
+        white
+      );
+
+    box-shadow:
+      0 2rem 5rem
+      color-mix(
+        in srgb,
+        var(--color-text) 7%,
+        transparent
+      );
+  }
+
+  :global(
+    html[data-theme='light']
+  )
+  .archive-row {
+    background:
+      rgb(255 255 255 / .78);
+  }
+
+  :global(
+    html[data-theme='light']
+  )
+  .archive-row:hover,
+  :global(
+    html[data-theme='light']
+  )
+  .archive-row:focus-within {
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(
+          in srgb,
+          var(--archive-accent) 11%,
+          white
+        ),
+        rgb(255 255 255 / .84)
+      );
+  }
+
+  /* =====================================================
+     TABLET
+  ===================================================== */
+
+  @media
+    (max-width: 68rem) {
+
+    .archive-intro,
+    .archive-frame {
+      grid-column:
+        1 / -1;
+    }
+
+    .archive-frame {
+      block-size:
+        clamp(40rem, 80vh, 50rem);
+    }
+
+    .archive-frame__scroll {
+      display:
+        none;
+    }
+
+    .archive-row {
+      grid-template-columns:
+        6.3rem
+        minmax(0, 1fr)
+        minmax(11rem, .4fr)
+        auto;
+
+      gap:
+        1rem;
+
+      align-items:
+        start;
+    }
+
+    .archive-row__visual {
+      grid-column:
+        1;
+
+      grid-row:
+        1 / span 2;
+    }
+
+    .archive-row__project {
+      grid-column:
+        2;
+    }
+
+    .archive-row__contribution {
+      grid-column:
+        3;
+    }
+
+    .archive-row__tags {
+      grid-column:
+        2 / 4;
+    }
+
+    .archive-row__action {
+      grid-column:
+        4;
+
+      grid-row:
+        1 / span 2;
+
+      align-self:
+        center;
+    }
+  }
+
+  /* =====================================================
+     MOBILE
+  ===================================================== */
+
+  @media
+    (max-width: 48rem) {
+
+    .archive-section {
+      padding-block:
+        var(--space-9);
+
+      contain-intrinsic-size:
+        auto 1600px;
+    }
+
+    .archive-intro {
+      grid-template-columns:
+        1fr;
+
+      gap:
+        1rem;
+    }
+
+    /*
+     * En móvil no atrapamos el scroll.
+     */
+
+    .archive-frame {
+      display: block;
+
+      block-size:
+        auto;
+
+      overflow:
+        hidden;
+    }
+
+    .archive-frame__header {
+      align-items:
+        flex-start;
+
+      flex-direction:
+        column;
+    }
+
+    .archive-frame__header-right {
+      inline-size:
+        100%;
+
+      justify-content:
+        space-between;
+    }
+
+    .archive-frame__scroll {
+      display:
+        none;
+    }
+
+    .archive-note {
+      padding:
+        1rem;
+    }
+
+    .archive-list {
+      max-block-size:
+        none;
+
+      overflow:
+        visible;
+
+      contain:
+        none;
+
+      scrollbar-gutter:
+        auto;
+    }
+
+    .archive-row {
+      grid-template-columns:
+        1fr;
+
+      gap:
+        1rem;
+
+      min-block-size:
+        auto;
+
+      padding:
+        1.3rem;
+
+      contain:
+        layout paint style;
+    }
+
+    .archive-row__visual,
+    .archive-row__project,
+    .archive-row__contribution,
+    .archive-row__tags,
+    .archive-row__action {
+      grid-column:
+        auto;
+
+      grid-row:
+        auto;
+    }
+
+    .archive-row__visual {
+      grid-template-columns:
+        auto 5.8rem;
+
+      justify-content:
+        start;
+    }
+
+    .archive-row__project p {
+      max-inline-size:
+        none;
+
+      font-size:
+        .96rem;
+    }
+
+    .archive-row__action {
+      justify-self:
+        start;
+    }
+
+    .archive-frame__footer {
+      grid-template-columns:
+        1fr;
+
+      gap:
+        .5rem;
+    }
+
+    .archive-frame__line {
+      display:
+        none;
+    }
+
+    /*
+     * Menos fondo decorativo
+     * cuando el viewport es pequeño.
+     */
+
+    .archive-orbit--02,
+    .archive-network {
+      display:
+        none;
+    }
+  }
+
+  /* =====================================================
+     REDUCED MOTION
+  ===================================================== */
+
+  @media
+    (prefers-reduced-motion: reduce) {
+
+    .archive-orbit,
+    .archive-stars circle,
+    .archive-row__mini i {
+      animation:
+        none !important;
+    }
+
+    .archive-row,
+    .archive-row__action svg,
+    .archive-row__tags li {
+      transition:
+        none !important;
+    }
+  }
+</style>

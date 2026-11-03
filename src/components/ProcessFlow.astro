@@ -1,0 +1,753 @@
+---
+import { getLocale } from '../i18n/utils';
+
+const locale = getLocale(Astro.currentLocale);
+
+const copy = {
+  es: {
+    eyebrow: 'MI PROCESO / 05',
+    titleTop: 'Del problema',
+    titleAccent: 'al sistema',
+    titleBottom: 'y del sistema a la web.',
+    intro:
+      'Así convierto una idea en una experiencia digital clara, funcional y lista para publicarse.',
+    label: 'DG / PROCESS PIPELINE',
+    count: '04',
+    outputLabel: 'RESULTADO',
+    outputText:
+      'Webs cuidadas, funcionales y pensadas para salir a producción.',
+    ideaIn: 'IDEA IN',
+    webOut: 'WEB OUT',
+    steps: [
+      {
+        index: '01',
+        kicker: 'ENTENDER',
+        title: 'Problema y contexto',
+        description:
+          'Exploro qué se necesita, para quién es y cuál es la meta real del proyecto.',
+        tags: ['Problema', 'Contexto', 'Necesidades'],
+      },
+      {
+        index: '02',
+        kicker: 'ESTRUCTURAR',
+        title: 'Arquitectura y flujo',
+        description:
+          'Defino contenido, jerarquía y recorrido antes de pensar en la superficie visual.',
+        tags: ['Arquitectura', 'Contenido', 'Flujo'],
+      },
+      {
+        index: '03',
+        kicker: 'DISEÑAR',
+        title: 'Interfaz con intención',
+        description:
+          'Transformo la estructura en una experiencia clara, responsiva y fácil de usar.',
+        tags: ['UX/UI', 'Jerarquía', 'Responsive'],
+      },
+      {
+        index: '04',
+        kicker: 'CONSTRUIR',
+        title: 'Desarrollo y entrega',
+        description:
+          'Implemento, reviso, optimizo y dejo la experiencia lista para publicarse.',
+        tags: ['Frontend', 'QA', 'Deploy'],
+      },
+    ],
+  },
+  en: {
+    eyebrow: 'MY PROCESS / 05',
+    titleTop: 'From the problem',
+    titleAccent: 'to the system',
+    titleBottom: 'and from the system to the web.',
+    intro:
+      'This is how I turn an idea into a clear, functional digital experience ready to launch.',
+    label: 'DG / PROCESS PIPELINE',
+    count: '04',
+    outputLabel: 'OUTPUT',
+    outputText:
+      'Carefully crafted, functional websites designed to ship to production.',
+    ideaIn: 'IDEA IN',
+    webOut: 'WEB OUT',
+    steps: [
+      {
+        index: '01',
+        kicker: 'UNDERSTAND',
+        title: 'Problem and context',
+        description:
+          'I explore what is needed, who it is for, and what the real goal of the project is.',
+        tags: ['Problem', 'Context', 'Needs'],
+      },
+      {
+        index: '02',
+        kicker: 'STRUCTURE',
+        title: 'Architecture and flow',
+        description:
+          'I define content, hierarchy, and flow before thinking about the visual surface.',
+        tags: ['Architecture', 'Content', 'Flow'],
+      },
+      {
+        index: '03',
+        kicker: 'DESIGN',
+        title: 'Interface with intention',
+        description:
+          'I turn structure into a clear, responsive experience that is easy to use.',
+        tags: ['UX/UI', 'Hierarchy', 'Responsive'],
+      },
+      {
+        index: '04',
+        kicker: 'BUILD',
+        title: 'Development and delivery',
+        description:
+          'I implement, review, optimize, and prepare the experience for launch.',
+        tags: ['Frontend', 'QA', 'Deploy'],
+      },
+    ],
+  },
+} as const;
+
+const t = copy[locale];
+const pathId = `process-path-${locale}`;
+---
+
+<section id="process" class="process-section" aria-labelledby="process-title">
+  <div class="process-shell">
+    <div class="process-copy">
+      <p class="process-eyebrow">{t.eyebrow}</p>
+
+      <h2 id="process-title" class="process-title">
+        <span>{t.titleTop}</span>
+        <em>{t.titleAccent}</em>
+        <span>{t.titleBottom}</span>
+      </h2>
+
+      <p class="process-intro">{t.intro}</p>
+    </div>
+
+    <div class="process-board" aria-label={t.label}>
+      <div class="process-board__top">
+        <span>{t.label}</span>
+        <span>{t.count}</span>
+      </div>
+
+      <div class="process-side-label process-side-label--left" aria-hidden="true">
+        {t.ideaIn}
+      </div>
+
+      <div class="process-side-label process-side-label--right" aria-hidden="true">
+        {t.webOut}
+      </div>
+
+      <div class="process-canvas" aria-hidden="true">
+        <svg class="process-wire" viewBox="0 0 1000 640" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="process-gradient-base" x1="0" x2="1">
+              <stop offset="0%" stop-color="currentColor" stop-opacity=".16" />
+              <stop offset="50%" stop-color="currentColor" stop-opacity=".48" />
+              <stop offset="100%" stop-color="currentColor" stop-opacity=".16" />
+            </linearGradient>
+
+            <linearGradient id="process-gradient-signal" x1="0" x2="1">
+              <stop offset="0%" stop-color="#f3a6d3" />
+              <stop offset="50%" stop-color="#b9b0ff" />
+              <stop offset="100%" stop-color="#9cc7ff" />
+            </linearGradient>
+
+            <filter id="process-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="8" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          <path
+            id={pathId}
+            d="M230 180
+               C 330 165, 410 165, 500 170
+               S 675 184, 765 185
+               C 820 186, 840 220, 840 270
+               C 840 320, 790 360, 725 386
+               C 635 420, 540 440, 500 448
+               C 450 458, 370 474, 275 490
+               C 205 500, 160 528, 160 570"
+            fill="none"
+          />
+
+          <path
+            class="process-wire__base"
+            d="M230 180
+               C 330 165, 410 165, 500 170
+               S 675 184, 765 185
+               C 820 186, 840 220, 840 270
+               C 840 320, 790 360, 725 386
+               C 635 420, 540 440, 500 448
+               C 450 458, 370 474, 275 490
+               C 205 500, 160 528, 160 570"
+          />
+
+          <path
+            class="process-wire__dash"
+            d="M230 180
+               C 330 165, 410 165, 500 170
+               S 675 184, 765 185
+               C 820 186, 840 220, 840 270
+               C 840 320, 790 360, 725 386
+               C 635 420, 540 440, 500 448
+               C 450 458, 370 474, 275 490
+               C 205 500, 160 528, 160 570"
+          />
+
+          <circle class="process-signal" r="8" fill="url(#process-gradient-signal)" filter="url(#process-glow)">
+            <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
+              <mpath href={`#${pathId}`} />
+            </animateMotion>
+          </circle>
+        </svg>
+      </div>
+
+      <div class="process-grid">
+        {t.steps.map((step, index) => (
+          <article
+            class={`process-step process-step--${index + 1}`}
+            style={`--step-index:${index};`}
+            tabindex="0"
+            aria-labelledby={`process-step-title-${locale}-${index}`}
+          >
+            <div class="process-step__top">
+              <span class="process-step__index">{step.index}</span>
+              <span class="process-step__kicker">{step.kicker}</span>
+            </div>
+
+            <h3 id={`process-step-title-${locale}-${index}`} class="process-step__title">
+              {step.title}
+            </h3>
+
+            <p class="process-step__description">{step.description}</p>
+
+            <ul class="process-step__tags" aria-label="Keywords">
+              {step.tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+
+            <span class="process-step__node" aria-hidden="true"></span>
+          </article>
+        ))}
+      </div>
+
+      <div class="process-output">
+        <span class="process-output__label">{t.outputLabel}</span>
+        <p class="process-output__text">{t.outputText}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-section {
+    --process-ink: var(--color-text, #f6f3ff);
+    --process-muted: rgba(246, 243, 255, 0.72);
+    --process-border: rgba(175, 167, 255, 0.16);
+    --process-border-strong: rgba(188, 179, 255, 0.3);
+    --process-panel: rgba(8, 10, 26, 0.76);
+    --process-panel-strong: rgba(8, 10, 24, 0.88);
+    --process-glow-a: rgba(176, 164, 255, 0.22);
+    --process-glow-b: rgba(244, 166, 210, 0.18);
+    --process-blue: rgba(155, 198, 255, 0.2);
+    --process-shadow: 0 24px 80px rgba(6, 8, 20, 0.24);
+    position: relative;
+    padding: clamp(5rem, 7vw, 8rem) 0;
+  }
+
+  :global(html[data-theme='light']) .process-section,
+  :global(body[data-theme='light']) .process-section,
+  :global([data-theme='light']) .process-section {
+    --process-ink: #1d1830;
+    --process-muted: rgba(29, 24, 48, 0.76);
+    --process-border: rgba(92, 83, 173, 0.15);
+    --process-border-strong: rgba(103, 93, 194, 0.26);
+    --process-panel: rgba(255, 255, 255, 0.72);
+    --process-panel-strong: rgba(252, 250, 255, 0.92);
+    --process-glow-a: rgba(126, 112, 255, 0.14);
+    --process-glow-b: rgba(220, 134, 192, 0.12);
+    --process-blue: rgba(143, 193, 255, 0.12);
+    --process-shadow: 0 24px 80px rgba(48, 34, 92, 0.12);
+  }
+
+  .process-shell {
+    width: min(100%, 1380px);
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 3vw, 2rem);
+    display: grid;
+    grid-template-columns: minmax(280px, 0.92fr) minmax(0, 1.28fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .process-copy {
+    position: sticky;
+    top: 7.5rem;
+    align-self: start;
+    max-width: 34rem;
+  }
+
+  .process-eyebrow {
+    margin: 0 0 1.15rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--process-muted);
+  }
+
+  .process-title {
+    margin: 0;
+    display: grid;
+    gap: 0.15em;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+    color: var(--process-ink);
+  }
+
+  .process-title em {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #a99dff;
+    letter-spacing: -0.03em;
+  }
+
+  .process-intro {
+    margin: 1.5rem 0 0;
+    max-width: 34rem;
+    font-size: clamp(1rem, 1.3vw, 1.14rem);
+    line-height: 1.8;
+    color: var(--process-muted);
+  }
+
+  .process-board {
+    position: relative;
+    min-height: 860px;
+    border-radius: 2rem;
+    overflow: clip;
+    background:
+      radial-gradient(circle at 72% 30%, rgba(168, 149, 255, 0.22), transparent 42%),
+      radial-gradient(circle at 18% 74%, rgba(86, 103, 255, 0.12), transparent 34%),
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+      var(--process-panel);
+    border: 1px solid var(--process-border);
+    box-shadow: var(--process-shadow);
+    backdrop-filter: blur(18px);
+    isolation: isolate;
+  }
+
+  .process-board::before {
+    content: 'PROCESS';
+    position: absolute;
+    inset: 1.5rem 2rem auto auto;
+    font-size: clamp(5rem, 17vw, 12rem);
+    line-height: 0.82;
+    font-weight: 700;
+    letter-spacing: -0.06em;
+    color: rgba(255, 255, 255, 0.045);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  :global(html[data-theme='light']) .process-board::before,
+  :global(body[data-theme='light']) .process-board::before,
+  :global([data-theme='light']) .process-board::before {
+    color: rgba(45, 32, 90, 0.05);
+  }
+
+  .process-board__top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.4rem;
+    border-bottom: 1px solid var(--process-border);
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--process-muted);
+  }
+
+  .process-side-label {
+    position: absolute;
+    top: 50%;
+    writing-mode: vertical-rl;
+    transform: translateY(-50%) rotate(180deg);
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--process-muted);
+    z-index: 1;
+    opacity: 0.78;
+    pointer-events: none;
+  }
+
+  .process-side-label--left {
+    left: 0.85rem;
+  }
+
+  .process-side-label--right {
+    right: 0.85rem;
+  }
+
+  .process-canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .process-wire {
+    width: 100%;
+    height: 100%;
+    color: #b6acff;
+  }
+
+  .process-wire__base {
+    fill: none;
+    stroke: url(#process-gradient-base);
+    stroke-width: 1.4;
+  }
+
+  .process-wire__dash {
+    fill: none;
+    stroke: rgba(185, 176, 255, 0.42);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-dasharray: 8 12;
+    opacity: 0.45;
+    animation: processDash 18s linear infinite;
+  }
+
+  .process-signal {
+    opacity: 0.95;
+  }
+
+  .process-grid {
+    position: relative;
+    z-index: 2;
+    padding: 4.25rem 3rem 10rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem 1.8rem;
+    align-items: start;
+  }
+
+  .process-step {
+    position: relative;
+    min-height: 17.5rem;
+    padding: 1.35rem 1.35rem 1.25rem;
+    border-radius: 1.65rem;
+    border: 1px solid var(--process-border);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+      var(--process-panel-strong);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      0 18px 50px rgba(6, 8, 20, 0.16);
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      background 0.35s ease;
+    animation: processCardBreath 10s ease-in-out infinite;
+    animation-delay: calc(var(--step-index) * 1.8s);
+    outline: none;
+  }
+
+  .process-step:hover,
+  .process-step:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--process-border-strong);
+    box-shadow:
+      0 0 0 1px rgba(192, 181, 255, 0.08),
+      0 20px 60px rgba(14, 16, 40, 0.24),
+      0 0 34px rgba(165, 149, 255, 0.14);
+  }
+
+  .process-step--1 {
+    margin-top: 2rem;
+  }
+
+  .process-step--2 {
+    margin-top: 10rem;
+  }
+
+  .process-step--3 {
+    margin-top: 1.75rem;
+  }
+
+  .process-step--4 {
+    margin-top: 9rem;
+  }
+
+  .process-step__top {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.1rem;
+    font-size: 0.86rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .process-step__index {
+    color: #d8b4ff;
+    font-weight: 700;
+  }
+
+  .process-step__kicker {
+    color: var(--process-muted);
+    font-weight: 600;
+  }
+
+  .process-step__title {
+    margin: 0 0 0.8rem;
+    max-width: 18ch;
+    font-size: clamp(1.45rem, 1.9vw, 2rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--process-ink);
+  }
+
+  .process-step__description {
+    margin: 0;
+    max-width: 28ch;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--process-muted);
+  }
+
+  .process-step__tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.2rem 0 0;
+    padding: 0;
+  }
+
+  .process-step__tags li {
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(186, 178, 255, 0.16);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    color: var(--process-muted);
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .process-step:hover .process-step__tags li,
+  .process-step:focus-visible .process-step__tags li {
+    transform: translateY(-1px);
+    border-color: rgba(196, 188, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .process-step__node {
+    position: absolute;
+    right: 1.15rem;
+    top: 1.15rem;
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(193, 185, 255, 0.34);
+    background:
+      radial-gradient(circle at center, rgba(190, 180, 255, 0.86) 0 16%, transparent 18%),
+      radial-gradient(circle at center, rgba(190, 180, 255, 0.12), transparent 62%);
+    box-shadow: 0 0 24px rgba(170, 155, 255, 0.16);
+    animation: processNodePulse 10s ease-in-out infinite;
+    animation-delay: calc(var(--step-index) * 1.8s);
+  }
+
+  .process-output {
+    position: absolute;
+    left: 3rem;
+    right: 3rem;
+    bottom: 2rem;
+    z-index: 2;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.1rem 1.25rem;
+    border-top: 1px solid var(--process-border);
+    background:
+      linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
+      rgba(5, 7, 18, 0.42);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+  }
+
+  .process-output__label {
+    flex: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #b6acff;
+  }
+
+  .process-output__text {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--process-muted);
+  }
+
+  @keyframes processDash {
+    from {
+      stroke-dashoffset: 0;
+    }
+    to {
+      stroke-dashoffset: -180;
+    }
+  }
+
+  @keyframes processCardBreath {
+    0%, 100% {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 18px 50px rgba(6, 8, 20, 0.16);
+    }
+    25% {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        0 18px 55px rgba(14, 16, 40, 0.18),
+        0 0 32px var(--process-glow-a);
+    }
+    60% {
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 18px 55px rgba(14, 16, 40, 0.18),
+        0 0 28px var(--process-glow-b);
+    }
+  }
+
+  @keyframes processNodePulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 24px rgba(170, 155, 255, 0.16);
+    }
+    50% {
+      transform: scale(1.08);
+      box-shadow:
+        0 0 34px rgba(181, 170, 255, 0.3),
+        0 0 18px rgba(247, 170, 216, 0.18);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .process-wire__dash,
+    .process-step,
+    .process-step__node,
+    .process-signal {
+      animation: none !important;
+    }
+
+    .process-step:hover,
+    .process-step:focus-visible {
+      transform: none;
+    }
+
+    .process-signal {
+      display: none;
+    }
+  }
+
+  @media (max-width: 74rem) {
+    .process-shell {
+      grid-template-columns: 1fr;
+    }
+
+    .process-copy {
+      position: static;
+      max-width: none;
+    }
+
+    .process-board {
+      min-height: auto;
+    }
+
+    .process-grid {
+      padding: 3rem 2rem 9rem;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .process-step--1,
+    .process-step--2,
+    .process-step--3,
+    .process-step--4 {
+      margin-top: 0;
+    }
+
+    .process-canvas {
+      opacity: 0.55;
+    }
+
+    .process-output {
+      left: 2rem;
+      right: 2rem;
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .process-section {
+      padding: 4rem 0 5rem;
+    }
+
+    .process-title {
+      font-size: clamp(2.4rem, 13vw, 4.2rem);
+    }
+
+    .process-board__top {
+      padding-inline: 1rem;
+    }
+
+    .process-side-label {
+      display: none;
+    }
+
+    .process-grid {
+      padding: 2rem 1rem 8rem;
+    }
+
+    .process-step {
+      min-height: auto;
+      padding: 1.1rem;
+    }
+
+    .process-step__title {
+      max-width: none;
+      font-size: 1.45rem;
+    }
+
+    .process-step__description {
+      max-width: none;
+      font-size: 0.96rem;
+    }
+
+    .process-step__node {
+      width: 2.5rem;
+      height: 2.5rem;
+      right: 0.85rem;
+      top: 0.85rem;
+    }
+
+    .process-output {
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
