@@ -111,6 +111,19 @@ html[data-theme-transition]::view-transition { pointer-events: none; }
 }
 [hidden] { display: none !important; }
 
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion-section]:not([data-motion-visible]),
+  [data-motion-section]:not([data-motion-visible]) *,
+  [data-motion-section]:not([data-motion-visible]) *::before,
+  [data-motion-section]:not([data-motion-visible]) *::after,
+  [data-motion-element]:not([data-motion-visible]),
+  [data-motion-element]:not([data-motion-visible])::before,
+  [data-motion-element]:not([data-motion-visible])::after,
+  [data-document-hidden] *, [data-document-hidden] *::before, [data-document-hidden] *::after {
+    animation-play-state: paused !important;
+  }
+}
+
 .skip-link {
   position: fixed;
   inset-block-start: var(--space-4);

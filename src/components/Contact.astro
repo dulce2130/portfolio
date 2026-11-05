@@ -5,30 +5,22 @@ const locale = getLocale(Astro.currentLocale);
 
 const calendarUrl = "https://calendar.app.google/6Kzfkk8aaSiPhRr88";
 
-/*
- * Cuando crees tu Access Key en Web3Forms,
- * reemplaza SOLO este valor.
- *
- * La access key de Web3Forms está diseñada
- * para utilizarse desde el frontend.
- */
+/* Web3Forms Access Key: diseñada para utilizarse desde el frontend. */
 const web3formsKey = "b4a9ba1c-8e1b-49ad-b759-f25a2ef82a8e";
 
 const content = {
     es: {
         eyebrow: "CONTACTO / 07",
-
-        title: "¿Tienes una idea",
-        accent: "en mente?",
-
-        intro: "Cuéntame qué necesitas. Podemos revisar tu idea, darle estructura y encontrar la mejor forma de llevarla a la web.",
-
-        frameLabel: "DG / START A PROJECT",
+        title: "¿Conectamos diseño",
+        accent: "y tecnología?",
+        intro: "Podemos conversar sobre una oportunidad laboral, un puesto de tiempo completo o una colaboración independiente en diseño y tecnología.",
+        frameLabel: "DG / LET’S CONNECT",
+        availability: "OPORTUNIDADES / COLABORACIONES",
 
         form: {
-            heading: "Hablemos de tu proyecto.",
+            heading: "Hablemos de lo que sigue.",
             description:
-                "No necesitas tener todo definido. Cuéntame lo que tienes en mente y empezamos desde ahí.",
+                "Comparte el contexto de tu equipo, la oportunidad o la idea en la que te gustaría colaborar.",
 
             name: "Nombre",
             namePlaceholder: "Tu nombre",
@@ -38,8 +30,9 @@ const content = {
 
             type: "¿Qué te interesa?",
             typePlaceholder: "Selecciona una opción",
-
             options: [
+                "Oportunidad laboral / tiempo completo",
+                "Colaboración con un equipo",
                 "Sitio web / landing page",
                 "Rediseño web",
                 "UX/UI",
@@ -51,19 +44,22 @@ const content = {
                 "Otro",
             ],
 
-            message: "Cuéntame sobre tu idea",
+            message: "Cuéntame sobre la oportunidad",
             messagePlaceholder:
                 "Objetivos, qué necesitas, qué tienes actualmente o cualquier contexto que pueda ayudarme…",
 
             preference: "¿Cómo prefieres que te responda?",
-
             emailOption: "Correo",
             whatsappOption: "WhatsApp",
 
             whatsapp: "Tu WhatsApp",
-            whatsappPlaceholder: "+52 ...",
-
-            whatsappHelp: "Sólo lo usaré para responder a este mensaje.",
+            whatsappPlaceholder: "+52 715 123 4567",
+            whatsappHelp:
+                "Sólo lo usaré para responder a este mensaje. Ejemplo: +52 715 123 4567",
+            whatsappInvalid:
+                "Ingresa un número de WhatsApp válido (entre 8 y 15 dígitos).",
+            whatsappTitle:
+                "Puedes usar +, espacios, paréntesis, puntos o guiones.",
 
             submit: "Enviar mensaje",
             sending: "Enviando…",
@@ -73,39 +69,31 @@ const content = {
 
         call: {
             eyebrow: "¿PREFIERES HABLARLO?",
-
             title: "Agenda una",
             accent: "llamada breve.",
-
             description:
-                "Podemos conversar sobre tu idea, objetivos o dudas y revisar si puedo ayudarte con lo que necesitas.",
-
+                "Podemos hablar de tu equipo, un rol de UX/UI o desarrollo frontend, o un proyecto independiente.",
             meet: "Google Meet",
             remote: "Reunión remota",
             camera: "Cámara opcional",
-
-            note: "No necesitas preparar una presentación ni tener todo definido. Con una idea general es suficiente 😊",
-
+            note: "Una conversación breve para conocernos, compartir contexto y explorar cómo podemos colaborar.",
             button: "Agendar llamada",
-
             footer: "Elige directamente el horario disponible que mejor te funcione.",
         },
     },
 
     en: {
         eyebrow: "CONTACT / 07",
-
-        title: "Have an idea",
-        accent: "in mind?",
-
-        intro: "Tell me what you need. We can review your idea, give it structure and find the best way to bring it to the web.",
-
-        frameLabel: "DG / START A PROJECT",
+        title: "Let’s connect design",
+        accent: "and technology.",
+        intro: "Let’s discuss a career opportunity, a full-time role or an independent collaboration in design and technology.",
+        frameLabel: "DG / LET’S CONNECT",
+        availability: "OPPORTUNITIES / COLLABORATIONS",
 
         form: {
-            heading: "Let’s talk about your project.",
+            heading: "Let’s talk about what’s next.",
             description:
-                "You do not need to have everything figured out. Tell me what you have in mind and we can start from there.",
+                "Share some context about your team, the opportunity or the idea you’d like to collaborate on.",
 
             name: "Name",
             namePlaceholder: "Your name",
@@ -113,10 +101,11 @@ const content = {
             email: "Email",
             emailPlaceholder: "you@email.com",
 
-            type: "What do you need?",
+            type: "What are you interested in?",
             typePlaceholder: "Select an option",
-
             options: [
+                "Career opportunity / full-time role",
+                "Team collaboration",
                 "Website / landing page",
                 "Website redesign",
                 "UX/UI",
@@ -128,19 +117,22 @@ const content = {
                 "Other",
             ],
 
-            message: "Tell me about your idea",
+            message: "Tell me about the opportunity",
             messagePlaceholder:
                 "Goals, what you need, what you currently have or any context that might help…",
 
             preference: "How would you like me to reply?",
-
             emailOption: "Email",
             whatsappOption: "WhatsApp",
 
             whatsapp: "Your WhatsApp",
-            whatsappPlaceholder: "+1 ...",
-
-            whatsappHelp: "I will only use it to reply to this message.",
+            whatsappPlaceholder: "+1 555 123 4567",
+            whatsappHelp:
+                "I will only use it to reply to this message. Example: +1 555 123 4567",
+            whatsappInvalid:
+                "Enter a valid WhatsApp number (between 8 and 15 digits).",
+            whatsappTitle:
+                "You may use +, spaces, parentheses, periods or hyphens.",
 
             submit: "Send message",
             sending: "Sending…",
@@ -151,21 +143,15 @@ const content = {
 
         call: {
             eyebrow: "PREFER TO TALK?",
-
             title: "Schedule a",
             accent: "quick call.",
-
             description:
-                "We can talk about your idea, goals or questions and see whether I can help with what you need.",
-
+                "We can discuss your team, a UX/UI or frontend role, or an independent project.",
             meet: "Google Meet",
             remote: "Remote meeting",
             camera: "Camera optional",
-
-            note: "You do not need a presentation or a fully defined project. A general idea is more than enough 😊",
-
+            note: "A short conversation to get to know each other, share context and explore how we could collaborate.",
             button: "Schedule a call",
-
             footer: "Choose the available time that works best for you.",
         },
     },
@@ -179,39 +165,20 @@ const t = content[locale];
     class="contact-section grid-12"
     aria-labelledby="contact-title"
 >
-    <!-- =====================================
-       INTRO
-  ====================================== -->
-
     <header class="contact-intro">
-        <p class="metadata">
-            {t.eyebrow}
-        </p>
+        <p class="metadata">{t.eyebrow}</p>
 
         <div class="contact-intro__content">
             <h2 id="contact-title">
-                <span>
-                    {t.title}
-                </span>
-
-                <em>
-                    {t.accent}
-                </em>
+                <span>{t.title}</span>
+                <em>{t.accent}</em>
             </h2>
 
-            <p>
-                {t.intro}
-            </p>
+            <p>{t.intro}</p>
         </div>
     </header>
 
-    <!-- =====================================
-       MAIN FRAME
-  ====================================== -->
-
     <div class="contact-frame">
-        <!-- ambient background -->
-
         <div class="contact-atmosphere" aria-hidden="true">
             <svg viewBox="0 0 1200 760" preserveAspectRatio="none">
                 <ellipse
@@ -241,22 +208,14 @@ const t = content[locale];
             </svg>
         </div>
 
-        <!-- frame header -->
-
         <div class="contact-frame__header">
-            <span class="metadata">
-                {t.frameLabel}
-            </span>
+            <span class="metadata">{t.frameLabel}</span>
 
             <span class="contact-frame__status">
                 <i aria-hidden="true"></i>
-                AVAILABLE / REMOTE
+                {t.availability}
             </span>
         </div>
-
-        <!-- ==================================
-         FORM
-    =================================== -->
 
         <div class="contact-form-panel">
             <div class="contact-form-panel__intro">
@@ -268,13 +227,8 @@ const t = content[locale];
                 </span>
 
                 <div>
-                    <h3>
-                        {t.form.heading}
-                    </h3>
-
-                    <p>
-                        {t.form.description}
-                    </p>
+                    <h3>{t.form.heading}</h3>
+                    <p>{t.form.description}</p>
                 </div>
             </div>
 
@@ -286,24 +240,19 @@ const t = content[locale];
                 data-sending={t.form.sending}
                 data-success={t.form.success}
                 data-error={t.form.error}
+                data-whatsapp-invalid={t.form.whatsappInvalid}
             >
-                <!-- Web3Forms -->
-
                 <input type="hidden" name="access_key" value={web3formsKey} />
-
                 <input
                     type="hidden"
                     name="subject"
                     value="Nuevo mensaje desde el portafolio de Dulce González"
                 />
-
                 <input
                     type="hidden"
                     name="from_name"
                     value="Portafolio — Dulce González"
                 />
-
-                <!-- honeypot -->
 
                 <input
                     type="checkbox"
@@ -313,12 +262,9 @@ const t = content[locale];
                     autocomplete="off"
                 />
 
-                <!-- name -->
-
                 <div class="form-field">
                     <label for={`contact-name-${locale}`}>
-                        {t.form.name}
-                        <span aria-hidden="true">*</span>
+                        {t.form.name}<span aria-hidden="true">*</span>
                     </label>
 
                     <input
@@ -331,12 +277,9 @@ const t = content[locale];
                     />
                 </div>
 
-                <!-- email -->
-
                 <div class="form-field">
                     <label for={`contact-email-${locale}`}>
-                        {t.form.email}
-                        <span aria-hidden="true">*</span>
+                        {t.form.email}<span aria-hidden="true">*</span>
                     </label>
 
                     <input
@@ -349,21 +292,15 @@ const t = content[locale];
                     />
                 </div>
 
-                <!-- type -->
-
                 <div class="form-field form-field--wide">
-                    <label for={`contact-type-${locale}`}>
-                        {t.form.type}
-                    </label>
+                    <label for={`contact-type-${locale}`}>{t.form.type}</label>
 
                     <div class="form-select">
                         <select
                             id={`contact-type-${locale}`}
                             name="project_type"
                         >
-                            <option value="">
-                                {t.form.typePlaceholder}
-                            </option>
+                            <option value="">{t.form.typePlaceholder}</option>
 
                             {
                                 t.form.options.map((option) => (
@@ -378,12 +315,9 @@ const t = content[locale];
                     </div>
                 </div>
 
-                <!-- message -->
-
                 <div class="form-field form-field--wide">
                     <label for={`contact-message-${locale}`}>
-                        {t.form.message}
-                        <span aria-hidden="true">*</span>
+                        {t.form.message}<span aria-hidden="true">*</span>
                     </label>
 
                     <textarea
@@ -394,12 +328,8 @@ const t = content[locale];
                         required></textarea>
                 </div>
 
-                <!-- preference -->
-
                 <fieldset class="contact-preference form-field--wide">
-                    <legend>
-                        {t.form.preference}
-                    </legend>
+                    <legend>{t.form.preference}</legend>
 
                     <div class="contact-preference__options">
                         <label class="contact-choice">
@@ -409,12 +339,8 @@ const t = content[locale];
                                 value="email"
                                 checked
                             />
-
                             <span class="contact-choice__indicator"></span>
-
-                            <span>
-                                {t.form.emailOption}
-                            </span>
+                            <span>{t.form.emailOption}</span>
                         </label>
 
                         <label class="contact-choice">
@@ -423,17 +349,11 @@ const t = content[locale];
                                 name="preferred_contact"
                                 value="whatsapp"
                             />
-
                             <span class="contact-choice__indicator"></span>
-
-                            <span>
-                                {t.form.whatsappOption}
-                            </span>
+                            <span>{t.form.whatsappOption}</span>
                         </label>
                     </div>
                 </fieldset>
-
-                <!-- whatsapp appears dynamically -->
 
                 <div
                     class="form-field form-field--wide form-field--whatsapp"
@@ -441,7 +361,7 @@ const t = content[locale];
                     hidden
                 >
                     <label for={`contact-whatsapp-${locale}`}>
-                        {t.form.whatsapp}
+                        {t.form.whatsapp}<span aria-hidden="true">*</span>
                     </label>
 
                     <input
@@ -449,22 +369,36 @@ const t = content[locale];
                         name="whatsapp"
                         type="tel"
                         autocomplete="tel"
+                        inputmode="tel"
                         placeholder={t.form.whatsappPlaceholder}
+                        minlength="8"
+                        maxlength="20"
+                        pattern="^\+?[0-9\s().-]{8,20}$"
                         data-whatsapp-input
+                        aria-describedby={`contact-whatsapp-help-${locale} contact-whatsapp-feedback-${locale}`}
                     />
-
-                    <small>
+                    <small
+                        id={`contact-whatsapp-feedback-${locale}`}
+                        class="whatsapp-input-feedback"
+                        data-whatsapp-feedback
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    >
+                        {
+                            locale === "es"
+                                ? "Usa sólo números. Puedes incluir +, espacios o guiones."
+                                : "Use numbers only. You may include +, spaces or hyphens."
+                        }
+                    </small>
+                    <small id={`contact-whatsapp-help-${locale}`}>
                         {t.form.whatsappHelp}
                     </small>
                 </div>
 
-                <!-- submit -->
-
                 <div class="contact-form__footer form-field--wide">
                     <button class="contact-submit" type="submit">
-                        <span data-submit-label>
-                            {t.form.submit}
-                        </span>
+                        <span data-submit-label>{t.form.submit}</span>
 
                         <svg viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M5 12h14M14 7l5 5-5 5"></path>
@@ -481,10 +415,6 @@ const t = content[locale];
             </form>
         </div>
 
-        <!-- ==================================
-         CALL PANEL
-    =================================== -->
-
         <aside class="contact-call-panel">
             <div class="contact-call-visual" aria-hidden="true">
                 <span class="call-orbit call-orbit--outer"></span>
@@ -500,18 +430,11 @@ const t = content[locale];
             </div>
 
             <div class="contact-call-copy">
-                <p class="metadata">
-                    {t.call.eyebrow}
-                </p>
+                <p class="metadata">{t.call.eyebrow}</p>
 
                 <h3>
-                    <span>
-                        {t.call.title}
-                    </span>
-
-                    <em>
-                        {t.call.accent}
-                    </em>
+                    <span>{t.call.title}</span>
+                    <em>{t.call.accent}</em>
                 </h3>
 
                 <p class="contact-call-copy__description">
@@ -526,35 +449,23 @@ const t = content[locale];
                                 <path d="m15 10 5-3v10l-5-3z"></path>
                             </svg>
                         </span>
-
-                        <span>
-                            {t.call.meet}
-                        </span>
+                        <span>{t.call.meet}</span>
                     </div>
 
                     <div>
                         <span class="contact-call-meta__dot"></span>
-
-                        <span>
-                            {t.call.remote}
-                        </span>
+                        <span>{t.call.remote}</span>
                     </div>
 
                     <div>
                         <span class="contact-call-meta__dot"></span>
-
-                        <span>
-                            {t.call.camera}
-                        </span>
+                        <span>{t.call.camera}</span>
                     </div>
                 </div>
 
                 <div class="contact-call-note">
-                    <span aria-hidden="true"> ✦ </span>
-
-                    <p>
-                        {t.call.note}
-                    </p>
+                    <span aria-hidden="true">✦</span>
+                    <p>{t.call.note}</p>
                 </div>
 
                 <a
@@ -572,19 +483,14 @@ const t = content[locale];
                                 width="17"
                                 height="15"
                                 rx="2.5"></rect>
-
                             <path d="M7 3.5v4M17 3.5v4M3.5 9.5h17"></path>
-
                             <path d="m8.2 14.7 2.2 2.2 5.4-5.4"></path>
                         </svg>
                     </span>
 
                     <span class="contact-call-button__copy">
-                        <strong>
-                            {t.call.button}
-                        </strong>
-
-                        <small> Google Meet · 20 min </small>
+                        <strong>{t.call.button}</strong>
+                        <small>Google Meet · 20 min</small>
                     </span>
 
                     <span class="contact-call-button__arrow" aria-hidden="true">
@@ -594,64 +500,132 @@ const t = content[locale];
                     </span>
                 </a>
 
-                <p class="contact-call-footer">
-                    {t.call.footer}
-                </p>
+                <p class="contact-call-footer">{t.call.footer}</p>
             </div>
         </aside>
     </div>
 </section>
 
 <script>
-    const forms = document.querySelectorAll("[data-contact-form]");
+    const forms = document.querySelectorAll<HTMLFormElement>(
+        "[data-contact-form]",
+    );
 
-    forms.forEach((element) => {
-        if (!(element instanceof HTMLFormElement)) {
-            return;
-        }
+    forms.forEach((form) => {
+        if (form.dataset.contactInitialized === "true") return;
+        form.dataset.contactInitialized = "true";
 
-        if (element.dataset.contactInitialized === "true") {
-            return;
-        }
-
-        element.dataset.contactInitialized = "true";
-
-        const form = element;
-
-        const submitButton = form.querySelector('button[type="submit"]');
-
-        const submitLabel = form.querySelector("[data-submit-label]");
-
-        const status = form.querySelector("[data-form-status]");
-
-        const whatsappField = form.querySelector("[data-whatsapp-field]");
-
-        const whatsappInput = form.querySelector("[data-whatsapp-input]");
-
-        const preferenceInputs = form.querySelectorAll(
+        const submitButton = form.querySelector<HTMLButtonElement>(
+            'button[type="submit"]',
+        );
+        const submitLabel = form.querySelector<HTMLElement>(
+            "[data-submit-label]",
+        );
+        const status = form.querySelector<HTMLElement>("[data-form-status]");
+        const whatsappField = form.querySelector<HTMLElement>(
+            "[data-whatsapp-field]",
+        );
+        const whatsappInput = form.querySelector<HTMLInputElement>(
+            "[data-whatsapp-input]",
+        );
+        const whatsappFeedback = form.querySelector<HTMLElement>(
+            "[data-whatsapp-feedback]",
+        );
+        const preferenceInputs = form.querySelectorAll<HTMLInputElement>(
             'input[name="preferred_contact"]',
         );
 
-        function syncPreference() {
-            const selected = form.querySelector(
+        const whatsappInvalid =
+            form.dataset.whatsappInvalid ?? "Enter a valid WhatsApp number.";
+
+        function wantsWhatsapp(): boolean {
+            const selected = form.querySelector<HTMLInputElement>(
                 'input[name="preferred_contact"]:checked',
             );
 
-            const wantsWhatsapp =
-                selected instanceof HTMLInputElement &&
-                selected.value === "whatsapp";
+            return selected?.value === "whatsapp";
+        }
 
-            if (whatsappField instanceof HTMLElement) {
-                whatsappField.hidden = !wantsWhatsapp;
+        function clearWhatsappError(): void {
+            whatsappInput?.setCustomValidity("");
+        }
+
+        function syncPreference(): void {
+            const showWhatsapp = wantsWhatsapp();
+
+            if (whatsappField) {
+                whatsappField.hidden = !showWhatsapp;
             }
 
-            if (whatsappInput instanceof HTMLInputElement) {
-                whatsappInput.required = wantsWhatsapp;
+            if (whatsappInput) {
+                whatsappInput.required = showWhatsapp;
+
+                if (!showWhatsapp) {
+                    whatsappInput.value = "";
+                    whatsappInput.setCustomValidity("");
+                }
             }
+        }
+
+        function validateWhatsapp(): boolean {
+            if (!wantsWhatsapp() || !whatsappInput) return true;
+
+            const value = whatsappInput.value.trim();
+            const validCharacters = /^\+?[0-9\s().-]+$/.test(value);
+            const digitCount = value.replace(/\D/g, "").length;
+            const validLength = digitCount >= 8 && digitCount <= 15;
+
+            if (!validCharacters || !validLength) {
+                whatsappInput.setCustomValidity(whatsappInvalid);
+                whatsappInput.reportValidity();
+                whatsappInput.focus();
+                return false;
+            }
+
+            whatsappInput.setCustomValidity("");
+            return true;
         }
 
         preferenceInputs.forEach((input) => {
             input.addEventListener("change", syncPreference);
+        });
+
+        // Evitar letras y caracteres no permitidos mientras escribe
+        whatsappInput?.addEventListener("input", () => {
+            if (!whatsappInput) return;
+
+            const originalValue = whatsappInput.value;
+
+            // Eliminar caracteres no permitidos
+            let value = originalValue.replace(/[^0-9+\s().-]/g, "");
+
+            // Permitir + solamente al inicio
+            value = value.replace(/(?!^)\+/g, "");
+
+            // Máximo 15 dígitos reales
+            let digitCount = 0;
+
+            value = [...value]
+                .filter((character) => {
+                    if (/\d/.test(character)) {
+                        digitCount++;
+                        return digitCount <= 15;
+                    }
+
+                    return true;
+                })
+                .join("");
+
+            const wasCorrected = originalValue !== value;
+
+            whatsappInput.value = value;
+
+            clearWhatsappError();
+
+            // Mostrar ayuda sólo si hubo caracteres rechazados
+            if (whatsappFeedback) {
+                whatsappFeedback.hidden = !wasCorrected;
+            }
         });
 
         syncPreference();
@@ -659,35 +633,31 @@ const t = content[locale];
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
 
-            if (
-                !(submitButton instanceof HTMLButtonElement) ||
-                !(submitLabel instanceof HTMLElement) ||
-                !(status instanceof HTMLElement)
-            ) {
+            if (!validateWhatsapp()) return;
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            if (!submitButton || !submitLabel || !status) {
                 form.submit();
                 return;
             }
 
             const defaultLabel = submitLabel.textContent ?? "";
-
             const sending = form.dataset.sending ?? "Sending…";
-
             const success = form.dataset.success ?? "Message sent.";
-
             const errorMessage = form.dataset.error ?? "Something went wrong.";
 
             submitButton.disabled = true;
-
             submitLabel.textContent = sending;
-
             status.textContent = "";
-
             status.removeAttribute("data-state");
 
             try {
                 const response = await fetch(form.action, {
                     method: "POST",
-
                     body: new FormData(form),
                 });
 
@@ -698,19 +668,15 @@ const t = content[locale];
                 }
 
                 status.textContent = success;
-
                 status.dataset.state = "success";
 
                 form.reset();
-
                 syncPreference();
             } catch {
                 status.textContent = errorMessage;
-
                 status.dataset.state = "error";
             } finally {
                 submitButton.disabled = false;
-
                 submitLabel.textContent = defaultLabel;
             }
         });
@@ -718,113 +684,64 @@ const t = content[locale];
 </script>
 
 <style>
-    /* =====================================================
-     SECTION
-  ===================================================== */
-
     .contact-section {
         position: relative;
-
         padding-block: clamp(6rem, 10vw, 10rem);
-
         scroll-margin-block-start: var(--header-clearance, 7rem);
-
         content-visibility: auto;
-
         contain-intrinsic-size: auto 1000px;
     }
 
-    /* =====================================================
-     INTRO
-  ===================================================== */
-
     .contact-intro {
         grid-column: 2 / 12;
-
         display: grid;
-
-        grid-template-columns:
-            minmax(8rem, 0.3fr)
-            minmax(0, 1fr);
-
+        grid-template-columns: minmax(8rem, 0.3fr) minmax(0, 1fr);
         gap: clamp(2rem, 5vw, 5rem);
-
         align-items: start;
-
         margin-block-end: clamp(2.5rem, 5vw, 4.5rem);
     }
 
     .contact-intro > .metadata {
         margin: 0;
-
         color: var(--color-text-muted);
     }
 
     .contact-intro h2 {
         display: flex;
-
         flex-direction: column;
-
         max-inline-size: 14ch;
-
         margin: 0;
-
         color: var(--color-text);
-
         font-size: clamp(3rem, 5vw, 5.7rem);
-
         font-weight: var(--weight-medium);
-
         line-height: 0.94;
-
         letter-spacing: -0.055em;
     }
 
     .contact-intro h2 em {
         color: var(--color-link);
-
         font-family: var(--font-display);
-
         font-weight: var(--weight-normal);
-
         font-style: italic;
     }
 
     .contact-intro__content > p {
         max-inline-size: 52ch;
-
         margin: 1.6rem 0 0;
-
         color: var(--color-text-muted);
-
         font-size: clamp(1rem, 1.25vw, 1.13rem);
-
         line-height: 1.75;
     }
 
-    /* =====================================================
-     FRAME
-  ===================================================== */
-
     .contact-frame {
         grid-column: 2 / 12;
-
         position: relative;
-
         display: grid;
-
-        grid-template-columns:
-            minmax(0, 1.2fr)
-            minmax(19rem, 0.8fr);
-
+        grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.8fr);
         overflow: hidden;
-
         isolation: isolate;
-
         border: 1px solid color-mix(in srgb, var(--color-link) 19%, transparent);
-
         border-radius: clamp(1rem, 2vw, 1.5rem);
-
         background:
             radial-gradient(
                 circle at 76% 32%,
@@ -837,208 +754,133 @@ const t = content[locale];
                 transparent 26%
             ),
             color-mix(in srgb, var(--color-surface) 97%, var(--color-bg));
-
         box-shadow: 0 2rem 6rem
             color-mix(in srgb, var(--color-bg) 28%, transparent);
-
         contain: layout paint style;
     }
 
-    /* =====================================================
-     FRAME HEADER
-  ===================================================== */
-
     .contact-frame__header {
         grid-column: 1 / -1;
-
         position: relative;
-
         z-index: 3;
-
         display: flex;
-
         justify-content: space-between;
-
         align-items: center;
-
         gap: 1rem;
-
         padding: 1rem 1.35rem;
-
         border-block-end: var(--border-subtle);
-
         background: color-mix(in srgb, var(--color-surface) 94%, transparent);
-
         color: var(--color-text-muted);
     }
 
     .contact-frame__status {
         display: flex;
-
         align-items: center;
-
         gap: 0.55rem;
-
         font-size: 0.68rem;
-
         letter-spacing: 0.1em;
+        overflow-wrap: anywhere;
     }
 
     .contact-frame__status i {
+        flex: none;
         inline-size: 0.45rem;
         block-size: 0.45rem;
-
         border-radius: 50%;
-
         background: #a99aff;
-
         box-shadow: 0 0 0.65rem rgb(169 154 255 / 0.55);
     }
 
-    /* =====================================================
-     ATMOSPHERE
-  ===================================================== */
-
     .contact-atmosphere {
         position: absolute;
-
         z-index: 0;
-
         inset: 0;
-
         pointer-events: none;
-
         overflow: hidden;
     }
 
     .contact-atmosphere svg {
         inline-size: 100%;
-
         block-size: 100%;
-
         color: var(--color-link);
-
         opacity: 0.19;
     }
 
     .contact-orbit {
         fill: none;
-
         stroke: currentColor;
-
         stroke-width: 1;
-
         vector-effect: non-scaling-stroke;
     }
 
     .contact-orbit--one {
         stroke-dasharray: 9 15;
     }
-
     .contact-orbit--two {
         stroke-dasharray: 2 14;
-
         opacity: 0.65;
     }
-
     .contact-stars {
         fill: currentColor;
     }
 
-    /* =====================================================
-     FORM PANEL
-  ===================================================== */
-
     .contact-form-panel {
         position: relative;
-
         z-index: 2;
-
         padding: clamp(1.5rem, 3vw, 2.6rem);
-
         border-inline-end: var(--border-subtle);
     }
 
     .contact-form-panel__intro {
         display: grid;
-
-        grid-template-columns:
-            auto
-            minmax(0, 1fr);
-
+        grid-template-columns: auto minmax(0, 1fr);
         gap: 1rem;
-
         margin-block-end: 2.2rem;
     }
 
     .contact-icon {
         inline-size: 2.7rem;
-
         block-size: 2.7rem;
-
         display: grid;
-
         place-items: center;
-
         border: 1px solid color-mix(in srgb, var(--color-link) 35%, transparent);
-
         border-radius: 50%;
-
         color: var(--color-link);
     }
 
     .contact-icon svg {
         inline-size: 1.25rem;
-
         block-size: 1.25rem;
-
         fill: none;
-
         stroke: currentColor;
-
         stroke-width: 1.5;
     }
 
     .contact-form-panel__intro h3 {
         margin: 0;
-
         color: var(--color-text);
-
         font-size: clamp(1.65rem, 2.3vw, 2.4rem);
-
         font-weight: var(--weight-medium);
-
         letter-spacing: -0.035em;
     }
 
     .contact-form-panel__intro p {
         max-inline-size: 52ch;
-
         margin: 0.55rem 0 0;
-
         color: var(--color-text-muted);
-
         font-size: 0.94rem;
-
         line-height: 1.6;
     }
 
-    /* =====================================================
-     FORM
-  ===================================================== */
-
     .contact-form {
         display: grid;
-
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
         gap: 1.35rem 1rem;
     }
 
     .form-field {
         min-inline-size: 0;
     }
-
     .form-field--wide {
         grid-column: 1 / -1;
     }
@@ -1046,15 +888,10 @@ const t = content[locale];
     .form-field label,
     .contact-preference legend {
         display: block;
-
         margin-block-end: 0.55rem;
-
         color: var(--color-text);
-
         font-size: 0.8rem;
-
         font-weight: var(--weight-medium);
-
         letter-spacing: 0.04em;
     }
 
@@ -1066,22 +903,14 @@ const t = content[locale];
     .form-field textarea,
     .form-select select {
         inline-size: 100%;
-
         border: 1px solid
             color-mix(in srgb, var(--color-text-muted) 23%, transparent);
-
         border-radius: 0.75rem;
-
         background: color-mix(in srgb, var(--color-bg) 46%, transparent);
-
         color: var(--color-text);
-
         font: inherit;
-
         font-size: 0.96rem;
-
         outline: none;
-
         transition:
             border-color 180ms ease,
             background 180ms ease,
@@ -1091,39 +920,35 @@ const t = content[locale];
     .form-field input,
     .form-select select {
         min-block-size: 3.5rem;
-
         padding: 0 1rem;
     }
 
     .form-field textarea {
         min-block-size: 10.5rem;
-
         resize: vertical;
-
         padding: 1rem;
-
         line-height: 1.55;
     }
 
     .form-field input::placeholder,
     .form-field textarea::placeholder {
-        color: color-mix(in srgb, var(--color-text-muted) 66%, transparent);
+        color: var(--color-text-muted);
     }
 
     .form-field input:focus-visible,
     .form-field textarea:focus-visible,
     .form-select select:focus-visible {
         border-color: color-mix(in srgb, var(--color-link) 65%, transparent);
-
         background: color-mix(in srgb, var(--color-link) 5%, var(--color-bg));
-
         box-shadow: 0 0 0 3px
             color-mix(in srgb, var(--color-link) 12%, transparent);
     }
 
-    /* =====================================================
-     SELECT
-  ===================================================== */
+    .form-field input:user-invalid,
+    .form-field textarea:user-invalid {
+        border-color: color-mix(in srgb, #ef799f 72%, transparent);
+        box-shadow: 0 0 0 3px rgb(239 121 159 / 0.08);
+    }
 
     .form-select {
         position: relative;
@@ -1131,75 +956,47 @@ const t = content[locale];
 
     .form-select select {
         appearance: none;
-
         padding-inline-end: 3rem;
     }
 
     .form-select svg {
         position: absolute;
-
         inset-block-start: 50%;
-
         inset-inline-end: 1rem;
-
         inline-size: 1rem;
-
         block-size: 1rem;
-
         transform: translateY(-50%);
-
         fill: none;
-
         stroke: var(--color-text-muted);
-
         stroke-width: 1.5;
-
         pointer-events: none;
     }
-
-    /* =====================================================
-     PREFERENCE
-  ===================================================== */
 
     .contact-preference {
         margin: 0;
         padding: 0;
-
         border: 0;
     }
 
     .contact-preference__options {
         display: flex;
-
         flex-wrap: wrap;
-
         gap: 0.7rem;
     }
 
     .contact-choice {
         position: relative;
-
         display: flex !important;
-
         align-items: center;
-
         gap: 0.65rem;
-
         min-block-size: 2.9rem;
-
         margin: 0 !important;
-
         padding: 0.65rem 0.9rem;
-
         border: 1px solid
             color-mix(in srgb, var(--color-text-muted) 22%, transparent);
-
         border-radius: 999px;
-
         cursor: pointer;
-
         color: var(--color-text-muted) !important;
-
         transition:
             border-color 180ms ease,
             background 180ms ease,
@@ -1208,22 +1005,17 @@ const t = content[locale];
 
     .contact-choice input {
         position: absolute;
-
         inline-size: 1px;
         block-size: 1px;
-
         opacity: 0;
     }
 
     .contact-choice__indicator {
+        flex: none;
         inline-size: 0.72rem;
-
         block-size: 0.72rem;
-
         border: 1px solid var(--color-text-muted);
-
         border-radius: 50%;
-
         transition:
             background 180ms ease,
             border-color 180ms ease,
@@ -1232,29 +1024,20 @@ const t = content[locale];
 
     .contact-choice:has(input:checked) {
         border-color: color-mix(in srgb, var(--color-link) 45%, transparent);
-
         background: color-mix(in srgb, var(--color-link) 7%, transparent);
-
         color: var(--color-text) !important;
     }
 
     .contact-choice:has(input:checked) .contact-choice__indicator {
         border-color: var(--color-link);
-
         background: var(--color-link);
-
         box-shadow: 0 0 0.7rem rgb(169 154 255 / 0.4);
     }
 
     .contact-choice:has(input:focus-visible) {
         outline: 2px solid var(--color-link);
-
         outline-offset: 0.2rem;
     }
-
-    /* =====================================================
-     WHATSAPP
-  ===================================================== */
 
     .form-field--whatsapp[hidden] {
         display: none !important;
@@ -1262,61 +1045,35 @@ const t = content[locale];
 
     .form-field--whatsapp small {
         display: block;
-
         margin-block-start: 0.45rem;
-
         color: var(--color-text-muted);
-
         font-size: 0.72rem;
-
         line-height: 1.45;
     }
 
-    /* =====================================================
-     SUBMIT
-  ===================================================== */
-
     .contact-form__footer {
         display: flex;
-
         flex-wrap: wrap;
-
         gap: 1rem;
-
         align-items: center;
-
         margin-block-start: 0.3rem;
     }
 
     .contact-submit {
         min-block-size: 3.5rem;
-
         display: inline-flex;
-
         align-items: center;
-
         justify-content: center;
-
         gap: 0.8rem;
-
         padding: 0.8rem 1.2rem;
-
         border: 0;
-
         border-radius: 0.7rem;
-
         background: var(--color-text);
-
         color: var(--color-bg);
-
         cursor: pointer;
-
         font: inherit;
-
         font-size: 0.9rem;
-
         font-weight: var(--weight-medium);
-
         transition:
             transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
             opacity 180ms ease;
@@ -1324,91 +1081,61 @@ const t = content[locale];
 
     .contact-submit svg {
         inline-size: 1.1rem;
-
         block-size: 1.1rem;
-
         fill: none;
-
         stroke: currentColor;
-
         stroke-width: 1.6;
-
         transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .contact-submit:hover {
         transform: translateY(-2px);
     }
-
     .contact-submit:hover svg {
         transform: translateX(3px);
     }
 
     .contact-submit:focus-visible {
         outline: 2px solid var(--color-link);
-
         outline-offset: 0.3rem;
     }
 
     .contact-submit:disabled {
         cursor: progress;
-
         opacity: 0.65;
     }
 
     .contact-form__status {
         margin: 0;
-
         color: var(--color-text-muted);
-
         font-size: 0.82rem;
-
         line-height: 1.5;
     }
 
     .contact-form__status[data-state="success"] {
         color: #9dd5b4;
     }
-
     .contact-form__status[data-state="error"] {
         color: #efadd6;
     }
-
     .contact-botcheck {
         display: none !important;
     }
 
-    /* =====================================================
-     CALL PANEL
-  ===================================================== */
-
     .contact-call-panel {
         position: relative;
-
         z-index: 2;
-
         display: flex;
-
         flex-direction: column;
-
         min-block-size: 42rem;
-
         overflow: hidden;
     }
 
-    /* =====================================================
-     CALL VISUAL
-  ===================================================== */
-
     .contact-call-visual {
         position: relative;
-
         flex: 0 0 14rem;
-
         overflow: hidden;
-
         border-block-end: var(--border-subtle);
-
         background:
             radial-gradient(
                 circle at center,
@@ -1420,247 +1147,155 @@ const t = content[locale];
 
     .call-orbit {
         position: absolute;
-
         inset-block-start: 50%;
-
         inset-inline-start: 50%;
-
         border: 1px solid color-mix(in srgb, var(--color-link) 26%, transparent);
-
         border-radius: 50%;
     }
 
     .call-orbit--outer {
         inline-size: 18rem;
-
         block-size: 8rem;
-
         transform: translate(-50%, -50%) rotate(-8deg);
     }
 
     .call-orbit--inner {
         inline-size: 10rem;
-
         block-size: 10rem;
-
         transform: translate(-50%, -50%);
     }
 
     .call-core {
         position: absolute;
-
         inset-block-start: 50%;
-
         inset-inline-start: 50%;
-
         inline-size: 3.4rem;
-
         block-size: 3.4rem;
-
         display: grid;
-
         place-items: center;
-
         transform: translate(-50%, -50%);
-
         border: 1px solid color-mix(in srgb, var(--color-link) 55%, transparent);
-
         border-radius: 50%;
-
         background: var(--color-surface);
-
         box-shadow: 0 0 2rem rgb(169 154 255 / 0.16);
     }
 
     .call-core span {
         inline-size: 0.7rem;
-
         block-size: 0.7rem;
-
         border-radius: 50%;
-
         background: var(--color-link);
-
         box-shadow: 0 0 0.8rem rgb(169 154 255 / 0.65);
     }
 
     .call-node {
         position: absolute;
-
         inline-size: 0.55rem;
-
         block-size: 0.55rem;
-
         border-radius: 50%;
-
         background: var(--color-link);
-
         box-shadow: 0 0 0.8rem rgb(169 154 255 / 0.5);
     }
 
     .call-node--one {
         inset-block-start: 26%;
-
         inset-inline-start: 21%;
     }
-
     .call-node--two {
         inset-block-start: 34%;
-
         inset-inline-end: 18%;
-
         background: #96c2ff;
     }
-
     .call-node--three {
         inset-block-end: 17%;
-
         inset-inline-start: 32%;
-
         background: #efadd6;
     }
 
-    /* =====================================================
-     CALL COPY
-  ===================================================== */
-
     .contact-call-copy {
         display: flex;
-
         flex: 1;
-
         flex-direction: column;
-
         padding: clamp(1.5rem, 3vw, 2.2rem);
     }
 
     .contact-call-copy > .metadata {
         margin: 0 0 1rem;
-
         color: var(--color-text-muted);
     }
 
     .contact-call-copy h3 {
         display: flex;
-
         flex-direction: column;
-
         margin: 0;
-
         color: var(--color-text);
-
         font-size: clamp(2.2rem, 3.8vw, 4rem);
-
         font-weight: var(--weight-medium);
-
         line-height: 0.95;
-
         letter-spacing: -0.05em;
     }
 
     .contact-call-copy h3 em {
         color: var(--color-link);
-
         font-family: var(--font-display);
-
         font-weight: var(--weight-normal);
-
         font-style: italic;
     }
 
     .contact-call-copy__description {
         margin: 1.2rem 0 0;
-
         color: var(--color-text-muted);
-
         font-size: 0.95rem;
-
         line-height: 1.65;
     }
 
-    /* =====================================================
-     CALL META
-  ===================================================== */
-
     .contact-call-meta {
         display: grid;
-
         gap: 0.75rem;
-
         margin-block: 1.6rem;
     }
 
     .contact-call-meta > div {
         display: flex;
-
         align-items: center;
-
         gap: 0.7rem;
-
         color: var(--color-text-muted);
-
         font-size: 0.8rem;
     }
 
     .contact-call-meta__icon {
         inline-size: 1.7rem;
-
         block-size: 1.7rem;
-
         display: grid;
-
         place-items: center;
-
         border: 1px solid color-mix(in srgb, var(--color-link) 25%, transparent);
-
         border-radius: 50%;
     }
 
     .contact-call-meta__icon svg {
         inline-size: 0.9rem;
-
         block-size: 0.9rem;
-
         fill: none;
-
         stroke: var(--color-link);
-
         stroke-width: 1.5;
     }
 
     .contact-call-meta__dot {
         inline-size: 0.4rem;
-
         block-size: 0.4rem;
-
         margin-inline: 0.65rem;
-
         border-radius: 50%;
-
         background: var(--color-link);
     }
 
-    /* =====================================================
-     CALL NOTE
-  ===================================================== */
-
     .contact-call-note {
         display: grid;
-
-        grid-template-columns:
-            auto
-            1fr;
-
+        grid-template-columns: auto 1fr;
         gap: 0.75rem;
-
         padding: 1rem;
-
         margin-block-end: 1.4rem;
-
         border: 1px solid color-mix(in srgb, var(--color-link) 17%, transparent);
-
         border-radius: 0.8rem;
-
         background: color-mix(in srgb, var(--color-link) 4%, transparent);
     }
 
@@ -1670,63 +1305,33 @@ const t = content[locale];
 
     .contact-call-note p {
         margin: 0;
-
         color: var(--color-text-muted);
-
         font-size: 0.78rem;
-
         line-height: 1.55;
     }
 
-    /* =====================================================
-     CALENDAR BUTTON
-  ===================================================== */
-
-    /* =====================================================
-   CALENDAR CTA
-===================================================== */
-
     .contact-call-button {
         position: relative;
-
         display: grid;
-
-        grid-template-columns:
-            auto
-            minmax(0, 1fr)
-            auto;
-
+        grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
-
         gap: 0.9rem;
-
         min-block-size: 4.5rem;
-
         margin-block-start: auto;
-
         padding: 0.8rem 0.9rem;
-
         overflow: hidden;
-
         border: 1px solid color-mix(in srgb, var(--color-link) 58%, transparent);
-
         border-radius: 0.9rem;
-
         background: linear-gradient(
             120deg,
             color-mix(in srgb, var(--color-link) 24%, var(--color-surface)),
             color-mix(in srgb, #efadd6 13%, var(--color-surface))
         );
-
         color: var(--color-text);
-
         text-decoration: none;
-
         box-shadow: 0 1rem 2.5rem
             color-mix(in srgb, var(--color-link) 10%, transparent);
-
         isolation: isolate;
-
         transition:
             transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
             border-color 220ms ease,
@@ -1734,68 +1339,42 @@ const t = content[locale];
             background 220ms ease;
     }
 
-    /* luz ambiental del CTA */
-
     .contact-call-button::before {
         content: "";
-
         position: absolute;
-
         z-index: -1;
-
         inline-size: 9rem;
-
         block-size: 9rem;
-
         inset-block-start: -5rem;
-
         inset-inline-start: -2rem;
-
         border-radius: 50%;
-
         background: radial-gradient(
             circle,
             color-mix(in srgb, var(--color-link) 32%, transparent),
             transparent 70%
         );
-
         opacity: 0.65;
-
         pointer-events: none;
-
         transition:
             transform 500ms cubic-bezier(0.16, 1, 0.3, 1),
             opacity 280ms ease;
     }
 
-    /* icono */
-
     .contact-call-button__icon {
         inline-size: 2.8rem;
-
         block-size: 2.8rem;
-
         display: grid;
-
         place-items: center;
-
-        flex: none;
-
         border: 1px solid color-mix(in srgb, var(--color-link) 52%, transparent);
-
         border-radius: 0.7rem;
-
         background: color-mix(
             in srgb,
             var(--color-link) 14%,
             var(--color-surface)
         );
-
         color: var(--color-link);
-
         box-shadow: inset 0 0 1rem
             color-mix(in srgb, var(--color-link) 5%, transparent);
-
         transition:
             transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
             background 220ms ease;
@@ -1803,67 +1382,42 @@ const t = content[locale];
 
     .contact-call-button__icon svg {
         inline-size: 1.35rem;
-
         block-size: 1.35rem;
-
         fill: none;
-
         stroke: currentColor;
-
         stroke-width: 1.6;
-
         stroke-linecap: round;
-
         stroke-linejoin: round;
     }
 
-    /* texto */
-
     .contact-call-button__copy {
         min-inline-size: 0;
-
         display: flex;
-
         flex-direction: column;
-
         gap: 0.18rem;
     }
 
     .contact-call-button__copy strong {
         color: var(--color-text);
-
         font-size: 0.95rem;
-
         font-weight: var(--weight-medium);
-
         line-height: 1.2;
     }
 
     .contact-call-button__copy small {
         color: var(--color-text-muted);
-
         font-size: 0.68rem;
-
         line-height: 1.3;
-
         letter-spacing: 0.03em;
     }
 
-    /* flecha */
-
     .contact-call-button__arrow {
         inline-size: 2rem;
-
         block-size: 2rem;
-
         display: grid;
-
         place-items: center;
-
         border-radius: 50%;
-
         color: var(--color-text);
-
         transition:
             transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
             background 220ms ease;
@@ -1871,40 +1425,28 @@ const t = content[locale];
 
     .contact-call-button__arrow svg {
         inline-size: 1.15rem;
-
         block-size: 1.15rem;
-
         fill: none;
-
         stroke: currentColor;
-
         stroke-width: 1.6;
-
         stroke-linecap: round;
-
         stroke-linejoin: round;
     }
 
-    /* hover */
-
     .contact-call-button:hover {
         transform: translateY(-3px);
-
         border-color: color-mix(in srgb, var(--color-link) 82%, transparent);
-
         box-shadow: 0 1.3rem 3rem
             color-mix(in srgb, var(--color-link) 17%, transparent);
     }
 
     .contact-call-button:hover::before {
         transform: translate(2rem, 1rem) scale(1.15);
-
         opacity: 0.9;
     }
 
     .contact-call-button:hover .contact-call-button__icon {
         transform: rotate(-3deg) scale(1.05);
-
         background: color-mix(
             in srgb,
             var(--color-link) 20%,
@@ -1914,53 +1456,64 @@ const t = content[locale];
 
     .contact-call-button:hover .contact-call-button__arrow {
         transform: translate(2px, -2px);
-
         background: color-mix(in srgb, var(--color-link) 12%, transparent);
     }
 
-    /* teclado */
-
     .contact-call-button:focus-visible {
         outline: 2px solid var(--color-link);
-
         outline-offset: 0.3rem;
     }
 
-    /* =====================================================
-     LIGHTWEIGHT MOTION
-  ===================================================== */
+    .contact-call-footer {
+        margin: 0.8rem 0 0;
+        color: var(--color-text-muted);
+        font-size: 0.7rem;
+        line-height: 1.5;
+    }
+
+    .whatsapp-input-feedback {
+        display: block;
+
+        margin-block-start: 0.5rem;
+
+        color: var(--color-link);
+
+        font-size: 0.8rem;
+
+        line-height: 1.5;
+    }
+
+    .whatsapp-input-feedback[hidden] {
+        display: none !important;
+    }
 
     @media (prefers-reduced-motion: no-preference) {
         .contact-orbit--one {
             animation: contactOrbit 30s linear infinite;
         }
-
         .contact-orbit--two {
             animation: contactOrbitReverse 38s linear infinite;
         }
-
         .contact-stars circle:nth-child(odd) {
             animation: contactStar 5s ease-in-out infinite alternate;
         }
-
         .contact-stars circle:nth-child(even) {
             animation: contactStar 7s ease-in-out infinite alternate-reverse;
         }
-
         .call-core span {
             animation: callCorePulse 3.8s ease-in-out infinite;
         }
-
         .call-node {
             animation: callNodePulse 4.8s ease-in-out infinite;
         }
-
         .call-node--two {
             animation-delay: 1.1s;
         }
-
         .call-node--three {
             animation-delay: 2.2s;
+        }
+        .contact-call-button__icon {
+            animation: calendarFloat 4.5s ease-in-out infinite;
         }
     }
 
@@ -1969,7 +1522,6 @@ const t = content[locale];
             stroke-dashoffset: -190;
         }
     }
-
     @keyframes contactOrbitReverse {
         to {
             stroke-dashoffset: 170;
@@ -1980,7 +1532,6 @@ const t = content[locale];
         from {
             opacity: 0.2;
         }
-
         to {
             opacity: 0.85;
         }
@@ -1990,13 +1541,10 @@ const t = content[locale];
         0%,
         100% {
             transform: scale(0.85);
-
             opacity: 0.68;
         }
-
         50% {
             transform: scale(1.15);
-
             opacity: 1;
         }
     }
@@ -2005,22 +1553,25 @@ const t = content[locale];
         0%,
         100% {
             transform: scale(0.8);
-
             opacity: 0.45;
         }
-
         50% {
             transform: scale(1.15);
-
             opacity: 0.95;
         }
     }
 
-    /* =====================================================
-     LIGHT MODE
-  ===================================================== */
+    @keyframes calendarFloat {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-2px);
+        }
+    }
 
-    :global(html[data-theme="light"]) .contact-frame {
+    :global(html:is([data-theme="light"], :not([data-theme])[data-theme-resolved="light"])) .contact-frame {
         background:
             radial-gradient(
                 circle at 76% 32%,
@@ -2033,19 +1584,14 @@ const t = content[locale];
                 transparent 26%
             ),
             color-mix(in srgb, var(--color-surface) 99%, white);
-
         box-shadow: 0 2rem 5rem rgb(50 42 90 / 0.08);
     }
 
-    :global(html[data-theme="light"]) .form-field input,
-    :global(html[data-theme="light"]) .form-field textarea,
-    :global(html[data-theme="light"]) .form-select select {
+    :global(html:is([data-theme="light"], :not([data-theme])[data-theme-resolved="light"])) .form-field input,
+    :global(html:is([data-theme="light"], :not([data-theme])[data-theme-resolved="light"])) .form-field textarea,
+    :global(html:is([data-theme="light"], :not([data-theme])[data-theme-resolved="light"])) .form-select select {
         background: rgb(255 255 255 / 0.7);
     }
-
-    /* =====================================================
-     TABLET
-  ===================================================== */
 
     @media (max-width: 68rem) {
         .contact-intro,
@@ -2059,87 +1605,77 @@ const t = content[locale];
 
         .contact-form-panel {
             border-inline-end: 0;
-
             border-block-end: var(--border-subtle);
         }
 
         .contact-call-panel {
             display: grid;
-
-            grid-template-columns:
-                minmax(14rem, 0.7fr)
-                minmax(0, 1fr);
-
+            grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1fr);
             min-block-size: auto;
         }
 
         .contact-call-visual {
             min-block-size: 100%;
-
             border-block-end: 0;
-
             border-inline-end: var(--border-subtle);
         }
     }
 
-    /* =====================================================
-     MOBILE
-  ===================================================== */
-
     @media (max-width: 48rem) {
+        /* Prevent focus zoom on iOS; leave browser pinch zoom available. */
+        .form-field input,
+        .form-field textarea,
+        .form-select select {
+            font-size: 1rem;
+            scroll-margin-block: var(--header-clearance, 7rem) 2rem;
+        }
+
         .contact-section {
             padding-block: var(--space-9);
         }
 
         .contact-intro {
             grid-template-columns: 1fr;
-
             gap: 1rem;
         }
 
         .contact-form {
             grid-template-columns: 1fr;
         }
-
         .form-field--wide {
             grid-column: auto;
         }
 
         .contact-call-panel {
             display: flex;
-
             flex-direction: column;
         }
 
         .contact-call-visual {
             flex-basis: 12rem;
-
             min-block-size: 12rem;
-
             border-inline-end: 0;
-
             border-block-end: var(--border-subtle);
         }
 
         .contact-frame__header {
             align-items: flex-start;
-
             flex-direction: column;
         }
 
         .contact-preference__options {
             display: grid;
-
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .contact-choice {
             justify-content: center;
+            gap: 0.5rem;
+            padding-inline: 0.5rem;
         }
 
         .contact-form__footer {
             align-items: stretch;
-
             flex-direction: column;
         }
 
@@ -2148,22 +1684,21 @@ const t = content[locale];
         }
     }
 
-    /* =====================================================
-     REDUCED MOTION
-  ===================================================== */
-
     @media (prefers-reduced-motion: reduce) {
         .contact-orbit,
         .contact-stars circle,
         .call-core span,
-        .call-node {
+        .call-node,
+        .contact-call-button__icon {
             animation: none !important;
         }
 
         .contact-submit,
         .contact-submit svg,
         .contact-call-button,
-        .contact-call-button svg {
+        .contact-call-button svg,
+        .contact-call-button__icon,
+        .contact-call-button__arrow {
             transition: none !important;
         }
     }

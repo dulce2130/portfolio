@@ -22,6 +22,7 @@ function initFeaturedWork(section: HTMLElement) {
   let mobile = false;
   let ready = false;
   let loadStarted = false;
+  let loadFailed = false;
   let visible = false;
   let frame = 0;
   let mobileFrame = 0;
@@ -135,7 +136,8 @@ function initFeaturedWork(section: HTMLElement) {
     mobile = mobileMedia.matches;
     hoverActiveProject = null; focusActiveProject = null; pointer = null; pointerDirty = false;
     emphasis.fill(0); pin.style.cursor = '';
-    section.toggleAttribute('data-deck', enhanced);
+    // Reserve the sticky layout before textures arrive, avoiding a large shift.
+    section.toggleAttribute('data-deck', media.matches && !loadFailed);
     section.toggleAttribute('data-mobile', mobile);
     canvas.hidden = !enhanced;
     controls.hidden = !(enhanced || mobile);
@@ -152,9 +154,9 @@ function initFeaturedWork(section: HTMLElement) {
       if (mobile) list.scrollTo({ left: Math.max(0, selected) * mobileStep, behavior: 'instant' });
     }
     field.resize();
-    if (media.matches && !loadStarted) {
+    if (media.matches && !loadStarted && visible) {
       loadStarted = true;
-      void renderer.load().then(success => { ready = success; if (success) configure(); });
+      void renderer.load().then(success => { ready = success; loadFailed = !success; configure(); });
     }
   }
   window.addEventListener('scroll', () => { hoverActiveProject = null; pointer = null; updateTargets(); schedule(); }, { passive: true });
@@ -166,7 +168,7 @@ function initFeaturedWork(section: HTMLElement) {
     visible = entries[0]!.isIntersecting;
     section.toggleAttribute('data-work-visible', visible);
     field.setVisible(visible);
-    if (visible) { measure(); updateTargets(); schedule(); }
+    if (visible) { if (!loadStarted) configure(); measure(); updateTargets(); schedule(); }
     else { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
   }, { rootMargin: '200px' }).observe(section);
   new MutationObserver(() => { renderer.colors(); schedule(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

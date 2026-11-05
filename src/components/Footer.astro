@@ -1,0 +1,98 @@
+---
+import LogoDG from './LogoDG.astro';
+import { footerLinks } from '../data/footer-links';
+import { getLocale, getUI, localizedPath } from '../i18n/utils';
+const locale = getLocale(Astro.currentLocale);
+const t = getUI(locale);
+const year = new Date().getFullYear();
+const socials = [{ name: 'LinkedIn', href: footerLinks.linkedin }, { name: 'GitHub', href: footerLinks.github }];
+---
+
+<footer class="galactic-footer" aria-labelledby="footer-title" data-galaxy-footer>
+  <div class="galaxy-scene" aria-hidden="true" data-galaxy-scene>
+    <!-- Inline fallback survives unavailable Canvas, disabled JS and loading. -->
+    <svg class="galaxy-fallback" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <defs>
+        <radialGradient id={`galaxy-haze-${locale}`}><stop stop-color="var(--color-lavender)" stop-opacity=".3"/><stop offset=".45" stop-color="var(--color-accent)" stop-opacity=".1"/><stop offset="1" stop-color="var(--color-accent)" stop-opacity="0"/></radialGradient>
+      </defs>
+      <ellipse cx="680" cy="340" rx="410" ry="230" fill={`url(#galaxy-haze-${locale})`}/>
+      <g transform="translate(680 340) rotate(-24) scale(1 .53)" fill="none" stroke="var(--color-accent)" stroke-linecap="round">
+        {[0, 120, 240].map(angle => <g transform={`rotate(${angle})`}><path d="M0 0C70-65 190-20 190 100S-90 280-260 130S-190-250 130-290" stroke-width="24" opacity=".075"/><path d="M0 0C70-65 190-20 190 100S-90 280-260 130S-190-250 130-290" stroke-width="1.2" stroke-dasharray="1 6" opacity=".5"/></g>)}
+        <ellipse rx="64" ry="46" fill={`url(#galaxy-haze-${locale})`} stroke="none"/>
+      </g>
+    </svg>
+    <canvas class="galaxy-canvas" data-galaxy-canvas></canvas>
+  </div>
+  <div class="footer-shade" aria-hidden="true"></div>
+  <div class="footer-inner container">
+    <div class="footer-statement">
+      <p class="footer-eyebrow metadata">{t.footerEyebrow}</p>
+      <h2 id="footer-title">{t.footerTitle}{' '}<em>{t.footerTitleAccent}</em></h2>
+      <p class="footer-description">{t.footerDescription}</p>
+    </div>
+    <div class="footer-bottom">
+      <a class="footer-identity" href={localizedPath('/', locale)} aria-label={t.home}><LogoDG /><span>Dulce González</span></a>
+      <nav aria-label={t.footerNavigation}>
+        <ul>
+          {socials.map(social => <li>{social.href ? <a href={social.href} target="_blank" rel="noopener noreferrer">{social.name}<span aria-hidden="true"> ↗</span></a> : <span class="social-pending" aria-disabled="true">{social.name}<span class="sr-only"> — {t.footerLinkPending}</span></span>}</li>)}
+          <li><a href="#contact">{t.contact}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></a></li>
+        </ul>
+      </nav>
+      <p class="footer-location metadata">{t.footerLocation}</p>
+      <p class="footer-copyright metadata">© <time datetime={String(year)} data-footer-year>{year}</time> Dulce González</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const footer = document.querySelector<HTMLElement>('[data-galaxy-footer]');
+  if (footer) {
+    const year = footer.querySelector<HTMLTimeElement>('[data-footer-year]');
+    if (year) { const current = String(new Date().getFullYear()); year.textContent = current; year.dateTime = current; }
+    // Separate chunk: no renderer download until the footer approaches.
+    const preload = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      preload.disconnect();
+      void import('../scripts/galaxy-background').then(({ createGalaxyBackground }) => {
+        if (footer.isConnected) createGalaxyBackground(footer);
+      }).catch(() => { /* Inline spiral remains available. */ });
+    }, { rootMargin: '300px' });
+    preload.observe(footer);
+    document.addEventListener('astro:before-swap', () => preload.disconnect(), { once: true });
+  }
+</script>
+
+<style>
+  .galactic-footer { position: relative; isolation: isolate; overflow: clip; min-block-size: clamp(43rem, 90svh, 58rem); background: color-mix(in srgb, var(--color-bg) 86%, var(--atmosphere-primary)); }
+  .galaxy-scene, .galaxy-canvas, .galaxy-fallback, .footer-shade { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; pointer-events: none; }
+  .galaxy-scene { z-index: -2; }
+  .galaxy-canvas { opacity: 0; }
+  [data-galaxy-ready] .galaxy-canvas { opacity: 1; }
+  [data-galaxy-ready] .galaxy-fallback { visibility: hidden; }
+  .footer-shade { z-index: -1; background: linear-gradient(180deg, var(--color-bg), transparent 16%, transparent 74%, color-mix(in srgb, var(--color-bg) 97%, transparent)), linear-gradient(90deg, var(--color-bg) 2%, color-mix(in srgb, var(--color-bg) 94%, transparent) 22%, color-mix(in srgb, var(--color-bg) 68%, transparent) 42%, transparent 76%); }
+  .footer-inner { min-block-size: inherit; display: flex; flex-direction: column; justify-content: space-between; padding-block: clamp(5rem, 9svh, 8rem) var(--space-6); }
+  .footer-statement { position: relative; max-inline-size: 55rem; padding-block-end: var(--space-16); }
+  .footer-eyebrow { margin: 0 0 var(--space-8); text-transform: uppercase; font-size: .6875rem; }
+  h2 { margin: 0; max-inline-size: 15ch; font-family: var(--font-body); font-weight: var(--weight-medium); font-size: clamp(3rem, 6.4vw, 7rem); letter-spacing: -.055em; line-height: 1.05; text-wrap: initial; }
+  h2 em { display: block; font-family: var(--font-display); font-weight: var(--weight-normal); font-style: italic; letter-spacing: -.045em; }
+  .footer-description { max-inline-size: 42ch; margin: var(--space-8) 0 0; color: var(--color-text); font-size: clamp(.9375rem, 1.3vw, 1.0625rem); }
+  .footer-bottom { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: var(--space-4) var(--space-8); border-block-start: var(--border-subtle); padding-block-start: var(--space-5); }
+  .footer-identity { display: inline-flex; align-items: center; gap: var(--space-2); justify-self: start; text-decoration: none; color: var(--color-text); font-size: .8125rem; }
+  .footer-identity :global(.dg-traveller), .footer-identity :global(.dg-node-halo) { animation: none !important; }
+  ul { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); align-items: center; list-style: none; margin: 0; padding: 0; }
+  nav a { display: inline-flex; align-items: center; gap: var(--space-2); min-block-size: var(--target-min); color: var(--color-text); text-decoration: none; font-size: .875rem; }
+  nav a:hover { color: var(--color-link); text-decoration: underline; }
+  nav svg { inline-size: .9375rem; block-size: .9375rem; }
+  .social-pending { color: var(--color-text-muted); font-size: .875rem; }
+  .footer-location, .footer-copyright { margin: 0; font-size: .6875rem; }
+  .footer-copyright { text-align: end; }
+  @media (max-width: 47.999rem) {
+    .galactic-footer { min-block-size: 48rem; }
+    .footer-inner { padding-block-start: var(--space-16); }
+    h2 { font-size: clamp(2.875rem, 9vw, 4.5rem); }
+    .footer-description { max-inline-size: 31ch; }
+    .footer-bottom { grid-template-columns: 1fr; gap: var(--space-3); }
+    .footer-copyright { text-align: start; }
+    .footer-shade { background: linear-gradient(180deg, var(--color-bg), color-mix(in srgb, var(--color-bg) 87%, transparent) 20%, color-mix(in srgb, var(--color-bg) 60%, transparent) 43%, transparent 58%, color-mix(in srgb, var(--color-bg) 97%, transparent) 85%); }
+  }
+</style>

@@ -259,7 +259,7 @@ const pathId = `process-path-${locale}`;
     padding: clamp(5rem, 7vw, 8rem) 0;
   }
 
-  :global(html[data-theme='light']) .process-section,
+  :global(html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])) .process-section,
   :global(body[data-theme='light']) .process-section,
   :global([data-theme='light']) .process-section {
     --process-ink: #1d1830;
@@ -313,7 +313,7 @@ const pathId = `process-path-${locale}`;
     font-family: Georgia, 'Times New Roman', serif;
     font-style: italic;
     font-weight: 500;
-    color: #a99dff;
+    color: var(--color-link);
     letter-spacing: -0.03em;
   }
 
@@ -355,7 +355,7 @@ const pathId = `process-path-${locale}`;
     z-index: 0;
   }
 
-  :global(html[data-theme='light']) .process-board::before,
+  :global(html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])) .process-board::before,
   :global(body[data-theme='light']) .process-board::before,
   :global([data-theme='light']) .process-board::before {
     color: rgba(45, 32, 90, 0.05);
@@ -499,7 +499,7 @@ const pathId = `process-path-${locale}`;
   }
 
   .process-step__index {
-    color: #d8b4ff;
+    color: var(--color-link);
     font-weight: 700;
   }
 
@@ -581,7 +581,7 @@ const pathId = `process-path-${locale}`;
     border-top: 1px solid var(--process-border);
     background:
       linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-      rgba(5, 7, 18, 0.42);
+      var(--process-panel-strong);
     backdrop-filter: blur(10px);
     border-radius: 1rem;
   }
@@ -592,7 +592,7 @@ const pathId = `process-path-${locale}`;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #b6acff;
+    color: var(--color-link);
   }
 
   .process-output__text {

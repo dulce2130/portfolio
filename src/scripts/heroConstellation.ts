@@ -13,18 +13,16 @@ const constellation =
 const prefersReducedMotion =
   window.matchMedia(
     '(prefers-reduced-motion: reduce)'
-  ).matches;
+  );
 
 const hasFinePointer =
   window.matchMedia(
     '(pointer: fine)'
-  ).matches;
+  );
 
 if (
   hero &&
-  constellation &&
-  !prefersReducedMotion &&
-  hasFinePointer
+  constellation
 ) {
   const heroElement =
     hero;
@@ -72,9 +70,12 @@ if (
   let currentY = 0;
 
   let animationFrame = 0;
+  let pointerFrame = 0;
+  let visible = false;
+  const canAnimate = () => visible && !document.hidden && !prefersReducedMotion.matches && hasFinePointer.matches;
 
   function startAnimation() {
-    if (animationFrame) {
+    if (animationFrame || !canAnimate()) {
       return;
     }
 
@@ -85,6 +86,7 @@ if (
   }
 
   function animate() {
+    if (!canAnimate()) { animationFrame = 0; return; }
     currentX +=
       (targetX -
         currentX) *
@@ -273,9 +275,34 @@ if (
     startAnimation();
   }
 
+  const suspend = () => {
+    cancelAnimationFrame(animationFrame); cancelAnimationFrame(pointerFrame);
+    animationFrame = pointerFrame = 0; targetX = targetY = currentX = currentY = 0;
+    constellationElement.style.setProperty('--field-x', '0px');
+    constellationElement.style.setProperty('--field-y', '0px');
+    nodes.forEach(({ element }) => { element.style.setProperty('--pointer-force', '0'); element.classList.remove('is-pointer-hot'); });
+  };
+  const queuePointerMove = (event: PointerEvent) => {
+    if (!canAnimate() || pointerFrame) return;
+    pointerFrame = requestAnimationFrame(() => { pointerFrame = 0; if (canAnimate()) handlePointerMove(event); });
+  };
+  const visibility = new IntersectionObserver(entries => { visible = entries[0]!.isIntersecting; if (!visible) suspend(); });
+  visibility.observe(heroElement);
+  const onPreference = () => { if (!canAnimate()) suspend(); };
+  document.addEventListener('visibilitychange', onPreference);
+  prefersReducedMotion.addEventListener('change', onPreference);
+  hasFinePointer.addEventListener('change', onPreference);
+  document.addEventListener('astro:before-swap', () => {
+    suspend(); visibility.disconnect();
+    document.removeEventListener('visibilitychange', onPreference);
+    prefersReducedMotion.removeEventListener('change', onPreference);
+    hasFinePointer.removeEventListener('change', onPreference);
+    heroElement.removeEventListener('pointermove', queuePointerMove);
+    heroElement.removeEventListener('pointerleave', handlePointerLeave);
+  }, { once: true });
   heroElement.addEventListener(
     'pointermove',
-    handlePointerMove,
+    queuePointerMove,
     {
       passive: true,
     }

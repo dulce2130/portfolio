@@ -22,14 +22,14 @@ const content = {
         label: 'PERFIL',
         title: 'Sistemas + diseño + web',
         description:
-          'Soy ingeniera en sistemas y desarrolladora frontend con enfoque en diseño web y UX/UI.',
+          'Soy Ingeniera en Sistemas Computacionales con experiencia en desarrollo web, diseño de interfaces y UX/UI.',
       },
       {
         number: '02',
         label: 'ENFOQUE',
         title: 'De la estructura a la interfaz',
         description:
-          'Me gusta entender qué necesita una idea, darle forma visual y convertirla en una experiencia web real.',
+          'Conecto diseño y tecnología para transformar necesidades e ideas en experiencias digitales claras, funcionales y accesibles.',
       },
       {
         number: '03',
@@ -40,12 +40,12 @@ const content = {
       },
     ],
 
-    status: 'Disponible para colaborar',
+    status: 'Empleo y colaboraciones',
 
     facts: [
       {
         label: 'BASE',
-        value: 'México · Remoto',
+        value: 'México',
       },
       {
         label: 'FORMACIÓN',
@@ -123,14 +123,14 @@ const content = {
         label: 'PROFILE',
         title: 'Systems + design + web',
         description:
-          'I’m a systems engineer and front-end developer focused on web design and UX/UI.',
+          'I’m a Computer Systems Engineer with experience in web development, interface design and UX/UI.',
       },
       {
         number: '02',
         label: 'APPROACH',
         title: 'From structure to interface',
         description:
-          'I like understanding what an idea needs, shaping it visually and turning it into a real web experience.',
+          'I connect design and technology to turn needs and ideas into clear, functional and accessible digital experiences.',
       },
       {
         number: '03',
@@ -141,12 +141,12 @@ const content = {
       },
     ],
 
-    status: 'Available for collaboration',
+    status: 'Open to roles and collaborations',
 
     facts: [
       {
         label: 'BASE',
-        value: 'Mexico · Remote',
+        value: 'Mexico',
       },
       {
         label: 'EDUCATION',
@@ -1652,19 +1652,33 @@ const tones = {
         transparent
       );
 
-    backdrop-filter:
-      blur(12px);
-
+    /* The surface is already 96–100% opaque. Blurring the animated scene
+       behind each floating card adds resampling with negligible visual gain.
+       Keep both original shadow/background states, but paint their change
+       once rather than interpolating large shadow rasters every frame. */
     transition:
-      transform
-        380ms
-        cubic-bezier(.16, 1, .3, 1),
-      border-color
-        320ms ease,
-      box-shadow
-        380ms ease,
-      background
-        380ms ease;
+      transform 240ms cubic-bezier(.16, 1, .3, 1),
+      border-color 180ms ease;
+  }
+
+  /* Prepare only the four desktop hover surfaces while this section is visible.
+     Release those layers offscreen and avoid them for reduced motion/mobile. */
+  @media (min-width: 70.001rem) and (prefers-reduced-motion: no-preference) {
+    .about-system[data-motion-visible] .orbit-card {
+      will-change: transform;
+    }
+  }
+
+  .orbit-card:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 4px;
+  }
+
+  @supports selector(:has(*)) {
+    /* Stable hit area while reading/hovering; resume the existing playhead
+       afterwards, without restarting the independent floating animation. */
+    .fragment-slot:has(.orbit-card:hover),
+    .fragment-slot:focus-within { animation-play-state: paused !important; }
   }
 
   .fragment-slot--systems
@@ -1877,11 +1891,7 @@ const tones = {
       .8rem
       1rem 0;
 
-    color:
-      rgb(
-        var(--tone-accent)
-        / .92
-      );
+    color: var(--color-link);
   }
 
   .orbit-card__kicker {
@@ -2396,7 +2406,7 @@ const tones = {
   ===================================================== */
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .about-world {
     background:
@@ -2422,7 +2432,7 @@ const tones = {
   }
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .world-wordmark {
     color:
@@ -2434,7 +2444,7 @@ const tones = {
   }
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .profile-console {
     background:
@@ -2463,7 +2473,7 @@ const tones = {
   }
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .orbit-card {
     background:

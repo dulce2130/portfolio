@@ -67,6 +67,8 @@ export function createProjectHelix(canvas: HTMLCanvasElement, cards: HTMLElement
   let border = '';
   let surface = '';
   let regions: HitRegion[] = [];
+  let pixelRatio = 1;
+  let previousBounds = { x: 0, y: 0, w: 0, h: 0 };
   const contains = (polygon: Point[], x: number, y: number) => {
     let inside = false;
     for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
@@ -98,7 +100,9 @@ export function createProjectHelix(canvas: HTMLCanvasElement, cards: HTMLElement
         const images = await Promise.all([...card.querySelectorAll<HTMLImageElement>('.project-visual img')].map(async original => {
           const image = new Image();
           image.decoding = 'async';
-          image.src = original.dataset.canvasSrc || original.currentSrc || original.src;
+          // Reuse Astro's selected responsive resource; do not download a
+          // second original image after the browser has selected a srcset.
+          image.src = original.currentSrc || original.src || original.dataset.canvasSrc!;
           await image.decode();
           return image;
         }));
@@ -132,7 +136,9 @@ export function createProjectHelix(canvas: HTMLCanvasElement, cards: HTMLElement
   function resize(w: number, h: number, top: number, bottom: number) {
     if (!ctx) return;
     width = w; height = h; clipTop = top; clipBottom = bottom;
-    const ratio = Math.min(devicePixelRatio || 1, 2);
+    const ratio = Math.min(devicePixelRatio || 1, 1.5);
+    pixelRatio = ratio;
+    previousBounds = { x: 0, y: 0, w: 0, h: 0 };
     canvas.width = Math.round(w * ratio); canvas.height = Math.round(h * ratio);
     plane.width = canvas.width; plane.height = canvas.height;
     planeContext?.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -210,7 +216,14 @@ export function createProjectHelix(canvas: HTMLCanvasElement, cards: HTMLElement
       regions.push({ index: original.index, depth: pose.z, x: Math.min(...corners.map(p=>p.x)), y: Math.min(...corners.map(p=>p.y)), width: Math.max(...corners.map(p=>p.x))-Math.min(...corners.map(p=>p.x)), height: Math.max(...corners.map(p=>p.y))-Math.min(...corners.map(p=>p.y)), polygons });
       if (!planeContext || !output) continue;
       ctx = planeContext;
-      ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(previousBounds.x, previousBounds.y, previousBounds.w, previousBounds.h);
+      // Composite only the projected plane's dirty rectangle, not a full
+      // viewport-sized transparent buffer for each of the seven projects.
+      const bx = Math.max(0, Math.floor(Math.min(...corners.map(p => p.x)) - 16));
+      const by = Math.max(0, Math.floor(Math.min(...corners.map(p => p.y)) - 16));
+      const bw = Math.max(0, Math.min(width, Math.ceil(Math.max(...corners.map(p => p.x)) + 16)) - bx);
+      const bh = Math.max(0, Math.min(height, Math.ceil(Math.max(...corners.map(p => p.y)) + 16)) - by);
+      previousBounds = { x: bx, y: by, w: bw, h: bh };
       ctx.globalAlpha = 1;
       ctx.beginPath(); ctx.moveTo(corners[0]!.x, corners[0]!.y); corners.slice(1).forEach(p => ctx!.lineTo(p.x, p.y)); ctx.closePath();
       if (!texture.portrait) {
@@ -219,9 +232,9 @@ export function createProjectHelix(canvas: HTMLCanvasElement, cards: HTMLElement
         ctx.lineWidth = original.index === active ? 1.2 + hover * .6 : .6;
         ctx.shadowColor = accent; ctx.shadowBlur = original.index === active ? 7 + hover * 5 : 0; ctx.stroke(); ctx.shadowBlur = 0;
       }
-      // Eight narrow strips approximate a perspective-correct plane with
-      // bounded draw cost; original image proportions never change.
-      const strips = Math.abs(pose.yaw) < .005 && Math.abs(pose.pitch) < .005 ? 1 : 8;
+      // Distant planes need fewer perspective strips. Four are sufficient at
+      // the bounded yaw here; avoid sixteen full texture draws per project.
+      const strips = Math.abs(pose.yaw) < .005 && Math.abs(pose.pitch) < .005 ? 1 : pose.z < 0 ? 2 : view.tablet ? 3 : 4;
       for (let strip = 0; strip < strips; strip++) {
         const left = strip / strips; const right = (strip + 1) / strips;
         const x1 = (left - .5) * worldWidth; const x2 = (right - .5) * worldWidth;
@@ -235,7 +248,7 @@ export function createProjectHelix(canvas: HTMLCanvasElement, cards: HTMLElement
       const otherEmphasis = Math.max(0, ...emphasis);
       ctx.globalAlpha = (pose.opacity + (1 - pose.opacity) * hover) * reveal * (1 - (otherEmphasis - hover) * .06);
       ctx.shadowColor = accent; ctx.shadowBlur = texture.portrait ? hover * 6 : 0;
-      ctx.drawImage(plane, 0, 0, width, height);
+      if (bw && bh) ctx.drawImage(plane, bx * pixelRatio, by * pixelRatio, bw * pixelRatio, bh * pixelRatio, bx, by, bw, bh);
       ctx.shadowBlur = 0;
     }
     ctx.restore(); ctx.globalAlpha = 1;

@@ -20,10 +20,8 @@ const cards =
     '.capability-card'
   );
 
-const prefersReducedMotion =
-  window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 cards.forEach((card, cardIndex) => {
   const canvas =
@@ -57,6 +55,11 @@ cards.forEach((card, cardIndex) => {
 
   let frame = 0;
   let running = false;
+  let visible = false;
+  let hovered = false;
+  let focused = false;
+  let cachedColors: ReturnType<typeof getColors> | undefined;
+  const lifecycle = new AbortController();
   let phase = 0;
 
   let seed =
@@ -654,8 +657,7 @@ cards.forEach((card, cardIndex) => {
       height
     );
 
-    const colors =
-      getColors();
+    const colors = cachedColors ??= getColors();
 
     drawConnections(
       colors.primary
@@ -687,7 +689,7 @@ cards.forEach((card, cardIndex) => {
   function start() {
     if (
       running ||
-      prefersReducedMotion
+      motionPreference.matches || !finePointer.matches || !visible || document.hidden || !(hovered || focused)
     ) {
       return;
     }
@@ -718,31 +720,22 @@ cards.forEach((card, cardIndex) => {
     draw();
   }
 
-  card.addEventListener(
-    'pointerenter',
-    start
-  );
-
-  card.addEventListener(
-    'pointerleave',
-    stop
-  );
-
-  /*
-   * Si el usuario navega con teclado,
-   * también animamos mientras la card
-   * tenga foco dentro.
-   */
-  card.addEventListener(
-    'focusin',
-    start
-  );
-
-  card.addEventListener(
-    'focusout',
-    stop
-  );
-
+  const eventOptions = { signal: lifecycle.signal };
+  // Touch focus can persist after a tap: keep its decorative field static.
+  const sync = () => { if (visible && !document.hidden && !motionPreference.matches && finePointer.matches && (hovered || focused)) start(); else stop(); };
+  card.addEventListener('pointerenter', event => { hovered = event.pointerType !== 'touch'; sync(); }, eventOptions);
+  card.addEventListener('pointerleave', () => { hovered = false; sync(); }, eventOptions);
+  card.addEventListener('focusin', () => { focused = true; sync(); }, eventOptions);
+  card.addEventListener('focusout', () => queueMicrotask(() => { focused = card.contains(document.activeElement); sync(); }), eventOptions);
+  const visibility = new IntersectionObserver(entries => { visible = entries[0]!.isIntersecting; sync(); });
+  visibility.observe(card);
+  document.addEventListener('visibilitychange', sync, eventOptions);
+  motionPreference.addEventListener('change', sync, eventOptions);
+  finePointer.addEventListener('change', sync, eventOptions);
+  const recolor = () => { cachedColors = undefined; if (visible) draw(); };
+  const themes = new MutationObserver(recolor);
+  themes.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', recolor, eventOptions);
   const resizeObserver =
     new ResizeObserver(
       resize
@@ -752,5 +745,10 @@ cards.forEach((card, cardIndex) => {
     card
   );
 
+  document.addEventListener('astro:before-swap', () => {
+    running = false; cancelAnimationFrame(frame); lifecycle.abort();
+    visibility.disconnect(); themes.disconnect(); resizeObserver.disconnect();
+    canvasElement.width = canvasElement.height = 0; points = [];
+  }, { once: true });
   resize();
 });

@@ -3,7 +3,7 @@ import { getLocale, getUI, localizedPath } from '../i18n/utils';
 import LogoDG from './LogoDG.astro';
 const locale = getLocale(Astro.currentLocale);
 const t = getUI(locale);
-const links = [{ label: t.work, href: '#work' }, { label: t.about }, { label: t.capabilities }];
+const links = [{ label: t.work, href: '#work' }, { label: t.about, href: '#about' }, { label: t.capabilities, href: '#services' }];
 ---
 
 <header class="site-header" data-header>
@@ -74,7 +74,7 @@ const links = [{ label: t.work, href: '#work' }, { label: t.about }, { label: t.
   .site-header :global(.contact-spark--dot) { inline-size: 3px; block-size: 3px; border-radius: 50%; background: currentColor; }
   .header-controls { display: flex; align-items: center; justify-content: end; gap: var(--space-2); }
   .language-control { display: flex; align-items: center; gap: var(--space-1); font-size: var(--text-xs); color: var(--color-text-muted); }
-  .language-control a { display: inline-flex; align-items: center; justify-content: center; min-block-size: var(--target-min); padding-inline: var(--space-2); color: var(--color-text-muted); text-decoration: none; }
+  .language-control a { display: inline-flex; align-items: center; justify-content: center; min-inline-size: var(--target-min); min-block-size: var(--target-min); padding-inline: var(--space-2); color: var(--color-text-muted); text-decoration: none; }
   .language-control a[aria-current='page'] { color: var(--color-text); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: .45em; }
   .language-control a:hover { color: var(--color-link); }
   button { appearance: none; background: transparent; border: 0; border-radius: var(--radius-sm); color: var(--color-text-muted); cursor: pointer; min-block-size: var(--target-min); padding: var(--space-2); font-size: var(--text-xs); transition: color var(--duration-fast) var(--ease-standard), background-color var(--duration-fast) var(--ease-standard); }

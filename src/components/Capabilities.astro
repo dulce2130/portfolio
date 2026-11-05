@@ -1459,14 +1459,14 @@ const t = content[locale];
   ========================================== */
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .map-atmosphere {
     opacity: .9;
   }
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .capability-card {
     background:
@@ -1486,7 +1486,7 @@ const t = content[locale];
   }
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .capability-card:hover {
     background:

@@ -11,7 +11,7 @@ const content = {
     accent: 'más contexto.',
 
     description:
-      'Una selección de trabajos realizados en colaboración profesional: desarrollo web, migraciones, rediseños, plataformas, mantenimiento y presencia digital.',
+      'Trabajo en colaboración profesional y un proyecto personal: desarrollo web, migraciones, rediseños, plataformas y experiencias digitales.',
 
     frameLabel: 'DG / PROJECT ARCHIVE',
     collaboration: 'COLABORACIÓN PROFESIONAL',
@@ -21,7 +21,7 @@ const content = {
     noteTitle: 'Sobre estos proyectos',
 
     note:
-      'Estos trabajos fueron realizados como parte de mi experiencia dentro de una empresa. Mi participación varió según el proyecto e incluyó diseño, implementación, desarrollo, mantenimiento, contenido, soporte y acompañamiento digital.',
+      'Los proyectos profesionales fueron realizados dentro de una empresa, con una participación que varió según el proyecto. La Invitación Lala & José es un proyecto personal diseñado y desarrollado por mí.',
 
     view: 'Ver sitio',
 
@@ -138,6 +138,7 @@ const content = {
 
       {
         name: 'Invitación Lala & José',
+        personal: true,
         type: 'Experiencia web',
         contribution: 'Diseño + Frontend',
         description:
@@ -156,7 +157,7 @@ const content = {
     accent: 'more context.',
 
     description:
-      'A selection of work completed through professional collaboration: web development, migrations, redesigns, platforms, maintenance and digital presence.',
+      'Professional collaborations and a personal project: web development, migrations, redesigns, platforms and digital experiences.',
 
     frameLabel: 'DG / PROJECT ARCHIVE',
     collaboration: 'PROFESSIONAL COLLABORATION',
@@ -166,7 +167,7 @@ const content = {
     noteTitle: 'About these projects',
 
     note:
-      'These projects were completed as part of my professional work within a company. My contribution varied by project and included design, implementation, development, maintenance, content, support and ongoing digital assistance.',
+      'The professional projects were completed within a company, with my contribution varying by project. The Lala & José Invitation is a personal project I designed and developed.',
 
     view: 'View website',
 
@@ -283,6 +284,7 @@ const content = {
 
       {
         name: 'Lala & José Invitation',
+        personal: true,
         type: 'Web experience',
         contribution: 'Design + Frontend',
         description:
@@ -412,7 +414,7 @@ const archiveCount =
         <span class="archive-frame__status">
           <span aria-hidden="true"></span>
 
-          {t.collaboration}
+          {locale === 'es' ? 'TRABAJO + PROYECTOS' : 'WORK + PROJECTS'}
         </span>
 
         <span class="archive-frame__scroll metadata">
@@ -504,7 +506,7 @@ const archiveCount =
 
             <div class="archive-row__contribution">
               <span class="archive-row__badge">
-                {t.collaboration}
+                {'personal' in project ? (locale === 'es' ? 'PROYECTO PERSONAL' : 'PERSONAL PROJECT') : t.collaboration}
               </span>
 
               <strong>
@@ -516,7 +518,7 @@ const archiveCount =
 
             <ul
               class="archive-row__tags"
-              aria-label="Technologies"
+              aria-label={locale === 'es' ? 'Tecnologías' : 'Technologies'}
             >
               {
                 project.tags.map((tag) => (
@@ -1604,6 +1606,7 @@ const archiveCount =
 
   .archive-row__action a {
     display: flex;
+    min-block-size: var(--target-min);
 
     align-items:
       center;
@@ -1728,7 +1731,7 @@ const archiveCount =
   ===================================================== */
 
   @supports selector(:has(*)) {
-
+    @media (hover: hover) and (pointer: fine) {
     .archive-list:has(
       .archive-row:hover
     )
@@ -1743,6 +1746,7 @@ const archiveCount =
     .archive-row:not(:focus-within) {
       opacity:
         .5;
+    }
     }
   }
 
@@ -1861,7 +1865,7 @@ const archiveCount =
   ===================================================== */
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .archive-frame {
     background:
@@ -1909,7 +1913,7 @@ const archiveCount =
   }
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .archive-row {
     background:
@@ -1917,11 +1921,11 @@ const archiveCount =
   }
 
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .archive-row:hover,
   :global(
-    html[data-theme='light']
+    html:is([data-theme='light'], :not([data-theme])[data-theme-resolved='light'])
   )
   .archive-row:focus-within {
     background:

@@ -14,6 +14,7 @@ function effectiveTheme(preference = intended): 'light' | 'dark' {
 }
 
 function syncControl() {
+  root.dataset.themeResolved = effectiveTheme();
   if (!button) return;
   const dark = effectiveTheme() === 'dark';
   button.setAttribute('aria-pressed', String(dark));
